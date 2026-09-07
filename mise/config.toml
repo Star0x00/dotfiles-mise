@@ -63,7 +63,6 @@ dotfiles.default_mode = "copy"
 
 # pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
 "~/.pi/agent/extensions/compact-ui" = "../../dotfiles/pi/agent/extensions/compact-ui"
-"~/.pi/agent/extensions/hunk-gate" = "../../dotfiles/pi/agent/extensions/hunk-gate"
 "~/.pi/agent/extensions/toolbox" = "../../dotfiles/pi/agent/extensions/toolbox"
 
 # pi agent: global instructions
@@ -108,6 +107,9 @@ dotfiles.default_mode = "copy"
 "~/.config/environment.d/10-mise.conf" = "../../dotfiles/environment.d/10-mise.conf"
 "~/.config/mimeapps.list" = "../../dotfiles/mimeapps.list"
 "~/.config/fontconfig/fonts.conf" = "../../dotfiles/fontconfig/fonts.conf"
+
+# fonts: MiSans (78MB — symlink, not copy, to avoid re-copying on every apply)
+"~/.local/share/fonts/MiSans" = { source = "../../dotfiles/fonts/MiSans", mode = "symlink" }
 "~/.config/fontconfig/conf.d/50-reject-colrv1.conf" = "../../dotfiles/fontconfig/conf.d/50-reject-colrv1.conf"
 "~/.config/fish/config.fish" = "../../dotfiles/fish/config.fish"
 
