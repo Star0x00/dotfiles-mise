@@ -1,0 +1,13 @@
+# ────────────────────────────── Scratchpads ─────────────────────────────────
+# Two scratchpads, both ghostty windows identified by a forced title:
+#   terminal - `ghostty --title=scratchpad-terminal`
+#   music    - `ghostty --title=scratchpad-music -e flatpak run io.github.go_musicfox.go-musicfox`
+# Captured by the matching window rules in rules.toml.
+# Documentation: https://docs.noctalia.dev/umbriel/scratchpads/
+# ────────────────────────────────────────────────────────────────────────────
+
+[[scratchpad]]
+name = "terminal"
+
+[[scratchpad]]
+name = "music"

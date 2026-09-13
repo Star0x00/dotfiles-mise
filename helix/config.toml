@@ -1,4 +1,4 @@
-theme = "kanagawa-dragon"
+theme = "catppuccin-mocha"
 [editor]
 color-modes = true
 cursorline = true

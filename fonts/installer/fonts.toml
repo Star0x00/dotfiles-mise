@@ -1,0 +1,26 @@
+# Fonts installed by `mise run install-fonts` into ~/.local/share/fonts.
+#
+# Each family gets its own directory there, so adding one is a matter of pointing
+# at an archive and saying which members to take:
+#
+#   [fonts.<Family>]
+#   url   = "https://…/family.zip"   archive to pull from   ┐ one of these two
+#   files = ["https://…/x.ttf"]      plain file URLs instead ┘
+#   globs = ["dir/*.ttf"]            which members to take from the archive,
+#                                    path.Match patterns, e.g. "SarasaMonoTC/*.ttf"
+#   dest  = "Family"                 directory name, defaults to the family name
+#
+# The whole matching set is copied over as a unit; there is no per-file list to
+# maintain. `mise run install-fonts -- -force` downloads again, and
+# `-only Family,...` limits a run to some families.
+
+[fonts.MiSans]
+# Xiaomi ships the family as one 217 MiB zip holding ttf/otf/woff/woff2 builds of
+# all 10 weights. fontconfig wants the ttfs, and range requests on the zip mean
+# only those ~54 MiB are transferred.
+url   = "https://hyperos.mi.com/font-download/MiSans.zip"
+globs = ["MiSans/ttf/*.ttf"]
+
+[fonts.MiSans_Tibetan]
+url = "https://hyperos.mi.com/font-download/MiSans_Tibetan.zip"
+globs = ["MiSans Tibetan/ttf/*.ttf"]

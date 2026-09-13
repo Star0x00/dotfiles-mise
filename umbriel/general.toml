@@ -1,0 +1,54 @@
+# ─────────────────────────────── General ────────────────────────────────────
+# Merged from niri (config/env.kdl, config/execs.kdl) and Hyprland
+# (modules/autostart.lua, modules/env.lua).
+# Documentation: https://docs.noctalia.dev/umbriel/configuration/#general
+# ────────────────────────────────────────────────────────────────────────────
+
+[general]
+# noctalia, fcitx5 and the cliphist watchers are shared by both compositors.
+# The two ghostty instances are launched hidden and stored by the `terminal`
+# and `music` scratchpad window rules. xwayland-satellite is spawned by
+# `xwayland = true`.
+autostart = [
+    "noctalia",
+    "fcitx5",
+    "wl-paste --type image --watch cliphist store",
+    "wl-paste --type text --watch cliphist store",
+    "ghostty --title=scratchpad-terminal",
+    "ghostty --title=scratchpad-music -e flatpak run io.github.go_musicfox.go-musicfox",
+]
+# mod_key = "Super"                             # Force Super instead of nested-session Alt
+xwayland = true                                 # Requires xwayland-satellite; restart to change
+show_cheatsheet = true
+focus_on_activate = false
+honor_restored_maximize = false
+
+# Native GPU exclusions
+# [drm]
+# ignored_devices = ["/dev/dri/by-path/pci-0000:01:00.0-card"]
+# ignored_pci_addresses = ["0000:01:00.0"]
+
+# Applied once at startup.
+# Documentation: https://docs.noctalia.dev/umbriel/configuration/#environment
+
+[environment]
+QT_QPA_PLATFORM = "wayland"
+QT_QPA_PLATFORMTHEME = "gtk3"
+EDITOR = "hx"
+XMODIFIERS = "@im=fcitx"
+QT_IM_MODULES = "wayland;fcitx"
+INPUT_METHOD = "fcitx"
+SDL_IM_MODULE = "fcitx"
+XCURSOR_SIZE = "24"
+XCURSOR_THEME = "Bibata-Modern-Ice"
+MOZ_ENABLE_WAYLAND = "1"
+GDK_BACKEND = "wayland,x11,*"
+SDL_VIDEODRIVER = "wayland,x11"
+CLUTTER_BACKEND = "wayland"
+
+# Hardware events
+# Documentation: https://docs.noctalia.dev/umbriel/configuration/#events
+
+[events]
+# lid_close = "notify-send 'The laptop lid is closed'"
+# lid_open = "notify-send 'The laptop lid is open'"

@@ -1,0 +1,29 @@
+# Umbriel configuration
+
+# Validate the standard config without starting or disturbing the compositor:
+#   umbriel validate
+# Use `-c` for a custom config path:
+#   umbriel validate -c /path/to/config.toml
+
+# Complete documentation: https://docs.noctalia.dev/umbriel/
+
+# Sections live in the files below. Required files are applied in list order,
+# followed by optional files, then values in this main file. Relative paths
+# start from the directory containing this file.
+
+[include]
+files = [
+    "general.toml",       # general, environment, events
+    "outputs.toml",       # outputs, workspaces
+    "appearance.toml",    # colors, appearance
+    "input.toml",         # input devices, cursor, focus
+    "scratchpads.toml",   # scratchpad definitions
+    "keybinds.toml",      # keybinds
+    "layout.toml",        # layout
+    "rules.toml",         # window rules, layer rules
+    "animation.toml",     # animation
+    "overview.toml",      # overview, hot corners, security context rules
+]
+
+[include.optional]
+files = []                                      # Example: ["~/.config/umbriel/noctalia.toml"]

@@ -9,7 +9,7 @@
 binds {
     Mod+Shift+Slash     { show-hotkey-overlay; }
     Mod+Q               { close-window; }
-    Mod+Return          { spawn "kitty"; }
+    Mod+Return          { spawn "ghostty"; }
     Mod+E               { spawn "nautilus"; }
     // Mod+Space           { spawn "noctalia msg panel-toggle launcher"; }
     Mod+F               { fullscreen-window; }
@@ -44,5 +44,5 @@ binds {
     Mod+Shift+K         { move-window-up; }
 
     // Quick terminal (scratchpad)
-    Mod+Grave           { spawn-sh "kitten quick-access-terminal"; }
+    Mod+Grave           { spawn-sh "ghostty +toggle-quick-terminal"; }
 }

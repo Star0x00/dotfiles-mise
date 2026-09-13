@@ -1,0 +1,96 @@
+# ─────────────────────────────── Keybinds ───────────────────────────────────
+# (modules/keybindings.lua). A configuration file replaces the built-in set.
+# Syntax: https://docs.noctalia.dev/umbriel/keybinds/
+# Actions: https://docs.noctalia.dev/umbriel/actions/
+# ────────────────────────────────────────────────────────────────────────────
+
+[keybinds]
+
+# Applications and session
+"Mod+Return" = "spawn:ghostty"
+"Mod+E" = "spawn:nautilus"
+"Mod+Space" = "spawn:noctalia msg panel-toggle launcher"
+"Mod+Q" = "window-close"
+"Mod+Shift+Slash" = "cheatsheet-toggle"
+
+# Focus navigation
+"Mod+Left" = "window-focus-left"
+"Mod+Down" = "window-focus-down"
+"Mod+Up" = "window-focus-up"
+"Mod+Right" = "window-focus-right"
+
+# Window state and layout
+"Mod+T" = "window-toggle-floating"
+"Mod+Shift+T" = "window-focus-switch-floating"
+"Mod+P" = "window-toggle-pinned"
+"Mod+M" = "window-toggle-maximize-to-edges"
+
+# Overview
+"Mod+O" = { action = "overview-toggle", repeat = false }
+"Mod+Tab" = "overview-toggle"
+
+# Common keybinds
+"Mod+Escape" = "session-quit"
+"Mod+F1" = "window-focus-next"
+"Mod+H" = "window-focus-left"
+"Mod+J" = "window-focus-down"
+"Mod+K" = "window-focus-up"
+"Mod+L" = "window-focus-right"
+"Mod+Shift+Left" = "column-move-left"
+"Mod+Shift+Down" = "window-move-down"
+"Mod+Shift+Up" = "window-move-up"
+"Mod+Shift+Right" = "column-move-right"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+K" = "window-move-up"
+"Mod+F" = "window-toggle-fullscreen"
+"Mod+Ctrl+F" = "window-toggle-maximize"
+"Mod+R" = "window-cycle-width"
+"Mod+Shift+R" = "window-cycle-width-back"
+"Mod+WheelUp" = "window-focus-left"
+"Mod+WheelDown" = "window-focus-right"
+
+# Workspaces. Bare digits are positions on the output under the pointer.
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+"Mod+Shift+1" = "window-move-to-workspace:1"
+"Mod+Shift+2" = "window-move-to-workspace:2"
+"Mod+Shift+3" = "window-move-to-workspace:3"
+"Mod+Shift+4" = "window-move-to-workspace:4"
+"Mod+Shift+5" = "window-move-to-workspace:5"
+"Mod+Shift+6" = "window-move-to-workspace:6"
+"Mod+Shift+7" = "window-move-to-workspace:7"
+"Mod+Shift+8" = "window-move-to-workspace:8"
+"Mod+Shift+9" = "window-move-to-workspace:9"
+"Mod+Page_Up" = "workspace-previous"
+"Mod+Page_Down" = "workspace-next"
+
+# Screenshots (niri binds)
+"Print" = 'spawn:sh -c "grim -g \"$(slurp)\" - | satty --filename -"'
+"Alt+Print" = 'spawn:sh -c "grim - | satty --filename -"'
+
+# Scratchpads. Terminal is ghostty, toggled only with Mod+Grave.
+"Mod+Grave" = "scratchpad-toggle:terminal"
+
+# Music scratchpad (ghostty running flatpak musicfox).
+"Mod+Ctrl+M" = "scratchpad-toggle:music"
+"Mod+Ctrl+Shift+M" = "window-move-to-scratchpad:music"
+
+# Media keys (Hyprland, wpctl is installed)
+"XF86AudioRaiseVolume" = { action = "spawn:wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn:wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", allow_when_locked = true }
+"XF86AudioMicMute" = { action = "spawn:wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", allow_when_locked = true }
+
+# Uncomment if playerctl / brightnessctl are installed (Hyprland binds).
+# "XF86MonBrightnessUp" = { action = "spawn:brightnessctl -e4 -n2 set 5%+", allow_when_locked = true }
+# "XF86MonBrightnessDown" = { action = "spawn:brightnessctl -e4 -n2 set 5%-", allow_when_locked = true }
+# "XF86AudioPlay" = { action = "spawn:playerctl play-pause", allow_when_locked = true }
+# "XF86AudioNext" = { action = "spawn:playerctl next", allow_when_locked = true }
+# "XF86AudioPrev" = { action = "spawn:playerctl previous", allow_when_locked = true }

@@ -1,0 +1,47 @@
+# ──────────────────────────────── Input ─────────────────────────────────────
+# Merged from niri (config/input.kdl) and Hyprland (modules/input.lua).
+# Documentation: https://docs.noctalia.dev/umbriel/input/
+# ────────────────────────────────────────────────────────────────────────────
+
+[input]
+middle_click_paste = true
+window_drag_toggle = "none"
+
+[input.keyboard]
+layout = "us"                                   # niri xkb layout "us", Hyprland kb_layout "us"
+variant = ""
+options = ""
+repeat_rate = 25
+repeat_delay = 600
+numlock_toggle = true
+track_layout = "global"
+
+[input.touchpad]
+tap = true                                      # niri: tap
+natural_scroll = true                           # niri: natural-scroll
+disable_while_typing = true                     # niri: dwt
+accel_profile = "flat"                          # niri: accel-profile "flat"
+sensitivity = 0.0
+# click_method = "clickfinger"                  # button_areas or clickfinger; omit for the device default
+
+[input.mouse]
+natural_scroll = false
+accel_profile = "flat"                          # niri/Hyprland flat acceleration
+sensitivity = 0.0
+scroll_wheel_step = 60
+
+[input.tablet]
+enabled = false
+
+[input.cursor]
+theme = "Bibata-Modern-Ice"                     # niri/XCURSOR_THEME
+size = 24                                       # Hyprland XCURSOR_SIZE
+hardware_cursor = true
+follows_focus = false
+hide_when_typing = false
+hide_timeout_ms = 0
+
+[input.focus]
+follows_mouse = true                            # niri: focus-follows-mouse
+# niri uses max-scroll-amount="0%": only focus windows that are already visible.
+follows_mouse_max_scroll = 0.0

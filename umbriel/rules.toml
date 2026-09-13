@@ -1,0 +1,120 @@
+# ───────────────────────────── Window Rules ─────────────────────────────────
+# Merged from niri (config/rules.kdl) and Hyprland
+# (modules/window-rules.lua).
+# Documentation: https://docs.noctalia.dev/umbriel/window-rules/
+# ────────────────────────────────────────────────────────────────────────────
+
+# Blur every window. Keep this selectorless rule first so later matching rules
+# can override individual blur settings.
+[[window_rule]]
+blur = true
+blur_optimized = false
+
+# Noctalia settings
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_size = [1020, 900]
+
+# Noctalia share picker
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_size = [800, 600]
+
+# Ghostty does not expose a distinct Wayland app_id (every instance reports
+# `com.mitchellh.ghostty`), so the scratchpad instances are identified by their
+# forced window title. They are launched with `ghostty --title=scratchpad-...`.
+
+# Terminals and editors land on the `code` workspace. Ghostty stays slightly
+# transparent like the Hyprland rule (opacity 0.9 0.8).
+[[window_rule]]
+match.app_id = "^(com\\.mitchellh\\.ghostty|kitty|foot|alacritty|neovide|emacs|Emacs|code-oss|Code|Cursor|jetbrains-idea|jetbrains-webstorm)$"
+default_workspace = "Code"
+default_floating = false
+opacity = 0.9
+blur = true
+
+# Terminal scratchpad (ghostty, `--title=scratchpad-terminal`). Placed after
+# the rule above so its scratchpad and floating settings win.
+[[window_rule]]
+match.title = "^scratchpad-terminal$"
+default_scratchpad = "terminal"
+default_floating = true
+default_width = 0.6
+default_height = 0.5
+default_position = { x = 0, y = 8, anchor = "top" }
+
+# Music scratchpad (ghostty running flatpak musicfox,
+# `--title=scratchpad-music`).
+[[window_rule]]
+match.title = "^scratchpad-music$"
+default_scratchpad = "music"
+default_floating = true
+default_width = 0.6
+default_height = 0.5
+default_position = { x = 0, y = 8, anchor = "top" }
+
+# Browsers land on the `browser` workspace.
+[[window_rule]]
+match.app_id = "^(firefox|firefox-bin|org\\.mozilla\\.firefox|chromium|google-chrome|brave|zen)$"
+default_workspace = "Browser"
+
+# Chat applications land on the `chat` workspace.
+[[window_rule]]
+match.app_id = "^(QQ|com\\.ayugram\\.desktop|org\\.telegram\\.desktop|vesktop|discord)$"
+default_workspace = "Chat"
+
+# Browsers expose no semantic PiP role or global position control.
+[[window_rule]]
+match.title = "^(Picture-in-Picture|Picture in picture)$"
+default_floating = true
+default_maximize = false
+default_position = { x = 20, y = 20, anchor = "bottom_right" }
+
+# Keep Steam notification toasts in the bottom-right corner without stealing
+# focus, and pin them so workspace switches do not hide them.
+[[window_rule]]
+match.title = "^notificationtoasts_.+_desktop"
+default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# Common dialogs and utility windows float (niri floating rules).
+[[window_rule]]
+match.title = "^(Open File|Select a File|Choose wallpaper|Open Folder|Save As|File Upload|Confirm to replace files|Confirmreset|Delete profile|File Operation Progress|KDE Connect URL handler|图片查看器)$"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^(com\\.gabm\\.satty|org\\.qbittorrent\\.qBittorrent|org\\.pulseaudio\\.pavucontrol|io\\.github\\.Faugus\\.faugus-launcher)$"
+default_floating = true
+default_size = [800, 600]
+
+# Media viewers float at a fixed size.
+[[window_rule]]
+match.app_id = "^com\\.ayugram\\.desktop$"
+match.title = "^Media viewer$"
+default_floating = true
+default_size = [500, 500]
+default_maximize = false
+
+# Fullscreen media and games.
+[[window_rule]]
+match.app_id = "^mpv$"
+default_fullscreen = true
+
+[[window_rule]]
+match.app_id = "^steam_app_0$"
+default_fullscreen = true
+
+# ────────────────────────────── Layer Rules ─────────────────────────────────
+# Match layer-shell surfaces by namespace.
+# Documentation: https://docs.noctalia.dev/umbriel/layer-rules/
+# ────────────────────────────────────────────────────────────────────────────
+
+[[layer_rule]]
+match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^\"]*)$"
+blur = true
+blur_ignore_alpha = 0.5
+blur_popups = true
+blur_optimized = false

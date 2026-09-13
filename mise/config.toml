@@ -1,5 +1,4 @@
 [tools]
-hunk = "latest"
 pi = "latest"
 
 # ---- CLI / editors ----
@@ -33,12 +32,15 @@ lua-language-server = "latest"
 tinymist = "latest"
 stylua = "latest"
 "pipx:ww-manager" = "latest"
-"npm:dsh" = "latest"
+
 npm = "latest"
 tealdeer = "latest"
-tokei = "latest"
 eza = "latest"
 "github:agavra/tuicr" = "latest"
+lazygit = "latest"
+neovim = "latest"
+"github:kunkka19xx/lgtm" = "latest"
+pnpm = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
@@ -54,6 +56,7 @@ dotfiles.default_mode = "copy"
 # nvim: symlink on purpose so lazy.nvim's nvim-pack-lock.json writes through to the repo
 "~/.config/nvim" = { source = "../../dotfiles/nvim", mode = "symlink" }
 "~/.config/niri" = "../../dotfiles/niri"
+"~/.config/umbriel" = "../../dotfiles/umbriel"
 "~/.config/hypr" = "../../dotfiles/hypr"
 "~/.config/helix" = "../../dotfiles/helix"
 "~/.config/mpv" = "../../dotfiles/mpv"
@@ -79,7 +82,6 @@ dotfiles.default_mode = "copy"
 "~/.config/kitty/kitty.conf" = "../../dotfiles/kitty/kitty.conf"
 "~/.config/kitty/kanagawa_dragon.conf" = "../../dotfiles/kitty/kanagawa_dragon.conf"
 "~/.config/kitty/catppuccin_mocha.conf" = "../../dotfiles/kitty/catppuccin_mocha.conf"
-"~/.config/kitty/quick-access-terminal.conf" = "../../dotfiles/kitty/quick-access-terminal.conf"
 
 "~/.config/nushell/config.nu" = "../../dotfiles/nushell/config.nu"
 "~/.config/nushell/env.nu" = "../../dotfiles/nushell/env.nu"
@@ -108,9 +110,8 @@ dotfiles.default_mode = "copy"
 "~/.config/mimeapps.list" = "../../dotfiles/mimeapps.list"
 "~/.config/fontconfig/fonts.conf" = "../../dotfiles/fontconfig/fonts.conf"
 
-# fonts: MiSans (78MB — symlink, not copy, to avoid re-copying on every apply)
-"~/.local/share/fonts/MiSans" = { source = "../../dotfiles/fonts/MiSans", mode = "symlink" }
-"~/.config/fontconfig/conf.d/50-reject-colrv1.conf" = "../../dotfiles/fontconfig/conf.d/50-reject-colrv1.conf"
+# fonts: nothing is managed here — the install-fonts task fetches every family
+# declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
 "~/.config/fish/config.fish" = "../../dotfiles/fish/config.fish"
 
 # ---- mise self-management ----
@@ -118,8 +119,22 @@ dotfiles.default_mode = "copy"
 "~/.config/mise/config.toml" = { source = "~/dotfiles/mise/config.toml", mode = "symlink" }
 
 [tasks]
-apply-dotfiles = "mise bootstrap dotfiles apply"
 status-dotfiles = "mise bootstrap dotfiles status"
+
+[tasks.apply-dotfiles]
+description = "Apply dotfiles, installing any missing font first"
+depends = ["install-fonts"]
+run = "mise bootstrap dotfiles apply"
+
+[tasks.install-fonts]
+description = "Download the fonts declared in fonts/installer/fonts.toml into ~/.local/share/fonts"
+# Task-local toolchain: `go` is only needed by this task, not the whole config.
+tools.go = "latest"
+# The Go module lives in its own dir, so run from there instead of the repo root.
+# config_root is $HOME for this global config, hence the explicit dotfiles path.
+dir = "{{config_root}}/dotfiles/fonts/installer"
+# Extra flags go through `mise run install-fonts -- -force`.
+run = "go run ."
 
 [tasks.flyline-enable]
 description = "Verify mise-managed flyline lib is loadable by this bash, or tell the user to load it from an interactive shell"

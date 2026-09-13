@@ -2,11 +2,15 @@
   "lastChangelogVersion": "0.85.1",
   "theme": "dark",
   "defaultProvider": "opencode-go",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "deepseek-v4.1-flash",
   "defaultThinkingLevel": "low",
   "packages": [
     "npm:@juicesharp/rpiv-todo",
     "npm:@juicesharp/rpiv-web-tools"
   ],
-  "showHardwareCursor": true
+  "showHardwareCursor": true,
+  "tuiMode": "fullscreen",
+  "terminal": {
+    "imageWidthCells": 100
+  }
 }

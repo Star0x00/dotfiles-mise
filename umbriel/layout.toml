@@ -1,0 +1,29 @@
+# ─────────────────────────────── Layout ─────────────────────────────────────
+# Merged from niri (config/layout.kdl) and Hyprland
+# (modules/appearance.lua). Per-workspace overrides live in outputs.toml.
+# Documentation: https://docs.noctalia.dev/umbriel/layout/
+# ────────────────────────────────────────────────────────────────────────────
+
+[layout]
+mode = "scrolling"
+gap = 5
+width_presets = [0.3, 0.6, 1.0]
+
+[layout.struts]
+left = 5
+right = 5
+top = 5
+bottom = 5
+
+[layout.scrolling]
+default_width_fraction = 0.5
+center_underfull_strip = true
+center_focused = "never"
+
+[layout.dwindle]
+preserve_split = true
+
+[layout.master]
+position = "left"
+default_width_fraction = 0.55
+new_on_top = true
