@@ -36,14 +36,19 @@ stylua = "latest"
 npm = "latest"
 tealdeer = "latest"
 eza = "latest"
-"github:agavra/tuicr" = "latest"
 lazygit = "latest"
 neovim = "latest"
-"github:kunkka19xx/lgtm" = "latest"
 pnpm = "latest"
+superfile = "latest"
+jujutsu = "latest"
+"npm:@deepseek-ai/dsh" = "0.1.7-alpha.1"
+delta = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
+
+[settings.npm]
+package_manager = "npm"
 
 [dotfiles]
 # NOTE: keep every entry as a FLAT key under [dotfiles] — short syntax
@@ -63,9 +68,10 @@ dotfiles.default_mode = "copy"
 "~/.config/yt-dlp" = "../../dotfiles/yt-dlp"
 "~/.config/vicinae" = "../../dotfiles/vicinae"
 "~/.config/go-musicfox" = "../../dotfiles/go-musicfox"
+"~/.config/bat" = "../../dotfiles/bat"
+"~/.config/superfile" = "../../dotfiles/superfile"
 
 # pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
-"~/.pi/agent/extensions/compact-ui" = "../../dotfiles/pi/agent/extensions/compact-ui"
 "~/.pi/agent/extensions/toolbox" = "../../dotfiles/pi/agent/extensions/toolbox"
 
 # pi agent: global instructions
@@ -106,6 +112,10 @@ dotfiles.default_mode = "copy"
 "~/.bash_profile" = "../../dotfiles/.bash_profile"
 "~/.npmrc" = "../../dotfiles/.npmrc"
 "~/.Xresources" = "../../dotfiles/.Xresources"
+
+# ---- vcs (git / jujutsu) ----
+"~/.gitconfig" = "../../dotfiles/git/.gitconfig"
+"~/.config/jj/config.toml" = "../../dotfiles/jj/config.toml"
 "~/.config/environment.d/10-mise.conf" = "../../dotfiles/environment.d/10-mise.conf"
 "~/.config/mimeapps.list" = "../../dotfiles/mimeapps.list"
 "~/.config/fontconfig/fonts.conf" = "../../dotfiles/fontconfig/fonts.conf"
@@ -135,19 +145,3 @@ tools.go = "latest"
 dir = "{{config_root}}/dotfiles/fonts/installer"
 # Extra flags go through `mise run install-fonts -- -force`.
 run = "go run ."
-
-[tasks.flyline-enable]
-description = "Verify mise-managed flyline lib is loadable by this bash, or tell the user to load it from an interactive shell"
-run = """\
-lib=$(ls -t "$HOME/.local/share/mise/installs/github-hal-frgrd-flyline"/*/libflyline.so.* 2>/dev/null | head -1)
-[ -z "$lib" ] && { echo "error: no libflyline.so found under $HOME/.local/share/mise/installs/github-hal-frgrd-flyline"; exit 1; }
-echo "lib: $lib"
-if enable -f "$lib" flyline 2>/dev/null; then
-  echo "OK: flyline loadable — already active in ~/.bashrc on next interactive shell"
-  exit 0
-fi
-echo "NOTE: flyline refuses to load in non-interactive shells."
-echo "It is wired into ~/.bashrc, so it activates automatically in interactive shells."
-exit 0
-"""
-

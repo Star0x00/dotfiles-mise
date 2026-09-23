@@ -1,16 +1,14 @@
 {
-  "lastChangelogVersion": "0.85.1",
-  "theme": "dark",
-  "defaultProvider": "opencode-go",
+  "lastChangelogVersion": "0.87.0",
+  "defaultProvider": "bailian",
   "defaultModel": "deepseek-v4.1-flash",
   "defaultThinkingLevel": "low",
-  "packages": [
-    "npm:@juicesharp/rpiv-todo",
-    "npm:@juicesharp/rpiv-web-tools"
-  ],
+  "packages": [],
   "showHardwareCursor": true,
   "tuiMode": "fullscreen",
   "terminal": {
     "imageWidthCells": 100
-  }
+  },
+  "theme": "tool-ui-rose-pine-moon",
+  "hideThinkingBlock": true
 }

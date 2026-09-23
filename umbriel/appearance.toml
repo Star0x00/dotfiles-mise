@@ -3,28 +3,28 @@
 # ────────────────────────────────────────────────────────────────────────────
 
 [colors]
-background = "#1E1E2EFF"                      # Internal panels and banners
-text_primary = "#CDD6F4FF"                    # Primary text
-text_muted = "#A6ADC8FF"                      # Secondary help and status text
-accent_primary = "#CBA6F7FF"                  # Titles, key chords, and primary emphasis
-accent_secondary = "#74C7ECFF"                # Group headings and secondary emphasis
-warning = "#F9E2AFFF"                         # Warning text and warning-only diagnostics
-error = "#F38BA8FF"                           # Error text, confirmations, and diagnostics
-insert_hint = "#CBA6F780"                     # Drag-and-drop target preview
+background = "#232136FF"                      # Internal panels and banners
+text_primary = "#E0DEF4FF"                    # Primary text
+text_muted = "#908CAAFF"                      # Secondary help and status text
+accent_primary = "#C4A7E7FF"                  # Titles, key chords, and primary emphasis
+accent_secondary = "#9CCFD8FF"                # Group headings and secondary emphasis
+warning = "#F6C177FF"                         # Warning text and warning-only diagnostics
+error = "#EB6F92FF"                           # Error text, confirmations, and diagnostics
+insert_hint = "#C4A7E780"                     # Drag-and-drop target preview
 backdrop = "#000000FF"                        # Fullscreen gaps and lock screen
-shadow = "#00000070"                          # Window shadow (niri catppuccin)
+shadow = "#00000070"                          # Window shadow
 
 [colors.border]
-focused = "#CBA6F7FF"                         # Mauve focus ring
-unfocused = "#313244FF"
-scratchpad_focused = "#F9E2AFFF"
-scratchpad_unfocused = "#45475AFF"
-outer = "#181825FF"
+focused = "#C4A7E7FF"                         # Iris focus ring
+unfocused = "#393552FF"
+scratchpad_focused = "#F6C177FF"
+scratchpad_unfocused = "#44415AFF"
+outer = "#1F1D2EFF"
 
 [colors.overview]
-background_tint = "#10101430"                 # Tint over the desktop background
+background_tint = "#1F1D2E40"                 # Tint over the desktop background
 workspace_background = "#00000044"            # Background behind each workspace
-badge = "#CBA6F7FF"                           # Overview shortcut badge
+badge = "#C4A7E7FF"                           # Overview shortcut badge
 
 # ───────────────────────────── Appearance ───────────────────────────────────
 # Documentation: https://docs.noctalia.dev/umbriel/appearance/#window-appearance
@@ -42,15 +42,15 @@ drag_opacity = 0.75                             # Window opacity during a tiled 
 # into blur.
 enabled = true
 optimized = true
-passes = 3
-radius = 6
-noise = 0.03
-brightness = 0.9
-contrast = 0.9
-saturation = 1.0
+passes = 4
+radius = 10
+noise = 0.02
+brightness = 1.0
+contrast = 1.0
+saturation = 1.1
 
 [appearance.shadow]
 enabled = true
-softness = 10                                   # Gaussian softness, 0-200
-offset_x = 2
-offset_y = 2
+softness = 24                                   # Gaussian softness, 0-200
+offset_x = 0
+offset_y = 5

@@ -44,8 +44,8 @@
 "Mod+Shift+K" = "window-move-up"
 "Mod+F" = "window-toggle-fullscreen"
 "Mod+Ctrl+F" = "window-toggle-maximize"
-"Mod+R" = "window-cycle-width"
-"Mod+Shift+R" = "window-cycle-width-back"
+"Mod+R" = "window-cycle-primary-extent"
+"Mod+Shift+R" = "window-cycle-primary-extent-back"
 "Mod+WheelUp" = "window-focus-left"
 "Mod+WheelDown" = "window-focus-right"
 

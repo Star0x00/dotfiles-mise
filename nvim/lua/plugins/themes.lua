@@ -1,16 +1,16 @@
 --=============================================================================
 -- Theme
 --=============================================================================
--- Catppuccin (mocha flavour), transparent background
-require("catppuccin").setup({
-	flavour = "mocha", -- latte, frappe, macchiato, mocha
-	transparent_background = true,
-	float = {
-		transparent = true, -- enable transparent floating windows
-		solid = false, -- use solid styling for floating windows, see |winborder|
+-- Rosé Pine Moon, transparent background
+require("rose-pine").setup({
+	variant = "main", -- auto, main, moon, dawn
+	dark_variant = "main",
+	styles = {
+		transparency = true, -- transparent background
 	},
 })
-vim.cmd.colorscheme("catppuccin")
+
+vim.cmd.colorscheme("rose-pine")
 
 require("mini.tabline").setup()
 require("mini.notify").setup()

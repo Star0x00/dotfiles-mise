@@ -24,3 +24,15 @@ globs = ["MiSans/ttf/*.ttf"]
 [fonts.MiSans_Tibetan]
 url = "https://hyperos.mi.com/font-download/MiSans_Tibetan.zip"
 globs = ["MiSans Tibetan/ttf/*.ttf"]
+
+[fonts.SymbolsNerdFont]
+# Fedora ships no standalone Symbols Nerd Font package (kitty only bundles a copy
+# under /usr/lib64/kitty/fonts, not exposed to fontconfig). Cascadia NF is the
+# only nerd-patched family in the repos. Take the upstream symbols-only release.
+url   = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/NerdFontsSymbolsOnly.zip"
+globs = ["*.ttf"]
+dest  = "SymbolsNerdFont"
+
+[fonts.LXGW]
+# A bare ttf release, not an archive: `files` fetches it directly.
+files = ["https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.522/LXGWWenKaiMonoGBScreen.ttf"]

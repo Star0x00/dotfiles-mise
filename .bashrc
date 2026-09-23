@@ -49,6 +49,13 @@ if [[ $TERM != "dumb" ]] && command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash --print-full-init)"
 fi
 
+# bat
+if command -v bat >/dev/null 2>&1; then
+  help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+}
+fi
+
 # flyline — load the newest mise-managed lib; no hardcoded version so a
 # `mise install` upgrade picks up the latest file automatically
 _flyline_lib=$(ls -t "$HOME/.local/share/mise/installs/github-hal-frgrd-flyline"/*/libflyline.so.* 2>/dev/null | head -1)

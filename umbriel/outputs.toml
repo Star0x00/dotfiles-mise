@@ -10,15 +10,15 @@ mode = "2560x1440@170"                        # WIDTHxHEIGHT or WIDTHxHEIGHT@HZ
 position = [0, 0]                             # Logical top-left; omit for automatic placement
 scale = 1.0                                   # Logical size is mode size divided by scale
 transform = "normal"                          # normal, 90, 180, 270, or a flipped variant
-vrr = "disabled"                              # disabled, always, or fullscreen
+vrr = "always"                              # disabled, always, or fullscreen
 tearing = false                               # niri/hypr do not permit tearing
 direct_scanout = true
-hdr = "off"                                   # off, on, auto, or fullscreen
+hdr = "auto"                                   # off, on, auto, or fullscreen
 workspace_axis = "vertical"                 # vertical or horizontal workspace arrangement
 
 # niri defines browser/code/chat workspaces; Hyprland names web/code/chat on
 # positions 1-3. Umbriel uses a static named inventory here.
-workspaces = ["Browser", "Code", "Chat", "Game"]
+workspaces = ["󰈹 ", " ", "󰭻 ", " "]
 
 # ────────────────────────────── Workspaces ──────────────────────────────────
 # Documentation: https://docs.noctalia.dev/umbriel/workspaces/
@@ -33,16 +33,16 @@ empty_above = false
 # Documentation: https://docs.noctalia.dev/umbriel/workspaces/#workspace-rules
 
 [[workspace]]
-index = 1
+index = 2
 layout.mode = "scrolling"
-layout.scrolling.default_width_fraction = 0.4
+layout.scrolling.default_extent_fraction = 0.6
 
 [[workspace]]
-index = 2
+index = 3
 layout.mode = "dwindle"
 layout.dwindle.preserve_split = true
 
 [[workspace]]
-index = 3
+index = 1
 layout.mode = "master"
 layout.master.default_width_fraction = 0.6

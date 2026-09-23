@@ -1,0 +1,9 @@
+# Override the built-in catppuccin_mocha theme to remove the gutter background.
+inherits = "rose_pine_moon"
+
+# catppuccin_mocha sets a solid bg on both the gutter and the line numbers.
+"ui.gutter" = { fg = "surface0", bg = "none" }
+"ui.gutter.selected" = { bg = "none" }
+"ui.linenr" = { fg = "surface0", bg = "none" }
+"ui.linenr.selected" = { fg = "yellow", modifiers = ["bold"] }
+

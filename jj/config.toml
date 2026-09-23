@@ -1,0 +1,10 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "qwerhyy"
+email = "hyy122013@outlook.com"
+
+[ui]
+editor = "flow"
+pager = ["delta", "--line-numbers", "--side-by-side", "--syntax-theme", "Rose-Pine"]
+diff-formatter = ":git"

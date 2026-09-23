@@ -14,13 +14,13 @@ blur_optimized = false
 [[window_rule]]
 match.app_id = "^dev.noctalia.Noctalia$"
 default_floating = true
-default_size = [1020, 900]
+default_floating_size_px = { width = 1020, height = 900 }
 
 # Noctalia share picker
 [[window_rule]]
 match.app_id = "^dev.noctalia.UmbrielSharePicker$"
 default_floating = true
-default_size = [800, 600]
+default_floating_size_px = { width = 800, height = 600 }
 
 # Ghostty does not expose a distinct Wayland app_id (every instance reports
 # `com.mitchellh.ghostty`), so the scratchpad instances are identified by their
@@ -30,7 +30,7 @@ default_size = [800, 600]
 # transparent like the Hyprland rule (opacity 0.9 0.8).
 [[window_rule]]
 match.app_id = "^(com\\.mitchellh\\.ghostty|kitty|foot|alacritty|neovide|emacs|Emacs|code-oss|Code|Cursor|jetbrains-idea|jetbrains-webstorm)$"
-default_workspace = "Code"
+default_workspace = " "
 default_floating = false
 opacity = 0.9
 blur = true
@@ -41,8 +41,7 @@ blur = true
 match.title = "^scratchpad-terminal$"
 default_scratchpad = "terminal"
 default_floating = true
-default_width = 0.6
-default_height = 0.5
+default_floating_size = { width = 0.6, height = 0.5 }
 default_position = { x = 0, y = 8, anchor = "top" }
 
 # Music scratchpad (ghostty running flatpak musicfox,
@@ -51,19 +50,18 @@ default_position = { x = 0, y = 8, anchor = "top" }
 match.title = "^scratchpad-music$"
 default_scratchpad = "music"
 default_floating = true
-default_width = 0.6
-default_height = 0.5
+default_floating_size = { width = 0.6, height = 0.5 }
 default_position = { x = 0, y = 8, anchor = "top" }
 
 # Browsers land on the `browser` workspace.
 [[window_rule]]
-match.app_id = "^(firefox|firefox-bin|org\\.mozilla\\.firefox|chromium|google-chrome|brave|zen)$"
-default_workspace = "Browser"
+match.app_id = "^(firefox|firefox-bin|org\\.mozilla\\.firefox|chromium|google-chrome|brave|zen|app.zen_browser.zen)$"
+default_workspace = "󰈹 "
 
 # Chat applications land on the `chat` workspace.
 [[window_rule]]
 match.app_id = "^(QQ|com\\.ayugram\\.desktop|org\\.telegram\\.desktop|vesktop|discord)$"
-default_workspace = "Chat"
+default_workspace = "󰭻 "
 
 # Browsers expose no semantic PiP role or global position control.
 [[window_rule]]
@@ -88,14 +86,14 @@ default_floating = true
 [[window_rule]]
 match.app_id = "^(com\\.gabm\\.satty|org\\.qbittorrent\\.qBittorrent|org\\.pulseaudio\\.pavucontrol|io\\.github\\.Faugus\\.faugus-launcher)$"
 default_floating = true
-default_size = [800, 600]
+default_floating_size_px = { width = 800, height = 600 }
 
 # Media viewers float at a fixed size.
 [[window_rule]]
 match.app_id = "^com\\.ayugram\\.desktop$"
 match.title = "^Media viewer$"
 default_floating = true
-default_size = [500, 500]
+default_floating_size_px = { width = 500, height = 500 }
 default_maximize = false
 
 # Fullscreen media and games.

@@ -1,0 +1,39 @@
+[user]
+	email = hyy122013@outlook.com
+	name = qwerhyy
+
+[core]
+	pager = delta
+	editor = hx
+
+[interactive]
+	diffFilter = delta --color-only --side-by-side
+
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = Rose-Pine
+	hunk-header-decoration-style = ""
+	file-decoration-style = ""
+
+[merge]
+	conflictStyle = zdiff3
+
+[diff]
+	colorMoved = default
+
+[rebase]
+	autosquash = true
+
+[fetch]
+	prune = true
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

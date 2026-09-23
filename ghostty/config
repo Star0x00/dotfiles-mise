@@ -4,7 +4,7 @@
 command = bash
 shell-integration-features = no-cursor, ssh-terminfo
 
-theme = Catppuccin Mocha
+theme = Rose Pine
 
 # Font (monospace + CJK fallback), sized up for readability
 # NOTE: ghostty's font-family does NOT split on comma — one family per key.
