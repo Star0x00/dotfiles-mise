@@ -98,7 +98,7 @@ centerEverything = false
 # 主题颜色
 # 随机
 # primaryColor = "random"
-primaryColor = "#ea403f" # 经典网易云音乐红
+primaryColor = "#bb9af7" # Tokyo Night purple
 
 # 进度条字符样式配置
 [theme.progress]

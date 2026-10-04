@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.0",
+  "lastChangelogVersion": "1.0.0",
   "defaultProvider": "bailian",
   "defaultModel": "deepseek-v4.1-flash",
   "defaultThinkingLevel": "low",
@@ -9,6 +9,14 @@
   "terminal": {
     "imageWidthCells": 100
   },
-  "theme": "tool-ui-rose-pine-moon",
-  "hideThinkingBlock": true
+  "theme": "tool-ui-tokyonight",
+  "hideThinkingBlock": true,
+  "treeFilterMode": "default",
+  "quietStartup": false,
+  "cacheWarming": "streaming",
+  "editorPaddingX": 0,
+  "autocompleteMaxVisible": 5,
+  "images": {
+    "autoResize": true
+  }
 }

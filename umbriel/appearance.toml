@@ -3,28 +3,28 @@
 # ────────────────────────────────────────────────────────────────────────────
 
 [colors]
-background = "#232136FF"                      # Internal panels and banners
-text_primary = "#E0DEF4FF"                    # Primary text
-text_muted = "#908CAAFF"                      # Secondary help and status text
-accent_primary = "#C4A7E7FF"                  # Titles, key chords, and primary emphasis
-accent_secondary = "#9CCFD8FF"                # Group headings and secondary emphasis
-warning = "#F6C177FF"                         # Warning text and warning-only diagnostics
-error = "#EB6F92FF"                           # Error text, confirmations, and diagnostics
-insert_hint = "#C4A7E780"                     # Drag-and-drop target preview
+background = "#1A1B26FF"                      # Internal panels and banners
+text_primary = "#C0CAF5FF"                    # Primary text
+text_muted = "#A9B1D6FF"                      # Secondary help and status text
+accent_primary = "#BB9AF7FF"                  # Titles, key chords, and primary emphasis
+accent_secondary = "#7DCFFFFF"                # Group headings and secondary emphasis
+warning = "#E0AF68FF"                         # Warning text and warning-only diagnostics
+error = "#F7768EFF"                           # Error text, confirmations, and diagnostics
+insert_hint = "#BB9AF780"                     # Drag-and-drop target preview
 backdrop = "#000000FF"                        # Fullscreen gaps and lock screen
 shadow = "#00000070"                          # Window shadow
 
 [colors.border]
-focused = "#C4A7E7FF"                         # Iris focus ring
-unfocused = "#393552FF"
-scratchpad_focused = "#F6C177FF"
-scratchpad_unfocused = "#44415AFF"
-outer = "#1F1D2EFF"
+focused = "#7AA2F7FF"                         # Blue focus ring
+unfocused = "#414868FF"
+outer = "#16161EFF"
+# Scratchpad border colors live in the matching window rule (match.is_scratchpad)
+# in rules.toml.
 
 [colors.overview]
-background_tint = "#1F1D2E40"                 # Tint over the desktop background
+background_tint = "#16161E40"                 # Tint over the desktop background
 workspace_background = "#00000044"            # Background behind each workspace
-badge = "#C4A7E7FF"                           # Overview shortcut badge
+badge = "#7AA2F7FF"                           # Overview shortcut badge
 
 # ───────────────────────────── Appearance ───────────────────────────────────
 # Documentation: https://docs.noctalia.dev/umbriel/appearance/#window-appearance

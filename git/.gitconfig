@@ -13,9 +13,11 @@
 	navigate = true
 	line-numbers = true
 	side-by-side = true
-	syntax-theme = Rose-Pine
+	syntax-theme = tokyonight_night
 	hunk-header-decoration-style = ""
 	file-decoration-style = ""
+	line-numbers-left-format = "{nm:^4} "
+	line-numbers-right-format = "{np:^4} "
 
 [merge]
 	conflictStyle = zdiff3

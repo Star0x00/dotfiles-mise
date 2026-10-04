@@ -9,7 +9,7 @@ if not contains "$HOME/.local/share/npm/bin" $PATH
 end
 
 status is-login; and begin
-    # Login-shell init (env comes from ~/.profile / environment.d)
+    # Login-shell init (env comes from ~/.bashrc / environment.d)
 end
 
 status is-interactive; and begin

@@ -1,0 +1,35 @@
+// Gruvbox Material Dark Theme for Niri
+
+layout {
+    focus-ring {
+        // Active: green
+        active-color   "#a9b665"
+        // Inactive: background
+        inactive-color "#282828"
+        // Urgent: red
+        urgent-color   "#ea6962"
+    }
+
+    border {
+        active-color   "#a9b665"
+        inactive-color "#282828"
+        urgent-color   "#ea6962"
+    }
+
+    shadow {
+        // 深色主题下使用半透明黑色阴影
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#a9b665"
+        // Inactive Tab: 柔和的表面层颜色
+        inactive-color "#504945"
+        urgent-color   "#ea6962"
+    }
+
+    insert-hint {
+        // Active color with 50% opacity
+        color "#a9b66580"
+    }
+}

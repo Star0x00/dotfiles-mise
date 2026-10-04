@@ -21,7 +21,7 @@ input {
         accel-profile "flat"
     }
     mouse {
-        accel-speed 1
+        accel-speed 0.0
         accel-profile "flat"
     }
     workspace-auto-back-and-forth

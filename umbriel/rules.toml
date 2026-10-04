@@ -10,6 +10,13 @@
 blur = true
 blur_optimized = false
 
+# Give scratchpad windows their own border colors. Placed after the blur rule so
+# the colors are not overridden by it.
+[[window_rule]]
+match.is_scratchpad = true
+border_color_focused = "#F9E2AFFF"
+border_color_unfocused = "#45475AFF"
+
 # Noctalia settings
 [[window_rule]]
 match.app_id = "^dev.noctalia.Noctalia$"

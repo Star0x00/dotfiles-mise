@@ -1,0 +1,21 @@
+# 项目级 treefmt 配置（非全局）。
+# treefmt 从当前目录向上查找 treefmt.toml / .treefmt.toml / .config/treefmt.toml。
+# 每个 formatter 的 stdin-options 用于 `treefmt --stdin <path>` 模式（编辑器集成）。
+
+[formatter.stylua]
+command = "stylua"
+options = ["--search-parent-directories"]
+includes = ["*.lua"]
+stdin-options = ["--search-parent-directories", "--stdin-filepath", "$path", "-"]
+
+[formatter.zig]
+command = "zig"
+options = ["fmt"]
+includes = ["*.zig"]
+stdin-options = ["fmt", "--stdin"]
+
+[formatter.jq]
+command = "jq"
+options = ["."]
+includes = ["*.json"]
+stdin-options = ["."]

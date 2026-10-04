@@ -1,4 +1,4 @@
-theme = "rose-pine-moon"
+theme = "tokyonight"
 [editor]
 color-modes = true
 cursorline = true

@@ -1,0 +1,15 @@
+[Unit]
+Description=Load SSH keys from pass into the ssh-agent
+Documentation=man:pass(1) man:ssh-add(1)
+Requires=ssh-agent.socket
+After=ssh-agent.socket
+
+[Service]
+Type=oneshot
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+# Read the key once from pass; if the entry is missing or empty, do nothing
+# and exit cleanly so a missing key never fails the login.
+ExecStart=/bin/sh -c 'key=$(pass show ssh/id_ed25519 2>/dev/null) || exit 0; [ -n "$key" ] || exit 0; printf "%%s\n" "$key" | ssh-add - 2>/dev/null'
+
+[Install]
+WantedBy=default.target

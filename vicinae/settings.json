@@ -18,10 +18,10 @@
    },
    "theme": {
       "light": {
-         "name": "gruvbox-dark"
+         "name": "catppuccin-latte"
       },
       "dark": {
-         "name": "rose-pine-moon",
+         "name": "tokyo-night",
          "icon_theme": "Papirus-Dark"
       }
    }

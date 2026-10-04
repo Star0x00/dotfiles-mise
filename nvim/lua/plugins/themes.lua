@@ -1,16 +1,15 @@
 --=============================================================================
 -- Theme
 --=============================================================================
--- Rosé Pine Moon, transparent background
-require("rose-pine").setup({
-	variant = "main", -- auto, main, moon, dawn
-	dark_variant = "main",
-	styles = {
-		transparency = true, -- transparent background
-	},
+-- Tokyo Night, transparent background
+vim.o.background = "dark"
+require("tokyonight").setup({
+	style = "night", -- storm, moon, night, day
+	transparent = true,
+	dim_inactive = false,
 })
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("tokyonight")
 
 require("mini.tabline").setup()
 require("mini.notify").setup()

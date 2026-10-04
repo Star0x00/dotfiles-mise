@@ -32,8 +32,9 @@ binds {
     Alt+Print           { spawn "sh" "-c" "grim - | satty --filename -"; }
     Ctrl+Print          { screenshot-window write-to-disk=true; }
 
+    Mod+Space           { spawn-sh "vicinae toggle"; }
     // noctalia
-    Mod+Space           { spawn-sh "noctalia msg panel-toggle launcher"; }
+    // Mod+Space           { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+V               { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
     Mod+L               { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 

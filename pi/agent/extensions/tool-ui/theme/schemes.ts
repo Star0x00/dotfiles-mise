@@ -7,12 +7,18 @@
  */
 
 import type { Base16Scheme } from "./base16.ts";
+import { catppuccinMocha } from "./catppuccin-mocha.ts";
+import { gruvboxMaterial } from "./gruvbox-material.ts";
 import { rosePineDawn } from "./rose-pine-dawn.ts";
 import { rosePineMoon } from "./rose-pine-moon.ts";
+import { tokyonight } from "./tokyonight.ts";
 
 export const BASE16_PALETTES: Record<string, Base16Scheme> = {
+  "catppuccin-mocha": catppuccinMocha,
+  "gruvbox-material": gruvboxMaterial,
   "rose-pine-moon": rosePineMoon,
   "rose-pine-dawn": rosePineDawn,
+  "tokyonight": tokyonight,
 };
 
 export function listBase16Schemes(): string[] {

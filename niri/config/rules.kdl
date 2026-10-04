@@ -1,7 +1,8 @@
 // Workspaces
-workspace "browser"
-workspace "code"
-workspace "chat"
+workspace "Browser"
+workspace "Code"
+workspace "Chat"
+workspace "Game"
 
 // -----------------------------------------------------------------------------
 // Global Aesthetics (Apply to ALL windows)
@@ -20,10 +21,10 @@ window-rule {
 
 blur {
     // off
-    passes 3
+    passes 4
     offset 3
     noise 0.03
-    saturation 1.0
+    saturation 1.2
 }
 
 // -----------------------------------------------------------------------------
@@ -157,19 +158,19 @@ window-rule {
 
     draw-border-with-background false
     open-floating false
-    default-column-width { proportion 1.0; }
-    open-on-workspace "code"
-    opacity 1.0
+    default-column-width { proportion 0.8; }
+    open-on-workspace "Code"
+    opacity 0.8
     background-effect {
         blur true
-        xray false
+        xray true
     }
 }
 
 window-rule {
     match app-id="Postman$"
     match app-id="^obsidian$"
-    open-on-workspace "code"
+    open-on-workspace "Code"
 }
 
 // Workspace: Chat
@@ -179,10 +180,11 @@ window-rule {
     match app-id="^com.ayugram.desktop$"
 
     default-column-width { proportion 0.5; }
-    open-on-workspace "chat"
+    open-on-workspace "Chat"
 }
 
 window-rule {
   match app-id="^steam_app_0$"
   open-fullscreen true
+  open-on-workspace "Game"
 }

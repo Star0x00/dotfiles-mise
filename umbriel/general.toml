@@ -16,6 +16,7 @@ autostart = [
     "wl-paste --type text --watch cliphist store",
     "ghostty --title=scratchpad-terminal",
     "ghostty --title=scratchpad-music -e flatpak run io.github.go_musicfox.go-musicfox",
+    "flatpak run com.github.wwmm.easyeffects --service-mode",
 ]
 # mod_key = "Super"                             # Force Super instead of nested-session Alt
 xwayland = true                                 # Requires xwayland-satellite; restart to change

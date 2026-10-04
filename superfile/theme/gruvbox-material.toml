@@ -1,0 +1,38 @@
+# Gruvbox Material Dark
+# Palette: https://github.com/sainnhe/gruvbox-material
+
+# Code syntax highlight theme
+# https://github.com/alecthomas/chroma/blob/master/styles
+code_syntax_highlight = "gruvbox"
+
+# ========= Border =========
+file_panel_border = "#504945"
+sidebar_border = "#32302f"
+footer_border = "#504945"
+
+# ========= Border Active =========
+file_panel_border_active = "#7c6f64"
+sidebar_border_active = "#a9b665"
+footer_border_active = "#d8a657"
+modal_border_active = "#a89984"
+
+# ========= Background (bg) =========
+full_screen_bg = "#282828"
+file_panel_bg = "#282828"
+sidebar_bg = "#282828"
+footer_bg = "#282828"
+modal_bg = "#282828"
+
+# ========= Foreground (fg) =========
+full_screen_fg = "#d4be98"
+file_panel_fg = "#d4be98"
+sidebar_fg = "#d4be98"
+footer_fg = "#d4be98"
+modal_fg = "#d4be98"
+
+# ========= Special Color =========
+cursor = "#89b482"
+correct = "#a9b665"
+error = "#ea6962"
+hint = "#7daea3"
+cancel = "#928374"

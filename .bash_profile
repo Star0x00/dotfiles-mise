@@ -1,7 +1,3 @@
 # ~/.bash_profile — login shell (mise-managed via dotfiles repo)
-
-# Environment lives in ~/.profile
-[[ -f ~/.profile ]] && . ~/.profile
-
-# Interactive config lives in ~/.bashrc
+# Everything lives in ~/.bashrc (environment + interactive config).
 [[ -f ~/.bashrc ]] && . ~/.bashrc

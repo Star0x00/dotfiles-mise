@@ -41,8 +41,12 @@ neovim = "latest"
 pnpm = "latest"
 superfile = "latest"
 jujutsu = "latest"
-"npm:@deepseek-ai/dsh" = "0.1.7-alpha.1"
+"npm:@deepseek-ai/dsh" = "0.1.7-rc.2"
 delta = "latest"
+"github:exercism/cli" = "latest"
+rust = "latest"
+"npm:@pi-in-go/pig" = "latest"
+"aqua:numtide/treefmt" = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
@@ -73,13 +77,18 @@ package_manager = "npm"
 
 # pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
 "~/.pi/agent/extensions/toolbox" = "../../dotfiles/pi/agent/extensions/toolbox"
+"~/.pi/agent/extensions/tool-ui" = "../../dotfiles/pi/agent/extensions/tool-ui"
 
 # pi agent: global instructions
 "~/.pi/agent/AGENTS.md" = "../../dotfiles/pi/agent/AGENTS.md"
 
-# pi agent: settings + web search config (symlink so in-session /settings edits write through)
+# pi agent: themes + tool-ui palette
+"~/.pi/agent/themes" = "../../dotfiles/pi/agent/themes"
+"~/.pi/agent/tool-ui.json" = "../../dotfiles/pi/agent/tool-ui.json"
+
+# pi agent: settings + mcp servers (symlink so in-session /settings and /mcp edits write through)
 "~/.pi/agent/settings.json" = { source = "../../dotfiles/pi/agent/settings.json", mode = "symlink" }
-"~/.pi/web-search.json" = { source = "../../dotfiles/pi/web-search.json", mode = "symlink" }
+"~/.pi/agent/mcp.json" = { source = "../../dotfiles/pi/agent/mcp.json", mode = "symlink" }
 
 "~/.config/starship.toml" = "../../dotfiles/starship.toml"
 "~/.config/ghostty/config" = "../../dotfiles/ghostty/config"
@@ -88,6 +97,8 @@ package_manager = "npm"
 "~/.config/kitty/kitty.conf" = "../../dotfiles/kitty/kitty.conf"
 "~/.config/kitty/kanagawa_dragon.conf" = "../../dotfiles/kitty/kanagawa_dragon.conf"
 "~/.config/kitty/catppuccin_mocha.conf" = "../../dotfiles/kitty/catppuccin_mocha.conf"
+"~/.config/kitty/gruvbox_material_dark.conf" = "../../dotfiles/kitty/gruvbox_material_dark.conf"
+"~/.config/kitty/tokyonight_night.conf" = "../../dotfiles/kitty/tokyonight_night.conf"
 
 "~/.config/nushell/config.nu" = "../../dotfiles/nushell/config.nu"
 "~/.config/nushell/env.nu" = "../../dotfiles/nushell/env.nu"
@@ -107,7 +118,6 @@ package_manager = "npm"
 # "~/.config/emacs/user-lisp" = "../../dotfiles/emacs/user-lisp"
 #
 # ---- home root files (native dotfiles) ----
-"~/.profile" = "../../dotfiles/.profile"
 "~/.bashrc" = "../../dotfiles/.bashrc"
 "~/.bash_profile" = "../../dotfiles/.bash_profile"
 "~/.npmrc" = "../../dotfiles/.npmrc"
@@ -123,6 +133,9 @@ package_manager = "npm"
 # fonts: nothing is managed here — the install-fonts task fetches every family
 # declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
 "~/.config/fish/config.fish" = "../../dotfiles/fish/config.fish"
+
+# ---- systemd user units ----
+"~/.config/systemd/user/ssh-add-pass.service" = { source = "../../dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
 
 # ---- mise self-management ----
 # config.toml lives in the dotfiles repo; a symlink keeps the repo in sync automatically.

@@ -11,9 +11,9 @@ hl.config({
 		border_size = 1,
 
 		col = {
-			-- Kanagawa Dragon border colors (green #8a9a7b, cyan #8ea4a2)
-			active_border = { colors = { "rgba(8a9a7bee)", "rgba(8ea4a2ee)" }, angle = 45 },
-			inactive_border = "rgba(393836aa)",
+			-- Tokyo Night border colors (blue #7aa2f7, purple #bb9af7)
+			active_border = { colors = { "rgba(7aa2f7ee)", "rgba(bb9af7ee)" }, angle = 45 },
+			inactive_border = "rgba(414868aa)",
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps

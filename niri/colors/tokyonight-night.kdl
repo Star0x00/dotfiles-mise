@@ -1,0 +1,35 @@
+// Tokyo Night Theme for Niri
+
+layout {
+    focus-ring {
+        // Active: Blue
+        active-color   "#7aa2f7"
+        // Inactive: Base background
+        inactive-color "#1a1b26"
+        // Urgent: Red
+        urgent-color   "#f7768e"
+    }
+
+    border {
+        active-color   "#7aa2f7"
+        inactive-color "#1a1b26"
+        urgent-color   "#f7768e"
+    }
+
+    shadow {
+        // 深色主题下使用半透明黑色阴影
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#7aa2f7"
+        // Inactive Tab: 使用较柔和的表面层颜色
+        inactive-color "#414868"
+        urgent-color   "#f7768e"
+    }
+
+    insert-hint {
+        // Active color with 50% opacity
+        color "#7aa2f780"
+    }
+}
