@@ -70,7 +70,6 @@ package_manager = "npm"
 "~/.config/helix" = "../../dotfiles/helix"
 "~/.config/mpv" = "../../dotfiles/mpv"
 "~/.config/yt-dlp" = "../../dotfiles/yt-dlp"
-"~/.config/vicinae" = "../../dotfiles/vicinae"
 "~/.config/go-musicfox" = "../../dotfiles/go-musicfox"
 "~/.config/bat" = "../../dotfiles/bat"
 "~/.config/superfile" = "../../dotfiles/superfile"
@@ -110,13 +109,6 @@ package_manager = "npm"
 "~/.config/sway/color_01.icc" = "../../dotfiles/sway/color_01.icc"
 "~/.config/sway/colors" = "../../dotfiles/sway/colors" # stylix snapshot
 
-# emacs: file-level only (runtime dirs elpa/eln-cache/... stay real)
-# "~/.config/emacs/init.el" = "../../dotfiles/emacs/init.el"
-# "~/.config/emacs/early-init.el" = "../../dotfiles/emacs/early-init.el"
-# "~/.config/emacs/extras" = "../../dotfiles/emacs/extras"
-# "~/.config/emacs/assets" = "../../dotfiles/emacs/assets"
-# "~/.config/emacs/user-lisp" = "../../dotfiles/emacs/user-lisp"
-#
 # ---- home root files (native dotfiles) ----
 "~/.bashrc" = "../../dotfiles/.bashrc"
 "~/.bash_profile" = "../../dotfiles/.bash_profile"
