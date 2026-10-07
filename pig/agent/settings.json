@@ -1,0 +1,9 @@
+{
+  "defaultModel": "deepseek-v4.1-flash",
+  "defaultProvider": "bailian",
+  "enableAnalytics": false,
+  "lastChangelogVersion": "1.0.0",
+  "theme": "tool-ui-tokyonight",
+  "hideThinkingBlock": true,
+  "defaultThinkingLevel": "low"
+}

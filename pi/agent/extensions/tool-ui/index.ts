@@ -172,7 +172,20 @@ export default function toolUi(pi: ExtensionAPI) {
         /* 落盘失败不影响本次会话 */
       }
     }
-    const res = ctx.ui.setTheme(buildPiTheme(scheme, { name, userMessagePrompt: cfg.userMessagePrompt }));
+    // pi 的 setTheme 接受 Theme 对象；PiG 只接受主题名字符串。两者都试一下，
+    // 让同一份扩展在 pi 和 pig 上都能生效。
+    let res: any;
+    try {
+      res = ctx.ui.setTheme(buildPiTheme(scheme, { name, userMessagePrompt: cfg.userMessagePrompt }));
+    } catch {
+      try {
+        res = ctx.ui.setTheme(name);
+      } catch (err) {
+        return `setTheme failed: ${(err as Error)?.message ?? err}`;
+      }
+    }
+    // pi: {success,error}；pig: (applied, message)
+    if (Array.isArray(res)) return res[0] === false ? String(res[1] ?? "setTheme failed") : undefined;
     if (res && res.success === false) return res.error ?? "setTheme failed";
     return undefined;
   };

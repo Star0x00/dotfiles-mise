@@ -10,11 +10,13 @@
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { homedir } from "node:os";
 import { join } from "node:path";
+import { getAgentDir } from "@earendil-works/pi-coding-agent";
 
-export const THEMES_DIR = join(homedir(), ".pi", "agent", "themes");
-export const SETTINGS_PATH = join(homedir(), ".pi", "agent", "settings.json");
+// 用 pi 的 getAgentDir()，这样在 pi (~/.pi/agent) 和 pig (~/.pig/agent)
+// 下都写到各自的 agent 目录，而不是硬编码 ~/.pi。
+export const THEMES_DIR = join(getAgentDir(), "themes");
+export const SETTINGS_PATH = join(getAgentDir(), "settings.json");
 
 const SCHEMA_URL =
   "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json";

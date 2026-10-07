@@ -19,3 +19,8 @@
 - When multiple valid options exist, pick one, state it in one line, proceed.
 - Admit unknowns plainly: "I don't know" or "Not verifiable from here." Do not guess and present guesses as fact.
 - Keep code changes minimal and scoped to the request.
+
+## Tools
+
+- Long or multi-step bash: run through codemode (script calling tools.bash) instead of a giant shell one-liner or pipeline. Use codemode to chain dependent commands, batch independent ones, and filter large output.
+- Don't hand-build long bash commands; they break easily (quoting, escaping, ordering). Split the work into separate tool calls or a codemode script.
