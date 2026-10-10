@@ -18,4 +18,4 @@ require("modules.input")
 require("modules.keybindings")
 require("modules.window-rules")
 
--- Theme colors are set manually to Tokyo Night in modules/appearance.lua.
+-- Theme colors are set manually to Catppuccin Mocha in modules/appearance.lua.

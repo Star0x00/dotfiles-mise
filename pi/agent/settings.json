@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.0.0",
+  "lastChangelogVersion": "1.1.0",
   "defaultProvider": "bailian",
   "defaultModel": "deepseek-v4.1-flash",
   "defaultThinkingLevel": "low",
@@ -9,7 +9,7 @@
   "terminal": {
     "imageWidthCells": 100
   },
-  "theme": "tool-ui-tokyonight",
+  "theme": "tool-ui-catppuccin-mocha",
   "hideThinkingBlock": true,
   "treeFilterMode": "default",
   "quietStartup": false,

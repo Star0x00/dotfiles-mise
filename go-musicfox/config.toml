@@ -98,7 +98,7 @@ centerEverything = false
 # 主题颜色
 # 随机
 # primaryColor = "random"
-primaryColor = "#bb9af7" # Tokyo Night purple
+primaryColor = "#cba6f7" # Catppuccin Mocha mauve
 
 # 进度条字符样式配置
 [theme.progress]

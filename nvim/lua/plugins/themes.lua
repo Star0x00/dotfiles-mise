@@ -1,15 +1,14 @@
 --=============================================================================
 -- Theme
 --=============================================================================
--- Tokyo Night, transparent background
+-- Catppuccin Mocha, transparent background.
 vim.o.background = "dark"
-require("tokyonight").setup({
-	style = "night", -- storm, moon, night, day
-	transparent = true,
-	dim_inactive = false,
-})
 
-vim.cmd.colorscheme("tokyonight")
+require("catppuccin").setup({
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
+	transparent_background = true,
+})
+vim.cmd.colorscheme("catppuccin")
 
 require("mini.tabline").setup()
 require("mini.notify").setup()

@@ -44,8 +44,8 @@
 
                             ;; Setting the face in here prevents flashes of
                             ;; color as the theme gets activated
-                            (background-color . "#000000")
-                            (foreground-color . "#ffffff")
+                            (background-color . "#1e1e2e")
+                            (foreground-color . "#cdd6f4")
                             (ns-appearance . dark)
                             (ns-transparent-titlebar . t)
 			    (font . "Iosevka Curly-16")))

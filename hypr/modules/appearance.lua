@@ -11,9 +11,9 @@ hl.config({
 		border_size = 1,
 
 		col = {
-			-- Tokyo Night border colors (blue #7aa2f7, purple #bb9af7)
-			active_border = { colors = { "rgba(7aa2f7ee)", "rgba(bb9af7ee)" }, angle = 45 },
-			inactive_border = "rgba(414868aa)",
+			-- Catppuccin Mocha border colors (blue #89b4fa, mauve #cba6f7)
+			active_border = { colors = { "rgba(89b4faee)", "rgba(cba6f7ee)" }, angle = 45 },
+			inactive_border = "rgba(313244aa)",
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -37,7 +37,7 @@ hl.config({
 			enabled = true,
 			range = 4,
 			render_power = 3,
-			color = 0xee1a1a1a,
+			color = 0xee11111b,
 		},
 
 		blur = {

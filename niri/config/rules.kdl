@@ -8,7 +8,7 @@ workspace "Game"
 // Global Aesthetics (Apply to ALL windows)
 // -----------------------------------------------------------------------------
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 5
     clip-to-geometry true
     open-floating false
     // background-effect {
@@ -85,6 +85,7 @@ window-rule {
     match app-id="^xdm-app$"
     match app-id="^com.gabm.satty$"
     match app-id="^org.qbittorrent.qBittorrent$"
+    match app-id="^org.videolan.VLC$"
     match app-id="^org.pulseaudio.pavucontrol$"
     match app-id="^net.davidotek.pupgui2$"
     match app-id="^com.github.th_ch.youtube_music$"
@@ -160,10 +161,16 @@ window-rule {
     open-floating false
     default-column-width { proportion 0.8; }
     open-on-workspace "Code"
-    opacity 0.8
+    opacity 0.85
     background-effect {
         blur true
+        // Blur the wallpaper only (skip windows behind) so a terminal over a
+        // browser doesn't smear its content.
         xray true
+        // Override the global blur grain/saturation: terminals look cleaner
+        // without the 0.03 noise and with neutral colors.
+        noise 0.0
+        saturation 1.0
     }
 }
 

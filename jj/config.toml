@@ -6,5 +6,5 @@ email = "hyy122013@outlook.com"
 
 [ui]
 editor = "flow"
-pager = ["delta", "--line-numbers", "--side-by-side", "--syntax-theme", "tokyonight_night"]
+pager = ["delta", "--line-numbers", "--side-by-side", "--syntax-theme", "Catppuccin Mocha"]
 diff-formatter = ":git"

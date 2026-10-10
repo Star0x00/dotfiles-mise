@@ -1,10 +1,10 @@
 # Ghostty configuration
 # Managed via dotfiles (symlinked by home-manager)
 
-command = bash
+command = nu
 shell-integration-features = no-cursor, ssh-terminfo
 
-theme = TokyoNight
+theme = Catppuccin Mocha
 
 # Font (monospace + CJK fallback), sized up for readability
 # NOTE: ghostty's font-family does NOT split on comma — one family per key.

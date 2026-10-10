@@ -11,7 +11,7 @@
 -- the rest still load and the error is shown as a vim.notify warning.
 
 vim.pack.add({
-	"https://github.com/folke/tokyonight.nvim",
+	"https://github.com/catppuccin/nvim",
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/rafamadriz/friendly-snippets",
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.10.2" },

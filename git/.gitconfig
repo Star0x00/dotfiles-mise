@@ -13,7 +13,7 @@
 	navigate = true
 	line-numbers = true
 	side-by-side = true
-	syntax-theme = tokyonight_night
+	syntax-theme = Catppuccin Mocha
 	hunk-header-decoration-style = ""
 	file-decoration-style = ""
 	line-numbers-left-format = "{nm:^4} "

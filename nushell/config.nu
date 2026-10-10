@@ -33,31 +33,39 @@ def bh [...args: string] {
   run-external $command ...$subcommand "--help" o+e>| bat -pl help
 }
 
-# fix xterm-ghostty error: preserve TERMINFO_DIRS across sudo
-$env.TERMINFO_DIRS = $"($env.HOME)/.nix-profile/share/terminfo"
-def --wrapped sudo [...args] {
-  if ($env.TERMINFO_DIRS? | is-not-empty) {
-    ^sudo --preserve-env=TERMINFO_DIRS ...$args
-  } else {
-    ^sudo ...$args
-  }
-}
-
 mkdir ($nu.data-dir | path join "vendor/autoload")
 zoxide init nushell --cmd cd | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+# mise: 官方 nu 集成,脚本存进 autoload 目录(同 zoxide),每次启动刷新
+if (which mise | is-not-empty) {
+  ^mise activate nu | save -f ($nu.data-dir | path join "vendor/autoload/mise.nu")
+}
+# starship prompt
+if (which starship | is-not-empty) {
+  starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+}
 
-use std/config *
-
-# Initialize the PWD hook as an empty list if it doesn't exist
-$env.config.hooks.env_change.PWD = $env.config.hooks.env_change.PWD? | default []
-
-$env.config.hooks.env_change.PWD ++= [{||
-  if (which direnv | is-empty) {
-    # If direnv isn't installed, do nothing
-    return
+# fzf: nushell 无内置绑定,用 commandline + keybinding 自接
+# Ctrl-R 模糊历史(预览用 nu-highlight 上色)
+$env.config.keybindings ++= [
+  {
+    name: fuzzy_history
+    modifier: control
+    keycode: char_r
+    mode: [emacs, vi_normal, vi_insert]
+    event: [{
+      send: ExecuteHostCommand
+      cmd: "commandline edit --insert (history | get command | uniq | reverse | str join (char -i 0) | fzf --read0 --scheme history --layout reverse --height 40% --query (commandline) --preview 'echo -n {} | nu --stdin -c \"nu-highlight\"' | decode utf-8 | str trim)"
+    }]
   }
-
-  direnv export json | from json | default {} | load-env
-  # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
-  $env.PATH = do (env-conversions).path.from_string $env.PATH
-}]
+  # Ctrl-T 模糊选文件(fzf 无输入时走文件系统)
+  {
+    name: fuzzy_file
+    modifier: control
+    keycode: char_t
+    mode: [emacs, vi_normal, vi_insert]
+    event: [{
+      send: ExecuteHostCommand
+      cmd: "commandline edit --insert (fzf --scheme path --layout reverse --height 40% | decode utf-8 | str trim)"
+    }]
+  }
+]

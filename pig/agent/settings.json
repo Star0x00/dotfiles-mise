@@ -3,7 +3,7 @@
   "defaultProvider": "bailian",
   "enableAnalytics": false,
   "lastChangelogVersion": "1.0.0",
-  "theme": "tool-ui-tokyonight",
+  "theme": "tool-ui-catppuccin-mocha",
   "hideThinkingBlock": true,
   "defaultThinkingLevel": "low"
 }

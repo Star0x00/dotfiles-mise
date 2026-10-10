@@ -63,71 +63,74 @@ package_manager = "npm"
 
 # ---- app configs (dotfiles repo, whole dir or file) ----
 # nvim: symlink on purpose so lazy.nvim's nvim-pack-lock.json writes through to the repo
-"~/.config/nvim" = { source = "../../dotfiles/nvim", mode = "symlink" }
-"~/.config/niri" = "../../dotfiles/niri"
-"~/.config/umbriel" = "../../dotfiles/umbriel"
-"~/.config/hypr" = "../../dotfiles/hypr"
-"~/.config/helix" = "../../dotfiles/helix"
-"~/.config/mpv" = "../../dotfiles/mpv"
-"~/.config/yt-dlp" = "../../dotfiles/yt-dlp"
-"~/.config/go-musicfox" = "../../dotfiles/go-musicfox"
-"~/.config/bat" = "../../dotfiles/bat"
-"~/.config/superfile" = "../../dotfiles/superfile"
+"~/.config/nvim" = { source = "~/dotfiles/nvim", mode = "symlink" }
+"~/.config/niri" = "~/dotfiles/niri"
+"~/.config/umbriel" = "~/dotfiles/umbriel"
+"~/.config/hypr" = "~/dotfiles/hypr"
+"~/.config/helix" = "~/dotfiles/helix"
+"~/.config/mpv" = "~/dotfiles/mpv"
+"~/.config/yt-dlp" = "~/dotfiles/yt-dlp"
+"~/.config/go-musicfox" = "~/dotfiles/go-musicfox"
+"~/.config/bat" = "~/dotfiles/bat"
+"~/.config/flow" = "~/dotfiles/flow"
+"~/.config/superfile" = "~/dotfiles/superfile"
 
 # pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
-"~/.pi/agent/extensions/toolbox" = "../../dotfiles/pi/agent/extensions/toolbox"
-"~/.pi/agent/extensions/tool-ui" = "../../dotfiles/pi/agent/extensions/tool-ui"
+"~/.pi/agent/extensions/toolbox" = "~/dotfiles/pi/agent/extensions/toolbox"
+"~/.pi/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
 
 # pi agent: global instructions
-"~/.pi/agent/AGENTS.md" = "../../dotfiles/pi/agent/AGENTS.md"
+"~/.pi/agent/AGENTS.md" = "~/dotfiles/pi/agent/AGENTS.md"
 
 # pi agent: themes + tool-ui palette
-"~/.pi/agent/themes" = "../../dotfiles/pi/agent/themes"
-"~/.pi/agent/tool-ui.json" = "../../dotfiles/pi/agent/tool-ui.json"
+"~/.pi/agent/themes" = "~/dotfiles/pi/agent/themes"
+"~/.pi/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
 
 # pi agent: settings + mcp servers (symlink so in-session /settings and /mcp edits write through)
-"~/.pi/agent/settings.json" = { source = "../../dotfiles/pi/agent/settings.json", mode = "symlink" }
-"~/.pi/agent/mcp.json" = { source = "../../dotfiles/pi/agent/mcp.json", mode = "symlink" }
+"~/.pi/agent/settings.json" = { source = "~/dotfiles/pi/agent/settings.json", mode = "symlink" }
+"~/.pi/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
 
-"~/.config/starship.toml" = "../../dotfiles/starship.toml"
-"~/.config/ghostty/config" = "../../dotfiles/ghostty/config"
+"~/.config/starship.toml" = "~/dotfiles/starship.toml"
+"~/.config/ghostty/config" = "~/dotfiles/ghostty/config"
 
 # kitty: theme + quake quick-access config (main file must be named kitty.conf, not config)
-"~/.config/kitty/kitty.conf" = "../../dotfiles/kitty/kitty.conf"
-"~/.config/kitty/kanagawa_dragon.conf" = "../../dotfiles/kitty/kanagawa_dragon.conf"
-"~/.config/kitty/catppuccin_mocha.conf" = "../../dotfiles/kitty/catppuccin_mocha.conf"
-"~/.config/kitty/gruvbox_material_dark.conf" = "../../dotfiles/kitty/gruvbox_material_dark.conf"
-"~/.config/kitty/tokyonight_night.conf" = "../../dotfiles/kitty/tokyonight_night.conf"
+"~/.config/kitty/kitty.conf" = "~/dotfiles/kitty/kitty.conf"
+"~/.config/kitty/kanagawa_dragon.conf" = "~/dotfiles/kitty/kanagawa_dragon.conf"
+"~/.config/kitty/catppuccin_mocha.conf" = "~/dotfiles/kitty/catppuccin_mocha.conf"
+"~/.config/kitty/gruvbox_material_dark.conf" = "~/dotfiles/kitty/gruvbox_material_dark.conf"
+"~/.config/kitty/tokyonight_night.conf" = "~/dotfiles/kitty/tokyonight_night.conf"
 
-"~/.config/nushell/config.nu" = "../../dotfiles/nushell/config.nu"
-"~/.config/nushell/env.nu" = "../../dotfiles/nushell/env.nu"
+"~/.config/nushell/config.nu" = "~/dotfiles/nushell/config.nu"
+"~/.config/nushell/env.nu" = "~/dotfiles/nushell/env.nu"
 
-"~/.config/xdg-desktop-portal/portals.conf" = "../../dotfiles/xdg-desktop-portal/portals.conf"
+"~/.config/xdg-desktop-portal/portals.conf" = "~/dotfiles/xdg-desktop-portal/portals.conf"
 
-"~/.config/sway/config" = "../../dotfiles/sway/config"
-"~/.config/sway/config.d" = "../../dotfiles/sway/config.d"
-"~/.config/sway/color_01.icc" = "../../dotfiles/sway/color_01.icc"
-"~/.config/sway/colors" = "../../dotfiles/sway/colors" # stylix snapshot
+"~/.config/sway/config" = "~/dotfiles/sway/config"
+"~/.config/sway/config.d" = "~/dotfiles/sway/config.d"
+"~/.config/sway/color_01.icc" = "~/dotfiles/sway/color_01.icc"
+"~/.config/sway/colors" = "~/dotfiles/sway/colors" # stylix snapshot
 
 # ---- home root files (native dotfiles) ----
-"~/.bashrc" = "../../dotfiles/.bashrc"
-"~/.bash_profile" = "../../dotfiles/.bash_profile"
-"~/.npmrc" = "../../dotfiles/.npmrc"
-"~/.Xresources" = "../../dotfiles/.Xresources"
+"~/.bashrc" = "~/dotfiles/.bashrc"
+"~/.bash_profile" = "~/dotfiles/.bash_profile"
+"~/.npmrc" = "~/dotfiles/.npmrc"
+"~/.Xresources" = "~/dotfiles/.Xresources"
 
 # ---- vcs (git / jujutsu) ----
-"~/.gitconfig" = "../../dotfiles/git/.gitconfig"
-"~/.config/jj/config.toml" = "../../dotfiles/jj/config.toml"
-"~/.config/environment.d/10-mise.conf" = "../../dotfiles/environment.d/10-mise.conf"
-"~/.config/mimeapps.list" = "../../dotfiles/mimeapps.list"
-"~/.config/fontconfig/fonts.conf" = "../../dotfiles/fontconfig/fonts.conf"
+"~/.gitconfig" = "~/dotfiles/git/.gitconfig"
+"~/.config/jj/config.toml" = "~/dotfiles/jj/config.toml"
+"~/.config/environment.d/10-mise.conf" = "~/dotfiles/environment.d/10-mise.conf"
+"~/.config/mimeapps.list" = "~/dotfiles/mimeapps.list"
+"~/.config/fontconfig/fonts.conf" = "~/dotfiles/fontconfig/fonts.conf"
 
 # fonts: nothing is managed here — the install-fonts task fetches every family
 # declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
-"~/.config/fish/config.fish" = "../../dotfiles/fish/config.fish"
+"~/.config/fish/config.fish" = "~/dotfiles/fish/config.fish"
 
 # ---- systemd user units ----
-"~/.config/systemd/user/ssh-add-pass.service" = { source = "../../dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
+"~/.config/systemd/user/ssh-add-pass.service" = { source = "~/dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
+# niri session PATH: mise shims available to niri and everything it spawns.
+"~/.config/systemd/user/niri.service.d/10-mise-path.conf" = { source = "~/dotfiles/systemd/user/niri.service.d/10-mise-path.conf", mode = "symlink" }
 
 # ---- mise self-management ----
 # config.toml lives in the dotfiles repo; a symlink keeps the repo in sync automatically.
