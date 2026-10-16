@@ -13,15 +13,28 @@ font-family = Iosevka Star Term
 font-size = 16
 
 # Appearance
+# NOTE: keep this at 1 (opaque) so Ghostty keeps the GTK window's solid
+# background. With opacity < 1 Ghostty removes that background, so the frame
+# where a new tab reparents the terminal widget renders a fully transparent
+# window -> the "flash" seen on new tabs (ghostty #8208 / #8835). Transparency
+# + blur are applied by niri instead (window-rule in niri/config/rules.kdl).
+background-opacity = 1
+
+# Make GTK's own window background use the terminal colors. Without this the
+# tab bar (which shows the window background) picks the GTK theme's grey, not
+# Catppuccin, so it looks like a solid off-color strip.
+window-theme = ghostty
+
 cursor-style = block
 cursor-style-blink = true
-background-blur = true
 window-decoration = client
-window-show-tab-bar = auto
-gtk-tabs-location = bottom
-gtk-wide-tabs = false
-gtk-titlebar = false
-gtk-titlebar-style = native
+# Merge the titlebar and tab bar into one compact top strip ("tabs" style).
+gtk-titlebar = true
+gtk-titlebar-style = tabs
+gtk-toolbar-style = flat
+gtk-tabs-location = top
+gtk-wide-tabs = true
+gtk-custom-css = ~/.config/ghostty/gtk.css
 
 # Behavior
 cursor-click-to-move = false
