@@ -8,7 +8,7 @@ workspace "Game"
 // Global Aesthetics (Apply to ALL windows)
 // -----------------------------------------------------------------------------
 window-rule {
-    geometry-corner-radius 5
+    geometry-corner-radius 10
     clip-to-geometry true
     open-floating false
     // background-effect {
@@ -23,8 +23,8 @@ blur {
     // off
     passes 4
     offset 3
-    noise 0.03
-    saturation 1.2
+    noise 0.00
+    saturation 1.0
 }
 
 // -----------------------------------------------------------------------------
@@ -91,6 +91,7 @@ window-rule {
     match app-id="^com.github.th_ch.youtube_music$"
     match app-id="dev.noctalia.Noctalia"
     match app-id="io.github.Faugus.faugus-launcher"
+    match app-id="com.github.wwmm.easyeffects"
 
     match app-id="firefox$" title="^Picture-in-Picture$"
 
@@ -161,6 +162,10 @@ window-rule {
     open-floating false
     default-column-width { proportion 0.8; }
     open-on-workspace "Code"
+    // Transparency + blur live here, not in ghostty: with ghostty's own
+    // background-opacity < 1 the GTK window has no solid background, so the
+    // frame where a new tab reparents the widget renders fully transparent
+    // (the "flash"). An opaque window + compositor opacity/blur avoids it.
     opacity 0.85
     background-effect {
         blur true

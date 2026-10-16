@@ -35,8 +35,8 @@ binds {
     Mod+Space           { spawn-sh "vicinae toggle"; }
     // noctalia
     // Mod+Space           { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Mod+V               { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
-    Mod+L               { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+V               { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+L               { spawn "vicinae" "vicinae://launch/power/lock"; }
 
     // Window navigation (vim-style)
     Mod+J               { focus-window-down; }
