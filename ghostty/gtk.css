@@ -1,0 +1,90 @@
+/* Ghostty GTK chrome — Catppuccin Mocha, compact "tabs as titlebar" look.
+ *
+ * Loaded via `gtk-custom-css`. Selectors follow libadwaita's tab-view
+ * stylesheet (tabbar > .box / tabbox > tab, :hover / :selected, close button).
+ * The palette is Catppuccin Mocha:
+ *   text #cdd6f4  subtext #a6adc8  overlay #6c7086
+ *   blue #89b4fa  red #f38ba8
+ */
+
+/* The tab strip sits on the GTK window background. We keep that background
+ * opaque (needed so the new-tab reparent frame isn't transparent, see
+ * ghostty/config), so a translucent Catppuccin tint is used here to make the
+ * strip read as a distinct frosted bar instead of an invisible grey one. */
+tabbar .box,
+tabbar.inline .box {
+    background-color: rgba(49, 50, 68, 0.55);
+    box-shadow: none;
+    color: #cdd6f4;
+    border-bottom: 1px solid rgba(205, 214, 244, 0.06);
+}
+
+tabbar tabbox {
+    min-height: 30px;
+    padding: 5px 8px 3px 8px;
+}
+
+/* Tabs: compact, rounded, quiet until active. */
+tabbar tab {
+    min-height: 26px;
+    padding: 3px 12px;
+    margin: 0 2px;
+    border-radius: 9px;
+    color: #a6adc8;
+    transition: background-color 130ms ease, color 130ms ease;
+}
+
+tabbar tab:hover {
+    background-color: rgba(205, 214, 244, 0.06);
+    color: #cdd6f4;
+}
+
+tabbar tab:selected {
+    background-color: rgba(205, 214, 244, 0.10);
+    color: #cdd6f4;
+}
+
+tabbar tab label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Close button on each tab. */
+tabbar tab button.image-button {
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0 0 0 2px;
+    padding: 0;
+    border-radius: 999px;
+    color: #6c7086;
+    background: transparent;
+    transition: background-color 130ms ease, color 130ms ease;
+}
+
+tabbar tab button.image-button:hover {
+    background-color: rgba(243, 139, 168, 0.22);
+    color: #f38ba8;
+}
+
+/* New-tab button and overflow arrows at the ends of the strip. */
+tabbar .start-action,
+tabbar .end-action {
+    padding: 4px 3px;
+}
+
+tabbar button.flat {
+    border-radius: 8px;
+    color: #a6adc8;
+}
+
+tabbar button.flat:hover {
+    background-color: rgba(205, 214, 244, 0.08);
+    color: #cdd6f4;
+}
+
+/* Dialogs (config errors, close confirmation) keep a matching headerbar. */
+headerbar {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(205, 214, 244, 0.08);
+}
