@@ -11,6 +11,7 @@ load-env {
   PATH: (
     $env.PATH
     | prepend $"($env.HOME)/.bin"
+    | prepend $"($env.HOME)/.local/share/mise/shims"
     | prepend $"($env.HOME)/.local/share/npm/bin"
     | prepend $"($env.HOME)/.local/bin"
     | append "/usr/local/bin"
@@ -29,4 +30,16 @@ load-env {
   INPUT_METHOD: "fcitx"
 
   SSH_AUTH_SOCK: $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+}
+
+# API keys from pass (first line of each entry) for fx: provider auth + Exa MCP.
+if (which pass | is-not-empty) {
+  let keys = [
+    { var: "DEEPSEEK_API_KEY", entry: "api/deepseek" }
+    { var: "EXA_API_KEY", entry: "exa/api-key" }
+  ]
+  for k in $keys {
+    let value = ((do -i { pass show $k.entry | lines | first }) | default "")
+    if ($value | is-not-empty) { load-env {($k.var): $value} }
+  }
 }
