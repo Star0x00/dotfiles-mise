@@ -14,7 +14,7 @@ theme "catppuccin"
 # default value: "ayu-mirage-bordered"
 # value type: quoted string
 
-light_theme "catppuccin-latte"
+light_theme "catppuccin"
 # default value: "ayu-light"
 # value type: quoted string
 
