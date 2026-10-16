@@ -60,7 +60,6 @@ package_manager = "npm"
 
 # ---- home root files (native dotfiles) ----
 "~/.bashrc" = "~/dotfiles/.bashrc"
-"~/.wakatime.cfg" = "~/dotfiles/.wakatime.cfg"
 "~/.config/bat" = "~/dotfiles/bat"
 "~/.config/environment.d/10-mise.conf" = "~/dotfiles/environment.d/10-mise.conf"
 
