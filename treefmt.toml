@@ -8,12 +8,6 @@ options = ["--search-parent-directories"]
 includes = ["*.lua"]
 stdin-options = ["--search-parent-directories", "--stdin-filepath", "$path", "-"]
 
-[formatter.zig]
-command = "zig"
-options = ["fmt"]
-includes = ["*.zig"]
-stdin-options = ["fmt", "--stdin"]
-
 [formatter.jq]
 command = "jq"
 options = ["."]
