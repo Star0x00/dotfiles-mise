@@ -19,6 +19,8 @@ helix = { backend = "aqua", version = "latest" } # helix-editor/helix
 # flyline: bash 增强 shared library (libflyline.so)，非可执行二进制，用 bash enable -f 加载
 "github:HalFrgrd/flyline" = "latest"
 "github:vercel-labs/fx" = "0.0.13" # fx: gitignore'd/unix-like coding agent
+# codesnap: pure-rust code-snapshot renderer, driven by the `codesnap` Gram task.
+"github:codesnap-rs/codesnap" = "0.14.0"
 
 # ---- runtimes / toolchains ----
 nodejs = "latest"
@@ -47,6 +49,7 @@ delta = "latest"
 "github:exercism/cli" = "latest"
 rust = "latest"
 "aqua:numtide/treefmt" = "latest"
+glow = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
@@ -88,6 +91,11 @@ package_manager = "npm"
 "~/.config/mise/config.toml" = { source = "~/dotfiles/mise/config.toml", mode = "symlink" }
 "~/.config/mpv" = "~/dotfiles/mpv"
 "~/.config/niri" = "~/dotfiles/niri"
+
+# gram (Zed fork): symlink so the GUI's settings/keymap edits write through to the repo
+"~/.config/gram" = { source = "~/dotfiles/gram", mode = "symlink" }
+# codesnap: theme = Catppuccin-Mocha, font = Iosevka Star (see dotfiles/codesnap/config.json)
+"~/.config/codesnap/config.json" = { source = "~/dotfiles/codesnap/config.json", mode = "symlink" }
 
 "~/.config/nushell/config.nu" = "~/dotfiles/nushell/config.nu"
 "~/.config/nushell/env.nu" = "~/dotfiles/nushell/env.nu"

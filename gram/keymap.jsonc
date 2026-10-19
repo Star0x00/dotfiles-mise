@@ -1,0 +1,16 @@
+// Gram keymap. `codesnap` task renders the current selection (or whole file)
+// and copies the snapshot to the Wayland clipboard.
+[
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space c s": ["task::Spawn", { "task_name": "codesnap: selection or file" }]
+    }
+  },
+  {
+    "context": "!vim_mode && !menu",
+    "bindings": {
+      "alt-c s": ["task::Spawn", { "task_name": "codesnap: selection or file" }]
+    }
+  }
+]

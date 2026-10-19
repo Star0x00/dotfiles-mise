@@ -1,0 +1,45 @@
+{
+  "print_eggs": false,
+  "snapshot_config": {
+    "theme": "Catppuccin-Mocha",
+    "themes_folders": [
+      "/var/home/qwerhyy/.config/bat/themes"
+    ],
+    "line_number_color": "#6c7086",
+    "background": "#181825",
+    "window": {
+      "mac_window_bar": true,
+      "shadow": {
+        "radius": 20,
+        "color": "#00000060"
+      },
+      "margin": {
+        "x": 40,
+        "y": 40
+      },
+      "border": {
+        "width": 1,
+        "color": "#585b70"
+      },
+      "title_config": {
+        "color": "#cdd6f4",
+        "font_family": "Iosevka Star"
+      },
+      "radius": 12
+    },
+    "code_config": {
+      "font_family": "Iosevka Star",
+      "breadcrumbs": {
+        "enable": false,
+        "separator": "/",
+        "color": "#6c7086",
+        "font_family": "Iosevka Star"
+      }
+    },
+    "watermark": {
+      "content": "CodeSnap",
+      "font_family": "Iosevka Star",
+      "color": "#6c7086"
+    }
+  }
+}

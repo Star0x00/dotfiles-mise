@@ -20,11 +20,13 @@ window-rule {
 }
 
 blur {
-    // off
-    passes 4
-    offset 3
-    noise 0.00
-    saturation 1.0
+    // passes = quality (more = smoother), offset = blur radius (more = stronger).
+    // offset 3 was too weak to visibly blur; 5 passes keeps offset 6 smooth
+    // and the 0.03 noise dithers away banding/ripples.
+    passes 5
+    offset 6
+    noise 0.03
+    saturation 0.95
 }
 
 // -----------------------------------------------------------------------------
@@ -166,15 +168,15 @@ window-rule {
     // background-opacity < 1 the GTK window has no solid background, so the
     // frame where a new tab reparents the widget renders fully transparent
     // (the "flash"). An opaque window + compositor opacity/blur avoids it.
-    opacity 0.85
+    opacity 0.78
     background-effect {
         blur true
         // Blur the wallpaper only (skip windows behind) so a terminal over a
         // browser doesn't smear its content.
         xray true
-        // Override the global blur grain/saturation: terminals look cleaner
-        // without the 0.03 noise and with neutral colors.
-        noise 0.0
+        // Override the global blur grain/saturation per window: a touch less
+        // dither than global, neutral colors.
+        noise 0.02
         saturation 1.0
     }
 }
