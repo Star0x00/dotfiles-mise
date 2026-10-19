@@ -10,7 +10,7 @@
     "imageWidthCells": 100
   },
   "theme": "tool-ui-catppuccin-mocha",
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "treeFilterMode": "default",
   "quietStartup": false,
   "cacheWarming": "streaming",
