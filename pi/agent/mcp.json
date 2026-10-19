@@ -3,7 +3,7 @@
     "exa": {
       "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa",
       "headers": {
-        "x-api-key": "!pass show exa/api-key"
+        "x-api-key": "!pass show api/exa"
       },
       "exposure": "codemode",
       "description": "Exa web search and page fetch for current information."

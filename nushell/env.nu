@@ -4,9 +4,11 @@ $env.config.show_banner = false
 $env.LANG = "en_US.UTF-8"
 
 # Shell-relevant env only.
-# GUI/session vars (TERMINFO_DIRS, XCURSOR_*, GDK_BACKEND, BROWSER, WLR_RENDERER,
-# CLUTTER_BACKEND, QT_*, SDL_*, MOZ_ENABLE_WAYLAND, ...) are injected by
-# ~/.config/environment.d/10-mise.conf and inherited from the systemd user session.
+# Compositor-agnostic GUI vars (TERMINFO_DIRS, XCURSOR_*, BROWSER, EDITOR,
+# MOZ_ENABLE_WAYLAND, ...) are injected by ~/.config/environment.d/10-mise.conf
+# and inherited from the systemd user session. Wayland/compositor-specific vars
+# (QT_QPA_PLATFORM, GDK_BACKEND, WLR_RENDERER, ...) are set by the compositor's
+# own config, not globally — they break Plasma's KWin startup.
 load-env {
   PATH: (
     $env.PATH
@@ -36,7 +38,7 @@ load-env {
 if (which pass | is-not-empty) {
   let keys = [
     { var: "DEEPSEEK_API_KEY", entry: "api/deepseek" }
-    { var: "EXA_API_KEY", entry: "exa/api-key" }
+    { var: "EXA_API_KEY", entry: "api/exa" }
   ]
   for k in $keys {
     let value = ((do -i { pass show $k.entry | lines | first }) | default "")

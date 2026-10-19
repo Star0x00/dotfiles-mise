@@ -47,9 +47,9 @@ jujutsu = "latest"
 "npm:@deepseek-ai/dsh" = "0.1.7-rc.2"
 delta = "latest"
 "github:exercism/cli" = "latest"
-rust = "latest"
 "aqua:numtide/treefmt" = "latest"
 glow = "latest"
+"github:Star0x00/wwm" = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
@@ -135,8 +135,8 @@ package_manager = "npm"
 "~/.gitconfig" = "~/dotfiles/git/.gitconfig"
 "~/.npmrc" = "~/dotfiles/.npmrc"
 
-# pi agent: global instructions
-"~/.pi/agent/AGENTS.md" = "~/dotfiles/pi/agent/AGENTS.md"
+# pi agent: global instructions (symlink so edits in ~/.pi write through to the repo)
+"~/.pi/agent/AGENTS.md" = { source = "~/dotfiles/pi/agent/AGENTS.md", mode = "symlink" }
 "~/.pi/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
 
 # pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
@@ -156,7 +156,44 @@ status-dotfiles = "mise bootstrap dotfiles status"
 [tasks.apply-dotfiles]
 description = "Apply dotfiles, installing any missing font first"
 depends = ["install-fonts"]
-run = "mise bootstrap dotfiles apply"
+run = ["mise bootstrap dotfiles apply", "mise run enable-user-units", "mise run flatpak-overrides"]
+
+[tasks.enable-user-units]
+description = "Enable the systemd user units shipped by dotfiles (idempotent)"
+run = [
+  # `systemctl --user` needs the user manager to be reachable; skip outside a session.
+  "[ -S ${XDG_RUNTIME_DIR}/bus ] || exit 0",
+  "systemctl --user daemon-reload",
+  "systemctl --user enable ssh-add-pass.service",
+]
+
+# Flatpak apps get their own HOME, so host fonts / GTK / Qt themes are invisible
+# unless explicitly shared. The global override is rebuilt from scratch each run
+# (--reset) so stale or wrong entries (e.g. the old ~/.local/fonts) never linger.
+[tasks.flatpak-overrides]
+description = "Grant Flatpak apps access to host fonts, GTK/Qt themes and XDG user dirs"
+run = [
+  "command -v flatpak >/dev/null || exit 0",
+  "flatpak override --user --reset",
+  '''flatpak override --user \
+  --filesystem=~/.local/share/fonts:ro \
+  --filesystem=~/.config/fontconfig:ro \
+  --filesystem=~/.config/gtk-3.0:ro \
+  --filesystem=~/.config/gtk-4.0:ro \
+  --filesystem=~/.themes:ro \
+  --filesystem=~/.local/share/themes:ro \
+  --filesystem=~/.icons:ro \
+  --filesystem=~/.local/share/icons:ro \
+  --filesystem=~/.config/qt5ct:ro \
+  --filesystem=~/.config/qt6ct:ro \
+  --filesystem=~/.config/Kvantum:ro \
+  --filesystem=xdg-desktop \
+  --filesystem=xdg-documents \
+  --filesystem=xdg-download \
+  --filesystem=xdg-music \
+  --filesystem=xdg-pictures \
+  --filesystem=xdg-videos''',
+]
 
 [tasks.install-fonts]
 description = "Download the fonts declared in fonts/installer/fonts.toml into ~/.local/share/fonts"
@@ -164,6 +201,6 @@ description = "Download the fonts declared in fonts/installer/fonts.toml into ~/
 tools.go = "latest"
 # The Go module lives in its own dir, so run from there instead of the repo root.
 # config_root is $HOME for this global config, hence the explicit dotfiles path.
-dir = "{{config_root}}/dotfiles/fonts/installer"
+dir = "~/dotfiles/fonts/installer"
 # Extra flags go through `mise run install-fonts -- -force`.
 run = "go run ."
