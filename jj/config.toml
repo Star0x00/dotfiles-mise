@@ -4,6 +4,11 @@
 name = "qwerhyy"
 email = "hyy122013@outlook.com"
 
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "F77F927ECB45E6A18F500EB46AD98F52998B0DE2"
+
 [ui]
 editor = "flow"
 pager = ["delta", "--line-numbers", "--side-by-side", "--syntax-theme", "Catppuccin Mocha"]
