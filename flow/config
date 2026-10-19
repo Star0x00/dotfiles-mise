@@ -10,11 +10,11 @@ frame_rate 170
 # default value: 60
 # value type: positive integer
 
-theme "catppuccin"
+theme "mocha"
 # default value: "ayu-mirage-bordered"
 # value type: quoted string
 
-light_theme "catppuccin"
+light_theme "mocha"
 # default value: "ayu-light"
 # value type: quoted string
 
@@ -364,4 +364,3 @@ palette_placement "center"
 
 # include_files ""
 # value type: quoted string of : separated paths
-
