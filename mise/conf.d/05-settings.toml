@@ -1,0 +1,6 @@
+[settings]
+dotfiles.default_mode = "copy"
+
+[settings.npm]
+package_manager = "npm"
+
