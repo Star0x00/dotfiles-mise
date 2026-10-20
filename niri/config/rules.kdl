@@ -66,6 +66,7 @@ window-rule {
     match title="^File Operation Progress$"
     match title="^Confirm to replace files$"
     match title="^KDE Connect URL handler$"
+    match title="^Godot$"
 
     // File Pickers & Common Dialogs
     match title="^(Open File)(.*)$"

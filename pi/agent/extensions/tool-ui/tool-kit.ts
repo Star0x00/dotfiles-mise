@@ -6,7 +6,7 @@
  *
  * 折叠形态 (两行, 红绿灯单灯):
  *   ● Bash npm run build --verbose …
- *   ╰─ ◷ 0.10s · ⚙ ~31 words
+ *   └─ ◷ 0.10s · ≡ ~31 words
  *
  * ctrl+e 展开完整输出 (│ 缩进)。
  * 状态灯: 黄=运行中、绿=成功、红=失败。参数超长会截断。
@@ -39,6 +39,8 @@ export interface ToolUiConfig {
   userMessagePrompt?: boolean;
   /** 自定义状态栏 */
   statusLine?: boolean;
+  /** 状态栏费用汇率回退值 (USD -> CNY)，默认 7.2 */
+  usdToCny?: number;
   /** "pi" | 内置 base16 名 | 内联 base16 对象 */
   palette?: string | Record<string, string>;
   colors?: PaletteOverrides;
@@ -54,6 +56,7 @@ export const TOOL_UI_DEFAULTS: ToolUiConfig = {
   editorPrompt: true,
   userMessagePrompt: true,
   statusLine: true,
+  usdToCny: 7.2,
 };
 
 const CONFIG_NAMES = ["tool-ui.json", "droid-ui.json"];
@@ -80,6 +83,7 @@ export function loadToolUiConfig(cwd: string): ToolUiConfig {
       if (typeof j?.editorPrompt === "boolean") cfg.editorPrompt = j.editorPrompt;
       if (typeof j?.userMessagePrompt === "boolean") cfg.userMessagePrompt = j.userMessagePrompt;
       if (typeof j?.statusLine === "boolean") cfg.statusLine = j.statusLine;
+      if (typeof j?.usdToCny === "number" && j.usdToCny > 0) cfg.usdToCny = j.usdToCny;
       if (typeof j?.palette === "string" || (j?.palette && typeof j.palette === "object")) cfg.palette = j.palette;
       if (typeof j?.baseTheme === "string") cfg.baseTheme = j.baseTheme;
       if (j?.colors && typeof j.colors === "object") cfg.colors = { ...(cfg.colors ?? {}), ...j.colors };
@@ -183,7 +187,7 @@ export function truncateArg(s: string, max?: number): string {
 
 export function metaRow(st: Style, parts: (string | undefined)[]): string {
   const body = parts.filter((p): p is string => Boolean(p)).join(st.meta(" · "));
-  return `${st.gutter("╰─")} ${body}`;
+  return `${st.gutter("└─")} ${body}`;
 }
 
 export function expandedBlock(st: Style, cfg: ToolUiConfig, out: string): string {
@@ -249,7 +253,7 @@ export function compactTool(spec: CompactToolSpec, cfg: ToolUiConfig) {
       if (opts.isPartial && !out) {
         const running = spec.runningText ?? "running…";
         return new Text(
-          `${st.gutter("╰─")} ${st.warning(running)}${elapsed ? st.meta(` · ◷ ${elapsed}`) : ""}`,
+          `${st.gutter("└─")} ${st.warning(running)}${elapsed ? st.meta(` · ◷ ${elapsed}`) : ""}`,
           0,
           0,
         );
