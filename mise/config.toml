@@ -50,6 +50,7 @@ delta = "latest"
 "aqua:numtide/treefmt" = "latest"
 glow = "latest"
 "github:Star0x00/wwm" = "latest"
+rust = "latest"
 
 [settings]
 dotfiles.default_mode = "copy"
@@ -92,8 +93,6 @@ package_manager = "npm"
 "~/.config/mpv" = "~/dotfiles/mpv"
 "~/.config/niri" = "~/dotfiles/niri"
 
-# gram (Zed fork): symlink so the GUI's settings/keymap edits write through to the repo
-"~/.config/gram" = { source = "~/dotfiles/gram", mode = "symlink" }
 # codesnap: theme = Catppuccin-Mocha, font = Iosevka Star (see dotfiles/codesnap/config.json)
 "~/.config/codesnap/config.json" = { source = "~/dotfiles/codesnap/config.json", mode = "symlink" }
 

@@ -29,6 +29,7 @@ import {
   outputText,
   saveToolUiConfig,
   saveToolUiEnabled,
+  type ToolUiConfig,
 } from "./tool-kit.ts";
 import { buildPiTheme, buildPiThemeColors, describePalette, listPalettes, paletteScheme, previewPalette, setSettingsTheme, writePiThemeFile } from "./theme/index.ts";
 import { PromptEditor } from "./editor.ts";
@@ -52,6 +53,22 @@ function editStats(result: any): { add: number; del: number } {
   return { add, del };
 }
 
+/** 把内建 edit 的 details.diff (`+ 12 text` / `- 12 text` / 上下文) 渲染成带色 diff。 */
+function renderEditDiff(st: any, cfg: ToolUiConfig, diff: string): string {
+  const lines = diff.split("\n").filter((l) => l.length > 0);
+  const shown = lines.slice(0, cfg.maxExpandedLines);
+  const body = shown
+    .map((l) => {
+      const sign = l[0];
+      const painted = sign === "+" ? st.added(l) : sign === "-" ? st.removed(l) : st.meta(l);
+      return `${st.gutter("│ ")}${painted}`;
+    })
+    .join("\n");
+  const rest = lines.length - shown.length;
+  const tail = rest > 0 ? `\n${st.gutter("│ ")}${st.meta(`… +${rest} lines`)}` : "";
+  return `\n${body}${tail}`;
+}
+
 // ---------------------------------------------------------------- extension
 
 export default function toolUi(pi: ExtensionAPI) {
@@ -69,9 +86,9 @@ export default function toolUi(pi: ExtensionAPI) {
       metrics: (result, ctx, st) => {
         const out = finalize(outputText(result));
         const parts: (string | undefined)[] = [];
-        if (ctx.args?.timeout) parts.push(st.meta(`■ ${ctx.args.timeout}s`));
+        if (ctx.args?.timeout) parts.push(st.meta(`⧗ ${ctx.args.timeout}s`));
         const words = countWords(out);
-        if (words) parts.push(st.meta(`⚙ ~${words} words`));
+        if (words) parts.push(st.meta(`≡ ~${words} words`));
         return parts;
       },
     },
@@ -107,6 +124,10 @@ export default function toolUi(pi: ExtensionAPI) {
       metrics: (result, _ctx, st) => {
         const { add, del } = editStats(result);
         return add || del ? [`${st.added(`+${add}`)} ${st.removed(`-${del}`)}`] : [];
+      },
+      expanded: (result, _out, st, live) => {
+        const diff = result?.details?.diff;
+        return typeof diff === "string" && diff.trim() ? renderEditDiff(st, live, diff) : undefined;
       },
     },
     grep: {
