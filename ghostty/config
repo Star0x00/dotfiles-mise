@@ -1,15 +1,16 @@
 # Ghostty configuration
 # Managed via dotfiles (symlinked by home-manager)
 
-command = zsh
+command = bash
 shell-integration-features = no-cursor, ssh-terminfo
 
 theme = Catppuccin Mocha
 
 # Font (monospace + CJK fallback), sized up for readability
-# NOTE: ghostty's font-family does NOT split on comma — one family per key.
-# CJK must go in font-family-fallback, not appended after the comma.
+# NOTE: ghostty's font-family does NOT split on comma — repeat the key to
+# build the fallback chain (there is no font-family-fallback key).
 font-family = Iosevka Star Term
+font-family = MiSans
 font-size = 16
 
 # Appearance

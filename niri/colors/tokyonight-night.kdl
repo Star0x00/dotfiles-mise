@@ -17,8 +17,10 @@ layout {
     }
 
     shadow {
-        // 深色主题下使用半透明黑色阴影
-        color "#00000070"
+        // 用比 Base 更深的暗色做阴影，保持蓝调
+        color "#16161e99"
+        // 非活动窗口更淡，靠浓淡区分焦点
+        inactive-color "#16161e55"
     }
 
     tab-indicator {
