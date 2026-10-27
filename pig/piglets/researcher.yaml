@@ -1,0 +1,11 @@
+name: researcher
+description: "Read-only research agent: search, read, and report. No edits, no bash."
+
+systemPrompt:
+  file: ./researcher/AGENTS.md
+
+tools: [read, grep, find, ls]
+
+discovery:
+  extensions: []
+  skills: []
