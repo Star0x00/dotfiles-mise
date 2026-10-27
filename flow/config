@@ -6,20 +6,16 @@
 # configuration option at the end of this file. include_files are never
 # modified by flow.
 
-frame_rate 170
-# default value: 60
+# frame_rate 60
 # value type: positive integer
 
-theme "mocha"
-# default value: "ayu-mirage-bordered"
+# theme "ayu-mirage-bordered"
 # value type: quoted string
 
-light_theme "mocha"
-# default value: "ayu-light"
+# light_theme "ayu-light"
 # value type: quoted string
 
-input_mode "vim"
-# default value: "flow"
+# input_mode "flow"
 # value type: quoted string
 
 # gutter_line_numbers_mode null
@@ -46,12 +42,10 @@ input_mode "vim"
 # enable_terminal_cursor true
 # value type: true or false
 
-enable_terminal_color_scheme false
-# default value: true
+# enable_terminal_color_scheme true
 # value type: true or false
 
-terminal_TERM "xterm-ghostty"
-# default value: "xterm-256color"
+# terminal_TERM "xterm-256color"
 # value type: quoted string
 
 # terminal_scrollback_mb 8
@@ -108,8 +102,7 @@ terminal_TERM "xterm-ghostty"
 # highlight_columns_enabled false
 # value type: true or false
 
-whitespace_mode "indent"
-# default value: "indent"
+# whitespace_mode "indent"
 # value type: one of "indent", "leading", "eol", "tabs", "external", "visible", "full", "none"
 
 # inline_diagnostics true
@@ -118,8 +111,7 @@ whitespace_mode "indent"
 # inline_diagnostics_alignment "right"
 # value type: one of "left", "right"
 
-inline_vcs_blame true
-# default value: false
+# inline_vcs_blame false
 # value type: true or false
 
 # inline_vcs_blame_alignment "right"
@@ -251,8 +243,7 @@ inline_vcs_blame true
 # start_debugger_on_crash false
 # value type: true or false
 
-completion_trigger "every_keystroke"
-# default value: "automatic"
+# completion_trigger "automatic"
 # value type: one of "manual", "automatic", "every_keystroke"
 
 # completion_style "dropdown"
@@ -267,21 +258,19 @@ completion_trigger "every_keystroke"
 # widget_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
-palette_style "compact"
-# default value: "bars_top_bottom"
+# palette_style "bars_top_bottom"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
 # dropdown_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
-# menu_style "bar_left_spacious"
+# menu_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
 # panel_style "compact"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
-home_style "compact"
-# default value: "bars_top_bottom"
+# home_style "bars_top_bottom"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
 # pane_left_style "bar_right"
@@ -293,19 +282,16 @@ home_style "compact"
 # pane_style "panel"
 # value type: one of "panel", "editor"
 
-hint_window_style "bar_left"
-# default value: "thick_boxed"
+# hint_window_style "thick_boxed"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
-info_box_style "rounded_boxed"
-# default value: "bar_left_spacious"
+# info_box_style "bar_left_spacious"
 # value type: one of "bars_top_bottom", "bars_left_right", "bar_left", "bar_right", "thick_boxed", "extra_thick_boxed", "dotted_boxed", "rounded_boxed", "double_boxed", "single_double_top_bottom_boxed", "single_double_left_right_boxed", "boxed", "bar_left_spacious", "bar_right_spacious", "spacious", "compact"
 
 # info_box_width_limit 80
 # value type: positive integer
 
-palette_placement "center"
-# default value: "top_center"
+# palette_placement "top_center"
 # value type: one of "top_center", "top_left", "top_right", "center"
 
 # palette_opacity 0.75
@@ -362,5 +348,6 @@ palette_placement "center"
 # watch_non_indexed_projects false
 # value type: true or false
 
-# include_files ""
+include_files "/var/home/qwerhyy/.config/flow/include.conf"
 # value type: quoted string of : separated paths
+

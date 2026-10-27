@@ -9,8 +9,13 @@
 
 # fonts: nothing is managed here — the install-fonts task fetches every family
 # declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
-"~/.config/fish/config.fish" = "~/dotfiles/fish/config.fish"
-"~/.config/flow" = "~/dotfiles/flow"
+# flow: ~/.config/flow/config is flow-written and regenerated on every
+# interactive settings change, so it holds only defaults + include_files.
+# Real settings live in include.conf, which flow never modifies; it is symlinked
+# because include_files requires an absolute path (flow 0.7.2 panics on ~ or $HOME).
+# file_type/, keys/, themes/ are runtime dirs flow fills in itself.
+"~/.config/flow/config" = "~/dotfiles/flow/config"
+"~/.config/flow/include.conf" = { source = "~/dotfiles/flow/include.conf", mode = "symlink" }
 "~/.config/fontconfig/fonts.conf" = "~/dotfiles/fontconfig/fonts.conf"
 "~/.config/ghostty/config" = "~/dotfiles/ghostty/config"
 "~/.config/ghostty/gtk.css" = "~/dotfiles/ghostty/gtk.css"
@@ -22,19 +27,20 @@
 "~/.config/kitty/catppuccin_mocha.conf" = "~/dotfiles/kitty/catppuccin_mocha.conf"
 "~/.config/kitty/gruvbox_material_dark.conf" = "~/dotfiles/kitty/gruvbox_material_dark.conf"
 "~/.config/kitty/kanagawa_dragon.conf" = "~/dotfiles/kitty/kanagawa_dragon.conf"
+"~/.config/kitty/rose-pine-dawn.conf" = "~/dotfiles/kitty/rose-pine-dawn.conf"
 
 # kitty: theme + quake quick-access config (main file must be named kitty.conf, not config)
 "~/.config/kitty/kitty.conf" = "~/dotfiles/kitty/kitty.conf"
 "~/.config/kitty/tokyonight_night.conf" = "~/dotfiles/kitty/tokyonight_night.conf"
 "~/.config/mimeapps.list" = "~/dotfiles/mimeapps.list"
+# mineral: only the color theme is tracked; the rest of ~/.config/mineral
+# (tui-default.lua, daemon.lua, dbs) is generated/runtime and stays unmanaged.
+"~/.config/mineral/tui.lua" = "~/dotfiles/mineral/tui.lua"
 
 # ---- mise self-management ----
 # config.toml lives in the dotfiles repo; a symlink keeps the repo in sync automatically.
 "~/.config/mpv" = "~/dotfiles/mpv"
 "~/.config/niri" = "~/dotfiles/niri"
-
-# codesnap: theme = Catppuccin-Mocha, font = Iosevka Star (see dotfiles/codesnap/config.json)
-"~/.config/codesnap/config.json" = { source = "~/dotfiles/codesnap/config.json", mode = "symlink" }
 
 "~/.config/nushell/config.nu" = "~/dotfiles/nushell/config.nu"
 "~/.config/nushell/env.nu" = "~/dotfiles/nushell/env.nu"
@@ -76,4 +82,22 @@
 "~/.pi/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
 "~/.pi/agent/settings.json" = { source = "~/dotfiles/pi/agent/settings.json", mode = "symlink" }
 "~/.pi/agent/themes" = "~/dotfiles/pi/agent/themes"
+"~/.pi/agent/skills" = { source = "~/dotfiles/pi/agent/skills", mode = "symlink" }
 "~/.pi/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
+
+# pig (pi in go): only pig-specific files live in dotfiles/pig/; the agent
+# resources below are shared with pi on purpose (same files, two config roots).
+# settings.json is left out because pig rewrites it (packages, lastChangelogVersion).
+"~/.pig/agent/AGENTS.md" = { source = "~/dotfiles/pi/agent/AGENTS.md", mode = "symlink" }
+"~/.pig/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
+"~/.pig/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
+"~/.pig/agent/themes" = "~/dotfiles/pi/agent/themes"
+"~/.pig/agent/skills" = { source = "~/dotfiles/pi/agent/skills", mode = "symlink" }
+"~/.pig/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
+# piglets: authored in the repo, symlinked file by file so `pig --piglet <name>`
+# reads them live while `~/.pig/piglets` stays a real directory (pig writes
+# origins, records and pulled piglets there)
+"~/.pig/piglets/researcher.yaml" = { source = "~/dotfiles/pig/piglets/researcher.yaml", mode = "symlink" }
+"~/.pig/piglets/researcher/AGENTS.md" = { source = "~/dotfiles/pig/piglets/researcher/AGENTS.md", mode = "symlink" }
+"~/.pig/piglets/review.yaml" = { source = "~/dotfiles/pig/piglets/review.yaml", mode = "symlink" }
+"~/.pig/piglets/review/AGENTS.md" = { source = "~/dotfiles/pig/piglets/review/AGENTS.md", mode = "symlink" }

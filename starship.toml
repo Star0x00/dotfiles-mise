@@ -20,8 +20,7 @@ error_symbol = "[●](bold fg:red)[ ](bold fg:red)"
 vimcmd_symbol = "[●](bold fg:green)[▷ ](bold fg:green)"
 
 [git_branch]
-format = "\\[[$symbol$branch](rosewater)\\] "
-symbol = " "
+format = "\\[[$branch](rosewater)\\] "
 ignore_branches = ["HEAD"]
 
 [git_status]
