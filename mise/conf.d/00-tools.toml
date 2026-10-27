@@ -17,9 +17,6 @@ fastfetch = "latest"
 btop = "latest"
 starship = "latest"
 "github:vercel-labs/fx" = "0.0.13" # fx: gitignore'd/unix-like coding agent
-
-# ---- runtimes / toolchains ----
-nodejs = "latest"
 zig = "latest"
 uv = "latest"
 typst = "latest"
@@ -44,3 +41,10 @@ delta = "latest"
 glow = "latest"
 "github:Star0x00/wwm" = "latest"
 rust = "latest"
+
+# ---- runtimes / toolchains ----
+node = "latest"
+
+[tools."github:HalFrgrd/flyline"]
+version = "latest"
+rename_exe = "libflyline.so"

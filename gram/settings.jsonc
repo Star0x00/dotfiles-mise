@@ -53,8 +53,8 @@
     },
     "clangd": {
       "binary": {
-        "enable_auto_updates": true,
-        "ignore_system_version": true,
+        "enable_auto_updates": false,
+        "ignore_system_version": false,
         "allow_binary_download": true
       },
       "enable_lsp_tasks": true
@@ -128,7 +128,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Gram (Default)",
-    "dark": "Catppuccin Frappé"
+    "dark": "Catppuccin Mocha"
   },
   "vim_mode": true,
   "ui_font_size": 20.0,

@@ -93,6 +93,9 @@ if command -v eza >/dev/null 2>&1; then
   alias tree='eza --tree --icons --group-directories-first'
 fi
 
+# ---- ghostty ssh ----
+alias ssh='ghostty +ssh --'
+
 # ---- Tools ----
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
