@@ -15,3 +15,6 @@
 "~/.config/mise/conf.d/05-settings.toml" = { source = "~/dotfiles/mise/conf.d/05-settings.toml", mode = "symlink" }
 "~/.config/mise/conf.d/10-dotfiles.toml" = { source = "~/dotfiles/mise/conf.d/10-dotfiles.toml", mode = "symlink" }
 "~/.config/mise/conf.d/20-tasks.toml" = { source = "~/dotfiles/mise/conf.d/20-tasks.toml", mode = "symlink" }
+
+[tools]
+television = "latest"

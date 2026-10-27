@@ -36,3 +36,8 @@ dest  = "SymbolsNerdFont"
 [fonts.LXGW]
 # A bare ttf release, not an archive: `files` fetches it directly.
 files = ["https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.522/LXGWWenKaiMonoGBScreen.ttf"]
+
+[fonts.JetBrainsMono]
+# Official release zip; the ttf/ subdir holds the four static weights + italics.
+url   = "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+globs = ["fonts/ttf/*.ttf"]

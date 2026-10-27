@@ -35,6 +35,9 @@ layout {
       top 5
       bottom 5
     }
+    focus-ring {
+        width 2
+    }
     border {
         width 0
     }

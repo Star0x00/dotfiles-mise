@@ -1,7 +1,7 @@
 # Ghostty configuration
 # Managed via dotfiles (symlinked by home-manager)
 
-command = nu
+command = zsh
 shell-integration-features = no-cursor, ssh-terminfo
 
 theme = Catppuccin Mocha

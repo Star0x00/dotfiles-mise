@@ -35,7 +35,7 @@ honor_restored_maximize = false
 [environment]
 QT_QPA_PLATFORM = "wayland"
 QT_QPA_PLATFORMTHEME = "gtk3"
-EDITOR = "hx"
+EDITOR = "flow"
 XMODIFIERS = "@im=fcitx"
 QT_IM_MODULES = "wayland;fcitx"
 INPUT_METHOD = "fcitx"

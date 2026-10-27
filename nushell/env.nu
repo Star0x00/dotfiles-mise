@@ -1,11 +1,11 @@
-$env.config.buffer_editor = "hx"
+$env.config.buffer_editor = "flow"
 $env.config.show_banner = false
 
 $env.LANG = "en_US.UTF-8"
 
 # Shell-relevant env only.
 # Compositor-agnostic GUI vars (TERMINFO_DIRS, XCURSOR_*, BROWSER, EDITOR,
-# MOZ_ENABLE_WAYLAND, ...) are injected by ~/.config/environment.d/10-mise.conf
+# MOZ_ENABLE_WAYLAND, ...) come from the niri session
 # and inherited from the systemd user session. Wayland/compositor-specific vars
 # (QT_QPA_PLATFORM, GDK_BACKEND, WLR_RENDERER, ...) are set by the compositor's
 # own config, not globally — they break Plasma's KWin startup.
@@ -24,7 +24,7 @@ load-env {
     | append "/var/home/qwerhyy/.pixi/bin"
     | str join ":"
   )
-  EDITOR: "hx"
+  EDITOR: "flow"
   HOME: "/var/home/qwerhyy"
   XDG_CACHE_HOME: "/var/home/qwerhyy/.cache"
 

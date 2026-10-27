@@ -11,10 +11,10 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
     open-floating false
-    // background-effect {
-    //     blur true
-    //     xray false
-    // }
+    background-effect {
+        blur true
+        xray true
+    }
     default-window-height { fixed 1388; }
     default-column-width { fixed 2540; }
 }

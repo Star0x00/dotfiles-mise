@@ -1,2 +1,0 @@
-FROM localhost/pi-toolbox:slim
-RUN apk add --no-cache nodejs npm && npm install -g @mermaid-js/mermaid-cli 2>/dev/null || true

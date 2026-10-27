@@ -1,0 +1,5 @@
+patch:
+  # 上下方向键翻页
+  key_binder/bindings/+:
+    - { when: has_menu, accept: Up, send: Page_Up }
+    - { when: has_menu, accept: Down, send: Page_Down }

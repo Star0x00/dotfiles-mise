@@ -1,2 +1,0 @@
-FROM localhost/pi-toolbox:slim
-RUN apk add --no-cache python3 py3-pip python3-dev py3-virtualenv build-base && pip install --no-cache-dir --break-system-packages uv ruff 2>/dev/null || true

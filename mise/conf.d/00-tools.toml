@@ -1,5 +1,6 @@
 [tools]
 pi = "latest"
+"github:neovim/neovim" = "latest"
 
 # ---- CLI / editors ----
 jq = "latest"
@@ -15,12 +16,7 @@ pandoc = "latest"
 fastfetch = "latest"
 btop = "latest"
 starship = "latest"
-helix = { backend = "aqua", version = "latest" } # helix-editor/helix
-# flyline: bash 增强 shared library (libflyline.so)，非可执行二进制，用 bash enable -f 加载
-"github:HalFrgrd/flyline" = "latest"
 "github:vercel-labs/fx" = "0.0.13" # fx: gitignore'd/unix-like coding agent
-# codesnap: pure-rust code-snapshot renderer, driven by the `codesnap` Gram task.
-"github:codesnap-rs/codesnap" = "0.14.0"
 
 # ---- runtimes / toolchains ----
 nodejs = "latest"
@@ -34,15 +30,12 @@ zls = "latest"
 lua-language-server = "latest"
 tinymist = "latest"
 stylua = "latest"
-"pipx:ww-manager" = "latest"
 
 npm = "latest"
 tealdeer = "latest"
 eza = "latest"
 lazygit = "latest"
-neovim = "latest"
 pnpm = "latest"
-superfile = "latest"
 jujutsu = "latest"
 "npm:@deepseek-ai/dsh" = "0.1.7-rc.2"
 delta = "latest"
@@ -51,4 +44,3 @@ delta = "latest"
 glow = "latest"
 "github:Star0x00/wwm" = "latest"
 rust = "latest"
-
