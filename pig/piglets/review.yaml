@@ -1,0 +1,11 @@
+name: review
+description: "Read-only code review agent: checks logic and correctness, reports issues. No edits, no bash."
+
+systemPrompt:
+  file: ./review/AGENTS.md
+
+tools: [read, grep, find, ls]
+
+discovery:
+  extensions: []
+  skills: []

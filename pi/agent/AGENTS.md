@@ -28,3 +28,4 @@
 
 - Long or multi-step bash: run through codemode (script calling tools.bash) instead of a giant shell one-liner or pipeline. Use codemode to chain dependent commands, batch independent ones, and filter large output.
 - Don't hand-build long bash commands; they break easily (quoting, escaping, ordering). Split the work into separate tool calls or a codemode script.
+- Jobs expected to run >30s (builds, test suites, full-repo scans, servers): run detached with zmx and read results from a file — `zmx run <name> -d bash /tmp/job.sh` (script tees to `/tmp/job.log`), exit code via `zmx wait <name>`. See skill `zmx-jobs`. Short queries stay in codemode `Promise.allSettled`; do not zmx-parallelize them.
