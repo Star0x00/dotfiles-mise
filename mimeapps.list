@@ -1,8 +1,8 @@
 [Added Associations]
 
 [Default Applications]
-text/html=firefox-bin.desktop
-x-scheme-handler/http=firefox-bin.desktop
-x-scheme-handler/https=firefox-bin.desktop
+text/html=helium.desktop
+x-scheme-handler/http=helium.desktop
+x-scheme-handler/https=helium.desktop
 
 [Removed Associations]
