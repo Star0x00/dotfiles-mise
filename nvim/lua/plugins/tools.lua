@@ -1,9 +1,21 @@
--- TODO: config
-require('mini.pick').setup()
-require('mini.extra').setup()
+-- snacks.nvim — pickers, indent guides, notifier, input/terminal.
+-- `explorer` is intentionally NOT enabled: the file explorer stays mini.files.
+require('snacks').setup {
+  picker = { enabled = true },
+  indent = { enabled = true },
+  notifier = { enabled = true, timeout = 3000 },
+  input = { enabled = true },
+  terminal = { enabled = true },
+  bigfile = { enabled = true },
+  quickfile = { enabled = true },
+  bufdelete = { enabled = true },
+}
+
+-- mini.files: the file explorer
 require('mini.files').setup()
 require('mini.jump').setup()
 require('mini.jump2d').setup()
+
 -- mini.diff
 require('mini.diff').setup {
   view = {
@@ -15,15 +27,25 @@ vim.keymap.set('n', '<Leader>go', function()
   MiniDiff.toggle_overlay()
 end, { desc = 'Diff overlay' })
 
--- neogit
-require('neogit').setup()
-vim.keymap.set('n', '<Leader>gg', function()
-  require('neogit').open()
-end, { desc = 'Neogit' })
-
--- codediff.nvim
+-- codediff.nvim — also the backend for jj.nvim's diff module
 require('codediff').setup()
 vim.keymap.set('n', '<Leader>gv', '<Cmd>CodeDiff<CR>', { desc = 'CodeDiff' })
+
+-- jj.nvim — jj subcommands from Neovim (`:J log`, `:J desc`, `:J st`, ...).
+-- Picker backend: snacks. Log/status buffer keymaps keep their upstream
+-- defaults; override them under `cmd.keymaps.log` / `cmd.keymaps.status`
+-- if needed (nil disables one).
+require('jj').setup {
+  picker = { snacks = {} },
+  diff = { backend = 'codediff' },
+  cmd = {
+    -- close the log buffer after <CR> checks out a revision
+    close_on_edit = true,
+    describe = {
+      editor = { type = 'buffer', keymaps = { close = { '<C-c>', 'q' } } },
+    },
+  },
+}
 
 -- mini.clue
 local miniclue = require 'mini.clue'
@@ -72,6 +94,8 @@ miniclue.setup {
 
     -- <Leader>g group
     { mode = 'n', keys = '<Leader>g', desc = '+goto/git' },
+    -- <Leader>v group
+    { mode = 'n', keys = '<Leader>v', desc = '+jj' },
   },
 }
 
