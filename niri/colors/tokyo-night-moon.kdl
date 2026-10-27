@@ -17,8 +17,10 @@ layout {
     }
 
     shadow {
-        // 使用黑色带透明度，或者用 Tokyo Night 的最深色 #1b1d2b70
-        color "#00000070"
+        // 用 Moon 的最深色做阴影，避免纯黑在蓝紫背景上发灰
+        color "#1b1d2b99"
+        // 非活动窗口更淡，靠浓淡区分焦点
+        inactive-color "#1b1d2b55"
     }
 
     tab-indicator {

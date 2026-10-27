@@ -11,7 +11,7 @@ animations {
         spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
     }
     window-open {
-        duration-ms 1000
+        duration-ms 400
         curve "ease-out-expo"
         custom-shader r"
             float ease_curve(float x) {
@@ -64,7 +64,7 @@ animations {
     }
 
     window-close {
-        duration-ms 1400
+        duration-ms 400
         curve "ease-out-expo"
         custom-shader r"
             // ease-in-out cubic curve helper

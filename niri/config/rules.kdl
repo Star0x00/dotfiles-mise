@@ -8,15 +8,17 @@ workspace "Game"
 // Global Aesthetics (Apply to ALL windows)
 // -----------------------------------------------------------------------------
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 0
     clip-to-geometry true
     open-floating false
     background-effect {
         blur true
         xray true
     }
-    default-window-height { fixed 1388; }
-    default-column-width { fixed 2540; }
+    // 用比例而不是固定像素：固定 1388 会在底部留下 19px 余白，
+    // 而左右只有 8px，比例 1.0 让窗口按可用高度填满，四边间距一致
+    default-window-height { proportion 1.0; }
+    default-column-width { proportion 1.0; }
 }
 
 blur {
@@ -41,7 +43,7 @@ layer-rule {
 layer-rule {
   match namespace="noctalia-bar-default$"
   background-effect {
-    blur true
+    // blur true
   }
 }
 
@@ -169,7 +171,7 @@ window-rule {
     // background-opacity < 1 the GTK window has no solid background, so the
     // frame where a new tab reparents the widget renders fully transparent
     // (the "flash"). An opaque window + compositor opacity/blur avoids it.
-    opacity 0.78
+    // opacity 0.78
     background-effect {
         blur true
         // Blur the wallpaper only (skip windows behind) so a terminal over a

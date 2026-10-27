@@ -9,7 +9,8 @@
 layout {
     // 只有一个窗口时自动居中显示
     always-center-single-column
-    gaps 5
+    // 无缝边框风格：窗口之间只靠阴影和间距区分，间距 4 配合下面更紧的阴影
+    gaps 4
     center-focused-column "never"
     default-column-display "tabbed"
     preset-column-widths {
@@ -30,16 +31,27 @@ layout {
         proportion 1.0
     }
     struts {
-      left 5
-      right 5
-      top 5
-      bottom 5
+      left 4
+      right 4
+      top 4
+      bottom 4
     }
+    // 无边框、无圆角、无聚焦环：只保留阴影做层次
     focus-ring {
-        width 2
+        off
     }
     border {
-        width 0
+        off
+    }
+    shadow {
+        on
+        // 阴影只画在窗口周围（规则里 geometry-corner-radius 为 0，直角不影响观感）
+        // 缝隙只有 4px，模糊半径压到 8 才不会整段被相邻窗口盖掉
+        softness 8
+        spread 0
+        // 竖向偏移必须很小心：每多 1px，上下缝隙看起来就宽一截
+        offset x=0 y=1
+        // 颜色由主题文件 niri/colors/*.kdl 提供
     }
 
     tab-indicator {
