@@ -4,7 +4,7 @@
 
 [core]
 	pager = delta
-	editor = hx
+	editor = flow
 
 [interactive]
 	diffFilter = delta --color-only --side-by-side

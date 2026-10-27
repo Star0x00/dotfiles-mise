@@ -1,9 +1,0 @@
-# Sway autostart
-# Ported from niri's execs.kdl and hyprland's autostart.lua
-
-exec_always noctalia
-exec_always vicinae server
-exec_always fcitx5
-exec_always wl-paste --type image --watch cliphist store
-exec_always wl-paste --type text --watch cliphist store
-exec_always /usr/libexec/kf6/polkit-kde-authentication-agent-1

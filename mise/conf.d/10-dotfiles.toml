@@ -4,8 +4,8 @@
 
 # ---- home root files (native dotfiles) ----
 "~/.bashrc" = "~/dotfiles/.bashrc"
+"~/.zshrc" = "~/dotfiles/.zshrc"
 "~/.config/bat" = "~/dotfiles/bat"
-"~/.config/environment.d/10-mise.conf" = "~/dotfiles/environment.d/10-mise.conf"
 
 # fonts: nothing is managed here — the install-fonts task fetches every family
 # declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
@@ -15,6 +15,7 @@
 "~/.config/ghostty/config" = "~/dotfiles/ghostty/config"
 "~/.config/ghostty/gtk.css" = "~/dotfiles/ghostty/gtk.css"
 "~/.config/go-musicfox" = "~/dotfiles/go-musicfox"
+"~/.config/gram" = { source = "~/dotfiles/gram", mode = "symlink" }
 "~/.config/helix" = "~/dotfiles/helix"
 "~/.config/hypr" = "~/dotfiles/hypr"
 "~/.config/jj/config.toml" = "~/dotfiles/jj/config.toml"
@@ -37,11 +38,6 @@
 
 "~/.config/nushell/config.nu" = "~/dotfiles/nushell/config.nu"
 "~/.config/nushell/env.nu" = "~/dotfiles/nushell/env.nu"
-# NOTE: keep every entry as a FLAT key under [dotfiles] — short syntax
-# "path" = "source" (default mode) or inline table "path" = { source=..., mode=... }.
-# Do NOT open [dotfiles."path"] sub-tables: per TOML's current-table rule that
-# swallows every following flat key into the sub-table, silently unmanaging
-# everything after it (this bit us once).
 
 # ---- app configs (dotfiles repo, whole dir or file) ----
 # nvim: symlink on purpose so lazy.nvim's nvim-pack-lock.json writes through to the repo
@@ -49,16 +45,14 @@
 
 # fcitx5/rime: only keep 全拼 (rime_mint) in the schema list
 "~/.local/share/fcitx5/rime/default.custom.yaml" = "~/dotfiles/fcitx5/rime/default.custom.yaml"
+"~/.local/share/fcitx5/rime/rime_mint.custom.yaml" = "~/dotfiles/fcitx5/rime/rime_mint.custom.yaml"
 
 "~/.config/starship.toml" = "~/dotfiles/starship.toml"
-"~/.config/superfile" = "~/dotfiles/superfile"
-"~/.config/sway/color_01.icc" = "~/dotfiles/sway/color_01.icc"
-"~/.config/sway/colors" = "~/dotfiles/sway/colors" # stylix snapshot
-
-"~/.config/sway/config" = "~/dotfiles/sway/config"
-"~/.config/sway/config.d" = "~/dotfiles/sway/config.d"
+"~/.var/app/io.typora.Typora/config/Typora/themes/catppuccin-mocha.css" = "~/dotfiles/typora/catppuccin-mocha.css"
+"~/.var/app/io.typora.Typora/config/Typora/themes/rose-pine-dawn.css" = "~/dotfiles/typora/rose-pine-dawn.css"
 # niri session PATH: mise shims available to niri and everything it spawns.
 "~/.config/systemd/user/niri.service.d/10-mise-path.conf" = { source = "~/dotfiles/systemd/user/niri.service.d/10-mise-path.conf", mode = "symlink" }
+"~/.config/systemd/user/niri.service.d/20-session-env.conf" = { source = "~/dotfiles/systemd/user/niri.service.d/20-session-env.conf", mode = "symlink" }
 
 # ---- systemd user units ----
 "~/.config/systemd/user/ssh-add-pass.service" = { source = "~/dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
@@ -79,15 +73,7 @@
 # pi agent: global instructions (symlink so edits in ~/.pi write through to the repo)
 "~/.pi/agent/AGENTS.md" = { source = "~/dotfiles/pi/agent/AGENTS.md", mode = "symlink" }
 "~/.pi/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
-
-# pi agent: global extensions (~/.pi/agent/extensions), one dir per extension
-"~/.pi/agent/extensions/toolbox" = "~/dotfiles/pi/agent/extensions/toolbox"
 "~/.pi/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
-
-# pi agent: settings + mcp servers (symlink so in-session /settings and /mcp edits write through)
 "~/.pi/agent/settings.json" = { source = "~/dotfiles/pi/agent/settings.json", mode = "symlink" }
-
-# pi agent: themes + tool-ui palette
 "~/.pi/agent/themes" = "~/dotfiles/pi/agent/themes"
 "~/.pi/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
-

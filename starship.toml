@@ -1,163 +1,125 @@
+# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[bun]
-format = "via [$symbol]($style)"
+palette = "catppuccin_mocha"
 
-[buf]
-format = "with [$symbol]($style)"
+format = """
+$python$directory $git_branch$git_status$git_state$git_commit${custom.jj}$character
+"""
 
-[c]
-format = "via [$symbol($name)]($style)"
+right_format = """
+${env_var.ZMX_SESSION}$cmd_duration
+"""
 
-[cmake]
-format = "via [$symbol]($style)"
+add_newline = false
 
-[cobol]
-format = "via [$symbol]($style)"
+[character]
+format = "$symbol"
+success_symbol = "[●](bold fg:blue)[ ](bold fg:blue)"
+error_symbol = "[●](bold fg:red)[ ](bold fg:red)"
+vimcmd_symbol = "[●](bold fg:green)[▷ ](bold fg:green)"
 
-[cpp]
-format = "via [$symbol($name)]($style)"
+[git_branch]
+format = "\\[[$symbol$branch](rosewater)\\] "
+symbol = " "
+ignore_branches = ["HEAD"]
 
-[crystal]
-format = "via [$symbol]($style)"
+[git_status]
+format = "(\\[$all_status$ahead_behind\\] )"
+conflicted = "="
+ahead = "[⇡${count} ](green)"
+behind = "⇣${count} "
+diverged = "[⇕⇡${ahead_count} ⇣${behind_count} ](teal)"
+up_to_date = "[󰄸 ](bold green)"
+untracked = "[?${count} ](maroon)"
+stashed = "[󰏖  ](bold green)"
+modified = "[~${count} ](yellow)"
+staged = "[+${count} ](green)"
+renamed = "[»${count} ](peach)"
+# deleted = "[ ${count} ](bold red)"
+deleted = "[-${count} ](bold red)"
 
-[daml]
-format = "via [$symbol]($style)"
+[git_commit]
+# in a jj repo HEAD is detached, so the hash duplicates the jj change id
+disabled = true
+format = "[\\($hash\\)]($style)"
+style = "green"
 
-[dart]
-format = "via [$symbol]($style)"
-
-[deno]
-format = "via [$symbol]($style)"
-
-[dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
-
-[elixir]
-format = 'via [$symbol]($style)'
-
-[elm]
-format = 'via [$symbol]($style)'
-
-[erlang]
-format = 'via [$symbol]($style)'
-
-[fennel]
-format = 'via [$symbol]($style)'
-
-[fortran]
-format = 'via [$symbol]($style)'
-
-[gleam]
-format = 'via [$symbol]($style)'
-
-[golang]
-format = 'via [$symbol]($style)'
-
-[gradle]
-format = 'via [$symbol]($style)'
-
-[haskell]
-format = 'via [$symbol]($style)'
-
-[haxe]
-format = 'via [$symbol]($style)'
-
-[helm]
-format = 'via [$symbol]($style)'
-
-[java]
-format = 'via [$symbol]($style)'
-
-[julia]
-format = 'via [$symbol]($style)'
-
-[kotlin]
-format = 'via [$symbol]($style)'
-
-[lua]
-format = 'via [$symbol]($style)'
-
-[maven]
-format = 'via [$symbol]($style)'
-
-[meson]
-format = 'via [$symbol]($style)'
-
-[mojo]
-format = 'with [$symbol]($style)'
-
-[nim]
-format = 'via [$symbol]($style)'
-
-[nodejs]
-format = 'via [$symbol]($style)'
-
-[ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
-
-[odin]
-format = 'via [$symbol]($style)'
-
-[opa]
-format = 'via [$symbol]($style)'
-
-[perl]
-format = 'via [$symbol]($style)'
-
-[php]
-format = 'via [$symbol]($style)'
-
-[pixi]
-format = 'via [$symbol($environment )]($style)'
-
-[pulumi]
-format = 'via [$symbol$stack]($style)'
-
-[purescript]
-format = 'via [$symbol]($style)'
+[git_state]
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+style = "yellow"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [python]
-format = 'via [$symbol]($style)'
+symbol = " "
+format = '(\($virtualenv\) )($style)'
 
-[quarto]
-format = 'via [$symbol]($style)'
+[cmd_duration]
+min_time = 10
+format = '󰥔 [$duration](bold purple)'
+show_milliseconds = true
 
-[raku]
-format = 'via [$symbol]($style)'
+[directory]
+home_symbol = "~"
+read_only = " 󰌾 "
+style = "fg:yellow "
+# truncation_length = 6
+# truncation_symbol = " ••/"
+fish_style_pwd_dir_length = 1
+format = '[󰉋 $path]($style)'
 
-[red]
-format = 'via [$symbol]($style)'
+[directory.substitutions]
+"Desktop" = " 󰍹 "
+"Documents" = " 󰈙 "
+"Downloads" = " 󰉍 "
+"Music" = " 󰎈 "
+"Pictures" = " 󰉏 "
+"Videos" = " 󰎁 "
+"GitHub" = " 󰊤 "
 
-[rlang]
-format = 'via [$symbol]($style)'
+# zmx session name (right side); empty outside a zmx session (see ~/.zshrc)
+[env_var.ZMX_SESSION]
+format = "[$env_value ](bold peach)"
+description = "zmx session name"
 
-[ruby]
-format = 'via [$symbol]($style)'
+# jujutsu: no built-in starship module, so shell out to jj (≈8ms, cached below)
+[custom.jj]
+when = "jj root --ignore-working-copy"
+command = '''jj log -r @ --no-graph -T 'change_id.shortest(4) ++ if(bookmarks, " " ++ bookmarks) ++ if(empty, "", " ±") ++ if(conflict, " ✘", "")' 2>/dev/null'''
+symbol = ""
+style = "bold teal"
+format = "\\[[$output](teal)\\] "
 
-[rust]
-format = 'via [$symbol]($style)'
-
-[scala]
-format = 'via [$symbol]($style)'
-
-[solidity]
-format = 'via [$symbol]($style)'
-
-[swift]
-format = 'via [$symbol]($style)'
-
-[typst]
-format = 'via [$symbol]($style)'
-
-[vagrant]
-format = 'via [$symbol]($style)'
-
-[vlang]
-format = 'via [$symbol]($style)'
-
-[xmake]
-format = "via [$symbol]($style)"
-
-[zig]
-format = 'via [$symbol]($style)'
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

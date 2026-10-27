@@ -1,8 +1,0 @@
-# Sway colorscheme — Catppuccin Mocha
-# class                 border      background  text        indicator   child_border
-client.focused          #89b4fa #89b4fa #1e1e2e #89b4fa #89b4fa
-client.focused_inactive #313244 #313244 #cdd6f4 #313244 #313244
-client.unfocused        #313244 #1e1e2e #cdd6f4 #313244 #1e1e2e
-client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8 #f38ba8
-client.placeholder      #1e1e2e #1e1e2e #cdd6f4 #1e1e2e #1e1e2e
-client.background       #1e1e2e

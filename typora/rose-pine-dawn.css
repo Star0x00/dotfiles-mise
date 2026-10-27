@@ -1,0 +1,242 @@
+/*
+ * Rosé Pine Dawn for Typora
+ *
+ * Light counterpart of catppuccin-mocha.css: loads Typora's own github theme for
+ * layout/behaviour, then repaints it with the Rosé Pine Dawn palette (same one
+ * as niri/colors/rose-pine-dawn.kdl). Fonts follow fontconfig via the generic
+ * `sans-serif` / `monospace` families.
+ */
+
+@import "github.css";
+
+:root {
+  --rp-base: #faf4ed;
+  --rp-surface: #fffaf3;
+  --rp-overlay: #f2e9e1;
+  --rp-muted: #9893a5;
+  --rp-subtle: #797593;
+  --rp-text: #575279;
+  --rp-love: #b4637a;
+  --rp-gold: #ea9d34;
+  --rp-rose: #d7827e;
+  --rp-pine: #286983;
+  --rp-foam: #56949f;
+  --rp-iris: #907aa9;
+  --rp-highlight-low: #f4ede8;
+  --rp-highlight-med: #dfdad9;
+
+  --bg-color: var(--rp-base);
+  --side-bar-bg-color: var(--rp-surface);
+  --text-color: var(--rp-text);
+
+  --select-text-bg-color: var(--rp-highlight-med);
+  --search-select-bg-color: var(--rp-gold);
+
+  --control-text-color: var(--rp-subtle);
+  --control-text-hover-color: var(--rp-text);
+  --window-border: 1px solid var(--rp-overlay);
+
+  --active-file-bg-color: var(--rp-overlay);
+  --active-file-text-color: var(--rp-text);
+  --active-file-border-color: var(--rp-iris);
+  --item-hover-bg-color: var(--rp-highlight-low);
+  --item-hover-text-color: var(--rp-text);
+  --primary-color: var(--rp-iris);
+  --rawblock-edit-panel-bd: var(--rp-overlay);
+}
+
+html,
+body {
+  background: var(--bg-color);
+  color: var(--rp-text);
+  font-family: sans-serif;
+}
+
+#write {
+  font-family: sans-serif;
+  color: var(--rp-text);
+  caret-color: var(--rp-iris);
+}
+
+#write > h1,
+#write > h2,
+#write > h3,
+#write > h4,
+#write > h5,
+#write > h6 {
+  color: var(--rp-iris);
+  font-family: sans-serif;
+}
+
+#write h1 {
+  border-bottom-color: var(--rp-overlay);
+}
+
+#write a {
+  color: var(--rp-pine);
+}
+
+#write strong {
+  color: var(--rp-rose);
+}
+
+#write em {
+  color: var(--rp-gold);
+}
+
+#write del {
+  color: var(--rp-muted);
+}
+
+#write blockquote {
+  border-left: 3px solid var(--rp-iris);
+  background: var(--rp-highlight-low);
+  color: var(--rp-subtle);
+}
+
+#write hr {
+  border-top: 1px solid var(--rp-overlay);
+}
+
+#write table th,
+#write table td {
+  border-color: var(--rp-overlay);
+}
+
+#write table th {
+  background: var(--rp-overlay);
+  color: var(--rp-text);
+}
+
+#write table tr:nth-child(2n) {
+  background: var(--rp-highlight-low);
+}
+
+/* inline code */
+#write code,
+#write tt {
+  font-family: monospace;
+  background: var(--rp-overlay);
+  color: var(--rp-love);
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+}
+
+/* fenced code blocks */
+.md-fences,
+.md-fences:active,
+#write pre.md-fences {
+  font-family: monospace;
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-overlay);
+  border-radius: 4px;
+  color: var(--rp-text);
+}
+
+.md-fences .code-tooltip {
+  background: var(--rp-overlay);
+}
+
+/* CodeMirror syntax colours inside fences */
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  background: var(--rp-surface);
+  color: var(--rp-text);
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+  color: var(--rp-muted);
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid var(--rp-iris);
+}
+
+.cm-s-inner .cm-keyword {
+  color: var(--rp-iris);
+}
+
+.cm-s-inner .cm-atom,
+.cm-s-inner .cm-number,
+.cm-s-inner .cm-bool {
+  color: var(--rp-gold);
+}
+
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2 {
+  color: var(--rp-pine);
+}
+
+.cm-s-inner .cm-comment {
+  color: var(--rp-muted);
+  font-style: italic;
+}
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-variable-2,
+.cm-s-inner .cm-variable-3 {
+  color: var(--rp-text);
+}
+
+.cm-s-inner .cm-def,
+.cm-s-inner .cm-property {
+  color: var(--rp-rose);
+}
+
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-punctuation {
+  color: var(--rp-subtle);
+}
+
+.cm-s-inner .cm-tag {
+  color: var(--rp-love);
+}
+
+.cm-s-inner .cm-attribute {
+  color: var(--rp-gold);
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner .cm-quote {
+  color: var(--rp-iris);
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner .cm-url {
+  color: var(--rp-foam);
+}
+
+.cm-s-inner .cm-error {
+  color: var(--rp-love);
+}
+
+/* sidebar / chrome */
+#typora-sidebar,
+.sidebar-content {
+  background: var(--rp-surface);
+  color: var(--rp-subtle);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-list-item.file-list-item-active {
+  background: var(--rp-overlay);
+  color: var(--rp-text);
+}
+
+.megamenu-menu,
+#top-titlebar,
+#top-titlebar * {
+  background: var(--rp-surface);
+  color: var(--rp-text);
+}
+
+.megamenu-menu-panel {
+  background: var(--rp-base);
+}
+
+/* source mode */
+#typora-source {
+  font-family: monospace;
+  background: var(--bg-color);
+  color: var(--rp-text);
+}

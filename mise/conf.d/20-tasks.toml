@@ -41,6 +41,10 @@ run = [
   --filesystem=xdg-music \
   --filesystem=xdg-pictures \
   --filesystem=xdg-videos''',
+  # Per-app: Typora is Electron, its GTK menu bar ignores the host theme (the
+  # sandbox only ships light Default/Emacs) and renders as a white strip.
+  # Adwaita:dark is built into the Electron base app, so no extra mount needed.
+  'flatpak override --user --env=GTK_THEME=Adwaita:dark io.typora.Typora',
 ]
 
 [tasks.install-fonts]

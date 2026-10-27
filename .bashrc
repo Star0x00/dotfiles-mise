@@ -1,6 +1,6 @@
 # ~/.bashrc — bash (mise-managed via dotfiles repo)
 # Single source of environment for bash. GUI sessions get the same
-# variables from ~/.config/environment.d/10-mise.conf (keep both in sync).
+# variables from the niri session (keep both in sync).
 
 # ---- Environment (login + interactive + non-interactive login) ----
 # PATH
@@ -19,7 +19,7 @@ esac
 export PATH
 
 # Misc
-export EDITOR="hx"
+export EDITOR="flow"
 
 # ssh agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -43,25 +43,10 @@ if [[ ! -v BASH_COMPLETION_VERSINFO ]] && [ -f /usr/share/bash-completion/bash_c
   . /usr/share/bash-completion/bash_completion
 fi
 
-# User snippets
-if [ -d ~/.bashrc.d ]; then
-  for rc in ~/.bashrc.d/*; do
-    if [ -f "$rc" ]; then
-      . "$rc"
-    fi
-  done
-fi
-unset rc
-
 # mise (PATH lookup — no hardcoded store paths)
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate bash)"
   eval "$(mise completion bash)"
-fi
-
-# direnv
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook bash)"
 fi
 
 # starship prompt
@@ -75,11 +60,3 @@ if command -v bat >/dev/null 2>&1; then
     "$@" --help 2>&1 | bat --plain --language=help
 }
 fi
-
-# flyline — load the newest mise-managed lib; no hardcoded version so a
-# `mise install` upgrade picks up the latest file automatically
-_flyline_lib=$(ls -t "$HOME/.local/share/mise/installs/github-hal-frgrd-flyline"/*/libflyline.so.* 2>/dev/null | head -1)
-if [ -n "$_flyline_lib" ] && [ -f "$_flyline_lib" ]; then
-  enable flyline 2>/dev/null || enable -f "$_flyline_lib" flyline
-fi
-unset _flyline_lib

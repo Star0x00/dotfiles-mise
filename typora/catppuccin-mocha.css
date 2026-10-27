@@ -1,0 +1,251 @@
+/*
+ * Catppuccin Mocha for Typora
+ *
+ * Loads Typora's own night theme for layout/behaviour, then repaints everything
+ * with the Catppuccin Mocha palette (same hex values as kitty/ghostty and
+ * starship in this repo). Font families are left to fontconfig: the theme only
+ * asks for `sans-serif` / `monospace`, so dotfiles/fontconfig/fonts.conf decides.
+ */
+
+@import "night.css";
+
+:root {
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+  --ctp-surface0: #313244;
+  --ctp-surface1: #45475a;
+  --ctp-surface2: #585b70;
+  --ctp-overlay0: #6c7086;
+  --ctp-overlay1: #7f849c;
+  --ctp-subtext0: #a6adc8;
+  --ctp-subtext1: #bac2de;
+  --ctp-text: #cdd6f4;
+  --ctp-mauve: #cba6f7;
+  --ctp-pink: #f5c2e7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+
+  --bg-color: var(--ctp-base);
+  --side-bar-bg-color: var(--ctp-mantle);
+  --text-color: var(--ctp-text);
+
+  --select-text-bg-color: var(--ctp-surface2);
+  --search-select-bg-color: var(--ctp-yellow);
+
+  --control-text-color: var(--ctp-subtext0);
+  --control-text-hover-color: var(--ctp-text);
+  --window-border: 1px solid var(--ctp-surface0);
+
+  --active-file-bg-color: var(--ctp-surface0);
+  --active-file-text-color: var(--ctp-text);
+  --active-file-border-color: var(--ctp-mauve);
+  --item-hover-bg-color: var(--ctp-surface0);
+  --item-hover-text-color: var(--ctp-text);
+  --primary-color: var(--ctp-mauve);
+  --rawblock-edit-panel-bd: var(--ctp-surface1);
+}
+
+html,
+body {
+  background: var(--bg-color);
+  color: var(--ctp-text);
+  font-family: sans-serif;
+}
+
+#write {
+  font-family: sans-serif;
+  color: var(--ctp-text);
+  caret-color: var(--ctp-mauve);
+}
+
+#write > h1,
+#write > h2,
+#write > h3,
+#write > h4,
+#write > h5,
+#write > h6 {
+  color: var(--ctp-lavender);
+  font-family: sans-serif;
+}
+
+#write h1 {
+  border-bottom-color: var(--ctp-surface1);
+}
+
+#write a {
+  color: var(--ctp-blue);
+}
+
+#write strong {
+  color: var(--ctp-peach);
+}
+
+#write em {
+  color: var(--ctp-yellow);
+}
+
+#write del {
+  color: var(--ctp-overlay1);
+}
+
+#write blockquote {
+  border-left: 3px solid var(--ctp-mauve);
+  background: var(--ctp-mantle);
+  color: var(--ctp-subtext1);
+}
+
+#write hr {
+  border-top: 1px solid var(--ctp-surface1);
+}
+
+#write table th,
+#write table td {
+  border-color: var(--ctp-surface1);
+}
+
+#write table th {
+  background: var(--ctp-surface0);
+  color: var(--ctp-lavender);
+}
+
+#write table tr:nth-child(2n) {
+  background: var(--ctp-mantle);
+}
+
+/* inline code */
+#write code,
+#write tt {
+  font-family: monospace;
+  background: var(--ctp-surface0);
+  color: var(--ctp-peach);
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+}
+
+/* fenced code blocks */
+.md-fences,
+.md-fences:active,
+#write pre.md-fences {
+  font-family: monospace;
+  background: var(--ctp-crust);
+  border: 1px solid var(--ctp-surface0);
+  border-radius: 4px;
+  color: var(--ctp-text);
+}
+
+.md-fences .code-tooltip {
+  background: var(--ctp-surface0);
+}
+
+/* CodeMirror syntax colours inside fences */
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  background: var(--ctp-crust);
+  color: var(--ctp-text);
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+  color: var(--ctp-overlay0);
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid var(--ctp-text);
+}
+
+.cm-s-inner .cm-keyword {
+  color: var(--ctp-mauve);
+}
+
+.cm-s-inner .cm-atom,
+.cm-s-inner .cm-number,
+.cm-s-inner .cm-bool {
+  color: var(--ctp-peach);
+}
+
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2 {
+  color: var(--ctp-green);
+}
+
+.cm-s-inner .cm-comment {
+  color: var(--ctp-overlay0);
+  font-style: italic;
+}
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-variable-2,
+.cm-s-inner .cm-variable-3 {
+  color: var(--ctp-text);
+}
+
+.cm-s-inner .cm-def,
+.cm-s-inner .cm-property {
+  color: var(--ctp-blue);
+}
+
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-punctuation {
+  color: var(--ctp-sky);
+}
+
+.cm-s-inner .cm-tag {
+  color: var(--ctp-mauve);
+}
+
+.cm-s-inner .cm-attribute {
+  color: var(--ctp-yellow);
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner .cm-quote {
+  color: var(--ctp-lavender);
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner .cm-url {
+  color: var(--ctp-sapphire);
+}
+
+.cm-s-inner .cm-error {
+  color: var(--ctp-red);
+}
+
+/* sidebar / chrome */
+#typora-sidebar,
+.sidebar-content {
+  background: var(--ctp-mantle);
+  color: var(--ctp-subtext1);
+}
+
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .file-list-item.file-list-item-active {
+  background: var(--ctp-surface0);
+  color: var(--ctp-text);
+}
+
+.megamenu-menu,
+#top-titlebar,
+#top-titlebar * {
+  background: var(--ctp-mantle);
+  color: var(--ctp-text);
+}
+
+.megamenu-menu-panel {
+  background: var(--ctp-base);
+}
+
+/* source mode */
+#typora-source {
+  font-family: monospace;
+  background: var(--bg-color);
+  color: var(--ctp-text);
+}
