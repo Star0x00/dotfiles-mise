@@ -13,13 +13,21 @@
       "rev": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "hunk.nvim": {
+      "rev": "0c75192802f2a12020155cdb92a0f7b723cef499",
+      "src": "https://github.com/julienvincent/hunk.nvim"
+    },
+    "jj.nvim": {
+      "rev": "79be2ec0c8ba79d3e24184fc31d611245528fc67",
+      "src": "https://github.com/NicolasGB/jj.nvim"
+    },
     "mini.nvim": {
       "rev": "ed8683521996657ce774e5eec9d2f9b1b5ecef82",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
-    "neogit": {
-      "rev": "832a2db084ac25c2801fd73a3fab58f3c82ed2ec",
-      "src": "https://github.com/NeogitOrg/neogit"
+    "nui.nvim": {
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
       "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
@@ -33,6 +41,14 @@
       "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
+    },
+    "rose-pine": {
+      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
+      "src": "https://github.com/rose-pine/neovim"
+    },
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim"
     }
   }
 }

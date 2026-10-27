@@ -15,8 +15,11 @@ vim.pack.add {
   'https://github.com/nvim-mini/mini.nvim',
   'https://github.com/rafamadriz/friendly-snippets',
   { src = 'https://github.com/Saghen/blink.cmp', version = 'v1.10.2' },
-  'https://github.com/NeogitOrg/neogit',
   'https://github.com/esmuellert/codediff.nvim',
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/julienvincent/hunk.nvim',
+  'https://github.com/folke/snacks.nvim',
+  'https://github.com/NicolasGB/jj.nvim',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
 }
 
@@ -27,6 +30,8 @@ require 'plugins.themes'
 -- lightweight; must run before first file opens so servers attach to it)
 require 'plugins.lsp'
 
+require('hunk').setup {}
+
 -- Setup mini.misc for safely() and other utilities
 require('mini.misc').setup()
 
@@ -34,8 +39,8 @@ local safely = MiniMisc.safely
 
 -- Phase 2: Core editor features + tools — deferred to next tick
 -- These are needed eventually but don't block initial UI rendering.
--- Keymaps reference MiniPick/MiniExtra via closures, so they'll work
--- fine as long as the user hasn't pressed the key before this runs.
+-- Keymaps reference picker functions via closures, so they'll work fine as
+-- long as the user hasn't pressed the key before this runs.
 safely('later', function()
   require 'plugins.core'
 end)

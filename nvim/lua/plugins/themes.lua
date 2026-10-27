@@ -11,7 +11,6 @@ require('catppuccin').setup {
 vim.cmd.colorscheme 'catppuccin'
 
 require('mini.tabline').setup()
-require('mini.notify').setup()
 require('mini.statusline').setup {
   content = {
     active = function()
