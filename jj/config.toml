@@ -10,6 +10,13 @@ backend = "gpg"
 key = "F77F927ECB45E6A18F500EB46AD98F52998B0DE2"
 
 [ui]
-editor = "flow"
+editor = "nvim"
 pager = ["delta", "--line-numbers", "--side-by-side", "--syntax-theme", "Catppuccin Mocha"]
 diff-formatter = ":git"
+
+# hunk.nvim as the interactive diff editor, used by `jj split -i`,
+# `jj squash -i` and `jj diffedit`. Requires the nvim config to define
+# `HunkDiffEditor` (see dotfiles/nvim/lua/plugins/init.lua).
+diff-editor = ["nvim", "-c", "HunkDiffEditor $left $right $output"]
+# Don't inject the JJ-INSTRUCTIONS buffer into the diff editor.
+diff-instructions = false
