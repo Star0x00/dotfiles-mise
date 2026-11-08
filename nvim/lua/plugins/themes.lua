@@ -7,6 +7,10 @@ vim.o.background = 'dark'
 require('catppuccin').setup {
   flavour = 'mocha', -- latte, frappe, macchiato, mocha
   transparent_background = true,
+  float = {
+    transparent = true,
+    solid = false,
+  },
 }
 vim.cmd.colorscheme 'catppuccin'
 
