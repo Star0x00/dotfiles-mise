@@ -36,7 +36,7 @@ layout {
       top 4
       bottom 4
     }
-    // 无边框、无圆角、无聚焦环：只保留阴影做层次
+    // 无边框、聚焦用阴影层次区分；圆角由 rules.kdl 的 geometry-corner-radius 控制
     focus-ring {
         off
     }
@@ -45,7 +45,7 @@ layout {
     }
     shadow {
         on
-        // 阴影只画在窗口周围（规则里 geometry-corner-radius 为 0，直角不影响观感）
+        // 阴影只画在窗口周围（规则里 geometry-corner-radius 为 12，圆角不会被阴影填死）
         // 缝隙只有 4px，模糊半径压到 8 才不会整段被相邻窗口盖掉
         softness 8
         spread 0

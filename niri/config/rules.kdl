@@ -8,7 +8,7 @@ workspace "Game"
 // Global Aesthetics (Apply to ALL windows)
 // -----------------------------------------------------------------------------
 window-rule {
-    geometry-corner-radius 0
+    geometry-corner-radius 12
     clip-to-geometry true
     open-floating false
     background-effect {
@@ -22,13 +22,16 @@ window-rule {
 }
 
 blur {
-    // passes = quality (more = smoother), offset = blur radius (more = stronger).
-    // offset 3 was too weak to visibly blur; 5 passes keeps offset 6 smooth
-    // and the 0.03 noise dithers away banding/ripples.
-    passes 5
-    offset 6
-    noise 0.03
-    saturation 0.95
+    // passes = quality (more passes = smoother, but costs GPU).
+    // offset = blur radius; larger = stronger frost.
+    // With window opacity at 0.9 the wallpaper still reads through, so the
+    // blur has to be wide (12) and the grain low (0.02) to avoid visible
+    // banding/ripples; saturation 1.1 compensates the washed-out look that
+    // compositing a translucent surface gives.
+    passes 3
+    offset 12
+    noise 0.02
+    saturation 1.1
 }
 
 // -----------------------------------------------------------------------------
@@ -43,7 +46,7 @@ layer-rule {
 layer-rule {
   match namespace="noctalia-bar-default$"
   background-effect {
-    // blur true
+    blur true
   }
 }
 
@@ -171,7 +174,12 @@ window-rule {
     // background-opacity < 1 the GTK window has no solid background, so the
     // frame where a new tab reparents the widget renders fully transparent
     // (the "flash"). An opaque window + compositor opacity/blur avoids it.
-    // opacity 0.78
+    //
+    // 0.9 (not 0.78): niri's opacity applies to the whole surface, text
+    // glyphs included, so lower values read as grey mush over the blurred
+    // wallpaper. Terminals must also keep their own opacity at 1 (see
+    // kitty.conf) or the two alphas multiply.
+    opacity 0.9
     background-effect {
         blur true
         // Blur the wallpaper only (skip windows behind) so a terminal over a
@@ -180,7 +188,7 @@ window-rule {
         // Override the global blur grain/saturation per window: a touch less
         // dither than global, neutral colors.
         noise 0.02
-        saturation 1.0
+        saturation 1.1
     }
 }
 

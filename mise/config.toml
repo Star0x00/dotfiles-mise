@@ -18,5 +18,6 @@
 
 [tools]
 "aqua:dev.yorhel.nl/ncdu" = "2.9.1"
+clang = "latest"
 "github:tontinton/maki" = "latest"
 go = "latest"
