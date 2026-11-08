@@ -7,6 +7,10 @@ vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true, silent = true, desc = "
 vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true, desc = "Move Up" })
 vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true, silent = true, desc = "Move Right" })
 vim.keymap.set("n", "<C-z>", "u", { noremap = true, silent = true, desc = "Undo" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
 vim.keymap.set("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 vim.keymap.set("n", "[t", "<Cmd>tabprev<CR>", { desc = "Prev tab" })
