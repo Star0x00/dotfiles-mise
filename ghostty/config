@@ -22,19 +22,19 @@ font-size = 16
 background-opacity = 1
 
 # Make GTK's own window background use the terminal colors. Without this the
-# tab bar (which shows the window background) picks the GTK theme's grey, not
-# Catppuccin, so it looks like a solid off-color strip.
+# window background picks the GTK theme's grey instead of Catppuccin.
 window-theme = ghostty
 
 cursor-style = block
 cursor-style-blink = true
-window-decoration = client
-# Merge the titlebar and tab bar into one compact top strip ("tabs" style).
-gtk-titlebar = true
-gtk-titlebar-style = tabs
-gtk-toolbar-style = flat
-gtk-tabs-location = top
-gtk-wide-tabs = true
+
+# No title bar at all (niri tiles and draws the shadows, so GTK chrome only
+# wastes a row). Tabs still exist — the strip is hidden, see
+# `window-show-tab-bar` + the `toggle_tab_overview` keybind below.
+# The gtk-titlebar* / gtk-tabs-location / gtk-wide-tabs options do nothing
+# when window-decoration is none, so they are gone.
+window-decoration = none
+window-show-tab-bar = never
 gtk-custom-css = ~/.config/ghostty/gtk.css
 
 # Behavior
@@ -46,6 +46,11 @@ copy-on-select = clipboard
 
 # Keybindings
 keybind = ctrl+shift+w=close_surface
+# no tab bar: jump between tabs with the overview grid or direct keys
+keybind = ctrl+shift+o=toggle_tab_overview
+keybind = ctrl+shift+t=new_tab
+# ctrl+shift+w is taken by close_surface (pane), so tab closing gets its own key
+keybind = ctrl+shift+q=close_tab
 keybind = ctrl+shift+h=goto_split:left
 keybind = ctrl+shift+j=goto_split:down
 keybind = ctrl+shift+k=goto_split:up
