@@ -1,3 +1,13 @@
+local highlight = {
+  'SnacksIndent1',
+  'SnacksIndent2',
+  'SnacksIndent3',
+  'SnacksIndent4',
+  'SnacksIndent5',
+  'SnacksIndent6',
+  'SnacksIndent7',
+  'SnacksIndent8',
+}
 -- snacks.nvim — pickers, indent guides, notifier, input/terminal.
 -- `explorer` is intentionally NOT enabled: the file explorer stays mini.files.
 require('snacks').setup {
@@ -9,25 +19,35 @@ require('snacks').setup {
   indent = {
     enabled = true,
     indent = {
+      enabled = false,
       char = '│',
       -- only draw guides for the block the cursor is in; nothing when the
       -- cursor sits at an indentation level with no enclosing scope
       only_scope = true,
       -- cycle one colour per indent level (DiagnosticInfo/Hint/Warn/Error...)
-      hl = {
-        'SnacksIndent1',
-        'SnacksIndent2',
-        'SnacksIndent3',
-        'SnacksIndent4',
-        'SnacksIndent5',
-        'SnacksIndent6',
-        'SnacksIndent7',
-        'SnacksIndent8',
+      hl = highlight,
+    },
+    scope = { enabled = false, char = '│', underline = false },
+    -- `chunk = { enabled = true }` renders whole blocks with ┌ └ corners
+    -- chunk = { enabled = false },
+    chunk = {
+      -- when enabled, scopes will be rendered as chunks, except for the
+      -- top-level scope which will be rendered as a scope.
+      enabled = true,
+      -- only show chunk scopes in the current window
+      only_current = false,
+      priority = 200,
+      hl = highlight, ---@type string|string[] hl group for chunk scopes
+      char = {
+        corner_top = '┌',
+        corner_bottom = '└',
+        -- corner_top = "╭",
+        -- corner_bottom = "╰",
+        horizontal = '─',
+        vertical = '│',
+        arrow = '>',
       },
     },
-    scope = { enabled = true, char = '│', underline = true },
-    -- `chunk = { enabled = true }` renders whole blocks with ┌ └ corners
-    chunk = { enabled = false },
     animate = { enabled = true, style = 'out', duration = { step = 15, total = 250 } },
   },
   notifier = {
