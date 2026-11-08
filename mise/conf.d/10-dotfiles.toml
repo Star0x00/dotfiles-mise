@@ -64,7 +64,6 @@
 "~/.config/systemd/user/ssh-add-pass.service" = { source = "~/dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
 "~/.config/umbriel" = "~/dotfiles/umbriel"
 
-"~/.config/xdg-desktop-portal/portals.conf" = "~/dotfiles/xdg-desktop-portal/portals.conf"
 "~/.config/yt-dlp" = "~/dotfiles/yt-dlp"
 
 # fx: custom OpenAI-compatible provider (DeepSeek) + Exa MCP. Keys come from pass.

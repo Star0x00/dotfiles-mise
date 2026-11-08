@@ -9,7 +9,7 @@
 binds {
     Mod+Shift+Slash     { show-hotkey-overlay; }
     Mod+Q               { close-window; }
-    Mod+Return          { spawn "ghostty"; }
+    Mod+Return          { spawn-sh "ghostty +new-window"; }
     Mod+E               { spawn "nautilus"; }
     // Mod+Space           { spawn "noctalia msg panel-toggle launcher"; }
     Mod+F               { fullscreen-window; }
@@ -31,19 +31,16 @@ binds {
     Print               { spawn "sh" "-c" "grim -g \"$(slurp)\" - | satty --filename -"; }
     Alt+Print           { spawn "sh" "-c" "grim - | satty --filename -"; }
     Ctrl+Print          { screenshot-window write-to-disk=true; }
-
     Mod+Space           { spawn-sh "vicinae toggle"; }
     // noctalia
     // Mod+Space           { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+V               { spawn "vicinae" "vicinae://launch/clipboard/history"; }
     Mod+L               { spawn "vicinae" "vicinae://launch/power/lock"; }
-
     // Window navigation (vim-style)
     Mod+J               { focus-window-down; }
     Mod+K               { focus-window-up; }
     Mod+Shift+J         { move-window-down; }
     Mod+Shift+K         { move-window-up; }
-
     // Quick terminal (scratchpad)
     Mod+Grave           { spawn-sh "ghostty +toggle-quick-terminal"; }
 }

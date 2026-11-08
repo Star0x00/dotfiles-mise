@@ -21,6 +21,10 @@ zig = "latest"
 uv = "latest"
 typst = "latest"
 tree-sitter = "latest"
+clang = "latest"
+"github:tontinton/maki" = "latest"
+go = "latest"
+
 
 # ---- LSPs ----
 zls = "latest"

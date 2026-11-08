@@ -15,9 +15,3 @@
 "~/.config/mise/conf.d/05-settings.toml" = { source = "~/dotfiles/mise/conf.d/05-settings.toml", mode = "symlink" }
 "~/.config/mise/conf.d/10-dotfiles.toml" = { source = "~/dotfiles/mise/conf.d/10-dotfiles.toml", mode = "symlink" }
 "~/.config/mise/conf.d/20-tasks.toml" = { source = "~/dotfiles/mise/conf.d/20-tasks.toml", mode = "symlink" }
-
-[tools]
-"aqua:dev.yorhel.nl/ncdu" = "2.9.1"
-clang = "latest"
-"github:tontinton/maki" = "latest"
-go = "latest"
