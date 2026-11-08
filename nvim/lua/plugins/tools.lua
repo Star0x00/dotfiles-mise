@@ -1,13 +1,48 @@
 -- snacks.nvim — pickers, indent guides, notifier, input/terminal.
 -- `explorer` is intentionally NOT enabled: the file explorer stays mini.files.
 require('snacks').setup {
-  picker = { enabled = true },
-  indent = { enabled = true },
-  notifier = { enabled = true, timeout = 3000 },
+  picker = {
+    enabled = true,
+    -- recent-file bonus on top of the fuzzy score
+    frecency = true,
+  },
+  indent = {
+    enabled = true,
+    indent = {
+      char = '│',
+      -- only draw guides for the block the cursor is in; nothing when the
+      -- cursor sits at an indentation level with no enclosing scope
+      only_scope = true,
+      -- cycle one colour per indent level (DiagnosticInfo/Hint/Warn/Error...)
+      hl = {
+        'SnacksIndent1',
+        'SnacksIndent2',
+        'SnacksIndent3',
+        'SnacksIndent4',
+        'SnacksIndent5',
+        'SnacksIndent6',
+        'SnacksIndent7',
+        'SnacksIndent8',
+      },
+    },
+    scope = { enabled = true, char = '│', underline = true },
+    -- `chunk = { enabled = true }` renders whole blocks with ┌ └ corners
+    chunk = { enabled = false },
+    animate = { enabled = true, style = 'out', duration = { step = 15, total = 250 } },
+  },
+  notifier = {
+    enabled = true,
+    style = 'compact',
+    top_down = true,
+    timeout = 3000,
+    width = { min = 40, max = 0.4 },
+    level = vim.log.levels.INFO,
+  },
   input = { enabled = true },
-  terminal = { enabled = true },
-  bigfile = { enabled = true },
-  quickfile = { enabled = true },
+  terminal = { enabled = true, win = { style = 'terminal', border = 'rounded', backdrop = false } },
+  -- no "big file" notification spam, just the size guard
+  bigfile = { enabled = true, size = 1.5 * 1024 * 1024, notify = false },
+  quickfile = { enabled = true, exclude = { 'latex', 'typst' } },
   bufdelete = { enabled = true },
 }
 
