@@ -133,7 +133,7 @@ miniclue.setup {
     -- `z` key
     { mode = { 'n', 'x' }, keys = 'z' },
 
-    -- Jump2d
+    -- `<Leader>j` group: jj commands + Jump2d
     { mode = 'n', keys = '<Leader>j' },
   },
 
@@ -151,6 +151,8 @@ miniclue.setup {
     { mode = 'n', keys = '<Leader>g', desc = '+goto/git' },
     -- <Leader>v group
     { mode = 'n', keys = '<Leader>v', desc = '+jj' },
+    -- <Leader>j group (jj commands + Jump2d)
+    { mode = 'n', keys = '<Leader>j', desc = '+jj/jump' },
   },
 }
 
