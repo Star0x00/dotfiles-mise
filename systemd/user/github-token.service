@@ -1,0 +1,19 @@
+[Unit]
+Description=Export GITHUB_TOKEN from pass into the user manager environment
+Documentation=man:pass(1)
+# Runs before niri.service (which has After=graphical-session-pre.target), so the
+# manager environment already carries GITHUB_TOKEN when niri starts and every host
+# GUI app it spawns inherits it.
+Before=graphical-session-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# The token lives in pass (api/github). The GPG key has no passphrase, so no
+# pinentry/tty is needed here. set-environment keeps it in the manager's memory
+# instead of writing another plaintext file; flatpak apps get it from a flatpak
+# override instead (they don't inherit the session environment).
+ExecStart=/bin/sh -c 'tok=$(pass show api/github 2>/dev/null | head -n1); [ -n "$tok" ] || exit 0; systemctl --user set-environment GITHUB_TOKEN="$tok"'
+
+[Install]
+WantedBy=graphical-session-pre.target

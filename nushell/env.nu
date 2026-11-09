@@ -39,6 +39,11 @@ if (which pass | is-not-empty) {
   let keys = [
     { var: "DEEPSEEK_API_KEY", entry: "api/deepseek" }
     { var: "EXA_API_KEY", entry: "api/exa" }
+    # Fine-grained PAT for every tool that wants a token: gh, mise, curl, ...
+    # gh prefers GITHUB_TOKEN over its stored OAuth token, so gh runs on it too.
+    # Known gaps: Gists API (fine-grained PATs can't use it, 404) and Notifications
+    # (no permission, 403).
+    { var: "GITHUB_TOKEN", entry: "api/github" }
   ]
   for k in $keys {
     let value = ((do -i { pass show $k.entry | lines | first }) | default "")

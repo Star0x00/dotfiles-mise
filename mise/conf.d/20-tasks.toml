@@ -13,6 +13,7 @@ run = [
   "[ -S ${XDG_RUNTIME_DIR}/bus ] || exit 0",
   "systemctl --user daemon-reload",
   "systemctl --user enable ssh-add-pass.service",
+  "systemctl --user enable github-token.service",
 ]
 
 # Flatpak apps get their own HOME, so host fonts / GTK / Qt themes are invisible
@@ -42,10 +43,8 @@ run = [
   --filesystem=xdg-music \
   --filesystem=xdg-pictures \
   --filesystem=xdg-videos''',
-  # Per-app: Typora is Electron, its GTK menu bar ignores the host theme (the
-  # sandbox only ships light Default/Emacs) and renders as a white strip.
+  '''tok=$(pass show api/github 2>/dev/null | head -n1); [ -n "$tok" ] && flatpak override --user --env=GITHUB_TOKEN="$tok" || true''',
   '''for d in ~/.var/app/*/config; do [ -d "$d" ] || continue; [ -e "$d/fontconfig" ] || ln -s ~/.config/fontconfig "$d/fontconfig"; done''',
-  # Adwaita:dark is built into the Electron base app, so no extra mount needed.
   'flatpak override --user --env=GTK_THEME=Adwaita:dark io.typora.Typora',
 ]
 
