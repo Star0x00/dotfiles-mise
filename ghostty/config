@@ -9,9 +9,10 @@ theme = Catppuccin Mocha
 # Font (monospace + CJK fallback), sized up for readability
 # NOTE: ghostty's font-family does NOT split on comma — repeat the key to
 # build the fallback chain (there is no font-family-fallback key).
-font-family = Iosevka Star Term
+# font-family = Iosevka Star Term
+font-family = Maple Mono NF CN
 font-family = MiSans
-font-size = 16
+font-size = 14
 
 # Appearance
 # NOTE: keep this at 1 (opaque) so Ghostty keeps the GTK window's solid

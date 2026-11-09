@@ -37,7 +37,12 @@ dest  = "SymbolsNerdFont"
 # A bare ttf release, not an archive: `files` fetches it directly.
 files = ["https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.522/LXGWWenKaiMonoGBScreen.ttf"]
 
-[fonts.JetBrainsMono]
-# Official release zip; the ttf/ subdir holds the four static weights + italics.
-url   = "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
-globs = ["fonts/ttf/*.ttf"]
+[fonts.MapleMonoCN]
+url   = "https://github.com/subframe7536/maple-font/releases/download/v8.0-beta.3/MapleMono-NF-CN-unhinted.zip"
+globs = [
+  "MapleMono-NF-CN-Regular.ttf",
+  "MapleMono-NF-CN-Italic.ttf",
+  "MapleMono-NF-CN-Bold.ttf",
+  "MapleMono-NF-CN-BoldItalic.ttf",
+]
+dest  = "MapleMonoCN"
