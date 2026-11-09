@@ -9,6 +9,10 @@ case ":${PATH}:" in
   *) PATH="$HOME/.local/bin:$PATH" ;;
 esac
 case ":${PATH}:" in
+  *:"$HOME/AppImages/":*) ;;
+  *) PATH="$HOME/AppImages:$PATH" ;;
+esac
+case ":${PATH}:" in
   *:"$HOME/.local/share/npm/bin":*) ;;
   *) PATH="$HOME/.local/share/npm/bin:$PATH" ;;
 esac
@@ -29,6 +33,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 if command -v pass >/dev/null 2>&1; then
   export DEEPSEEK_API_KEY="$(pass show api/deepseek 2>/dev/null | head -n 1)"
   export EXA_API_KEY="$(pass show api/exa 2>/dev/null | head -n 1)"
+  export GITHUB_TOKEN="$(pass show api/github 2>/dev/null | head -n 1)"
 fi
 
 # ---- Interactive-only ----
@@ -65,7 +70,6 @@ fi
 __flyline_so="$(MISE_OFFLINE=1 mise where github:HalFrgrd/flyline 2>/dev/null)/libflyline.so"
 [[ -e $__flyline_so ]] && enable -f "$__flyline_so" flyline 2>/dev/null
 unset __flyline_so
-# 关闭鼠标捕获：禁用 flyline 右键菜单（代价：失去点击定位/拖选等鼠标功能）
 flyline mouse --mode disabled
 
 # eza replaces ls
@@ -90,4 +94,9 @@ if command -v bat >/dev/null 2>&1; then
   help() {
     "$@" --help 2>&1 | bat --plain --language=help
 }
+fi
+
+# fastfetch
+if command -v fastfetch >/dev/null 2>&1; then
+  fastfetch
 fi

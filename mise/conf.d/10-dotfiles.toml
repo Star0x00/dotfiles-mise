@@ -62,6 +62,7 @@
 
 # ---- systemd user units ----
 "~/.config/systemd/user/ssh-add-pass.service" = { source = "~/dotfiles/systemd/user/ssh-add-pass.service", mode = "symlink" }
+"~/.config/systemd/user/github-token.service" = { source = "~/dotfiles/systemd/user/github-token.service", mode = "symlink" }
 "~/.config/umbriel" = "~/dotfiles/umbriel"
 
 "~/.config/yt-dlp" = "~/dotfiles/yt-dlp"

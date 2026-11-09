@@ -23,6 +23,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 if command -v pass >/dev/null 2>&1; then
   export DEEPSEEK_API_KEY="$(pass show api/deepseek 2>/dev/null | head -n 1)"
   export EXA_API_KEY="$(pass show api/exa 2>/dev/null | head -n 1)"
+  export GITHUB_TOKEN="$(pass show api/github 2>/dev/null | head -n 1)"
 fi
 
 # ---- Shell behaviour ----
