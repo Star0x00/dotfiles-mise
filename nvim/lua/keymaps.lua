@@ -64,6 +64,9 @@ vim.keymap.set("n", "<Leader>vS", "<Cmd>J split<CR>", { desc = "jj split" })
 vim.keymap.set("n", "<Leader>vq", "<Cmd>J squash<CR>", { desc = "jj squash" })
 vim.keymap.set("n", "<Leader>vr", "<Cmd>J rebase<CR>", { desc = "jj rebase" })
 
+vim.keymap.set("n", "<Leader>ja", "<Cmd>J log -r all()<CR>", { desc = "jj log (all commits)" })
+vim.keymap.set("n", "<Leader>jc", "<Cmd>J<CR>", { desc = "jj command (:J)" })
+
 vim.keymap.set("n", "<Leader>jj", function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, { desc = "Jump2d char" })
 vim.keymap.set("n", "<Leader>jw", function() MiniJump2d.start(MiniJump2d.builtin_opts.word_start) end, { desc = "Jump2d word" })
 vim.keymap.set("n", "<Leader>jl", function() MiniJump2d.start(MiniJump2d.builtin_opts.line_start) end, { desc = "Jump2d line" })
