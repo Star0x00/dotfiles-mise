@@ -1,0 +1,60 @@
+/* Maple Mono NF CN everywhere.
+ *
+ * 用法：Stylus -> 新建样式 -> Applies to 选 `Everywhere` -> 粘贴本文件 -> 保存。
+ * 家族名必须和 fontconfig 里一致（fc-list : family | grep -i maple）。
+ *
+ * 本文件不进 mise [dotfiles] 链接：Stylus 的样式存在扩展自己的 indexedDB 里，
+ * 没有可以从磁盘读取的 CSS 文件，这里只作为源文件和备份。
+ */
+
+/* 主体规则。
+ * `*` 是唯一能压住站点各处 font-family 的写法；用户样式表的 !important
+ * 既能盖过站点样式表，也能盖过元素上的内联样式。
+ * 代价是图标字体（Font Awesome / Material Icons / codicon / octicon ...）
+ * 会被一起换掉变成方块，所以用 :not() 把这些元素排除。
+ * 如果你常用的站点不用图标字体，把 :not(...) 链删掉、只留 `*` 更干净。 */
+:root,
+body,
+body *:not([class*="icon" i]):not([class*="fa-" i]):not([class*="nf-" i]):not([class*="mdi" i]):not([class*="codicon" i]):not([class*="octicon" i]):not([class*="bi-" i]) {
+  font-family: "Maple Mono NF CN", "Noto Color Emoji", monospace !important;
+}
+
+/* 字体栈末尾的 "Noto Color Emoji" 是兜底：Maple 只有 Nerd Font 图标，
+ * 彩色 emoji 要靠 fallback；浏览器拿不到时会自己继续往下找系统 emoji 字体。 */
+
+/* ---------------------------------------------------------------
+ * 以下是可选项，按需取消注释。
+ * ------------------------------------------------------------- */
+
+/* 等宽字体行高偏紧，正文放松一点；不影响 pre/code。 */
+/*
+p, li, dd, dt, td, th, blockquote, article {
+  line-height: 1.65 !important;
+}
+*/
+
+/* 不喜欢 Maple 的连字（-> 变箭头、!= 变不等号）时关掉。 */
+/*
+*,
+::before,
+::after {
+  font-variant-ligatures: none !important;
+  font-feature-settings: "liga" 0, "calt" 0 !important;
+}
+*/
+
+/* 想保留标题原字体、只把正文换成等宽时，改用这一版（替换上面的主体规则）：
+ *
+ *   body, p, li, dd, dt, td, th, blockquote, input, textarea, button, select {
+ *     font-family: "Maple Mono NF CN", "Noto Color Emoji", monospace !important;
+ *   }
+ */
+
+/* 需要按域名排除时，用 regexp 形式并在 Stylus 里把 Applies to 改成该 regexp：
+ *
+ *   @-moz-document regexp("^(?!.*(?:docs\\.google\\.com|mail\\.google\\.com)).*$") {
+ *     ... 规则 ...
+ *   }
+ *
+ * 上面这条等于「除 docs.google.com 和 mail.google.com 之外的站点都生效」。
+ */
