@@ -39,20 +39,47 @@ require('mini.surround').setup()
 require('nvim-treesitter').setup {
   install_dir = vim.fn.stdpath 'data' .. '/site',
 }
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TSUpdate',
+  callback = function()
+    require('nvim-treesitter.parsers').supermd = {
+      install_info = {
+        url = 'https://github.com/kristoff-it/supermd',
+        location = 'tree-sitter/supermd',
+      },
+    }
+    require('nvim-treesitter.parsers').supermd_inline = {
+      install_info = {
+        url = 'https://github.com/kristoff-it/supermd',
+        location = 'tree-sitter/supermd-inline',
+      },
+    }
+  end,
+})
 -- stylua: ignore start
 -- Download & build parsers synchronously (README: `install` is async, use
 -- `:wait()` to bootstrap before the first file opens). No-op if already
--- installed; skipped if compilation times out or errors. pcall guards so a
--- missing tree-sitter-cli/compiler doesn't block startup.
-pcall(function()
-  require('nvim-treesitter')
-    .install {
-      'astro', 'asm', 'awk', 'bash', 'c', 'cmake', 'cpp', 'css', 'diff', 'fish',
-      'gitattributes', 'gitcommit', 'gitignore', 'glsl', 'go', 'html', 'json',
-      'kdl', 'latex', 'llvm', 'lua', 'luadoc', 'markdown', 'markdown_inline',
-      'ninja', 'nix', 'nu', 'python', 'qmljs', 'query', 'rust', 'toml', 'typst',
-      'vim', 'vimdoc', 'yaml', 'zig',
-    }
-    :wait(300000)
+-- installed. pcall guards so a missing tree-sitter-cli/compiler doesn't block
+-- startup; the return value is checked because `install` reports failures only
+-- by returning false (no error is raised), and downloads can hang on a bad
+-- network, hence the shorter wait.
+local ts_languages = {
+  'astro', 'asm', 'awk', 'bash', 'c', 'cmake', 'cpp', 'css', 'diff', 'fish',
+  'gitattributes', 'gitcommit', 'gitignore', 'glsl', 'go', 'html', 'json',
+  'kdl', 'latex', 'llvm', 'lua', 'luadoc', 'markdown', 'markdown_inline',
+  'ninja', 'nix', 'nu', 'python', 'qmljs', 'query', 'rust', 'toml', 'typst',
+  'vim', 'vimdoc', 'yaml', 'zig', 'superhtml', 'ziggy', 'ziggy_schema',
+  'supermd', 'supermd_inline',
+}
+local ts_ok, ts_done = pcall(function()
+  return require('nvim-treesitter').install(ts_languages):wait(60000)
 end)
 -- stylua: ignore end
+if not ts_ok or not ts_done then
+  vim.notify(
+    'nvim-treesitter: 有 parser 未安装（网络/编译失败），用 :TSInstall <lang> 补装；:messages 查看错误',
+    vim.log.levels.WARN,
+    { title = 'nvim-treesitter' }
+  )
+end

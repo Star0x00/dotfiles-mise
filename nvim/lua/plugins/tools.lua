@@ -19,7 +19,7 @@ require('snacks').setup {
   indent = {
     enabled = true,
     indent = {
-      enabled = false,
+      enabled = true,
       char = '│',
       -- only draw guides for the block the cursor is in; nothing when the
       -- cursor sits at an indentation level with no enclosing scope
@@ -27,13 +27,13 @@ require('snacks').setup {
       -- cycle one colour per indent level (DiagnosticInfo/Hint/Warn/Error...)
       hl = highlight,
     },
-    scope = { enabled = false, char = '│', underline = false },
+    scope = { enabled = true, char = '│', underline = false },
     -- `chunk = { enabled = true }` renders whole blocks with ┌ └ corners
     -- chunk = { enabled = false },
     chunk = {
       -- when enabled, scopes will be rendered as chunks, except for the
       -- top-level scope which will be rendered as a scope.
-      enabled = true,
+      enabled = false,
       -- only show chunk scopes in the current window
       only_current = false,
       priority = 200,

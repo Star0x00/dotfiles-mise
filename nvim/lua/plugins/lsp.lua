@@ -20,6 +20,10 @@ vim.lsp.enable 'tinymist'
 vim.lsp.enable 'jsonls'
 vim.lsp.enable 'ts_ls'
 vim.lsp.enable 'nixd'
+vim.lsp.enable 'superhtml'
+vim.lsp.enable 'ziggy'
+vim.lsp.enable 'ziggy_schema'
+vim.lsp.enable 'gleam'
 
 --=============================================================================
 -- LSP UX

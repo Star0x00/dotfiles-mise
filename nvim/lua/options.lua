@@ -14,6 +14,7 @@ vim.schedule(function()
 end)
 vim.opt.undofile = true
 vim.opt.fillchars:append { eob = ' ' }
+-- Render invisibles; `leadmultispace` draws one glyph per indent level.
 vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
 vim.o.cmdheight = 1
 vim.o.winborder = 'none'
@@ -26,7 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "c", "cpp", "lua", "python", "go", "rust", "bash", "fish", "json", "yaml", "toml",
     "html", "css", "markdown", "vim", "diff", "gitcommit", "gitignore", "gitattributes",
     "cmake", "ninja", "asm", "glsl", "zig", "nix", "nu", "kdl", "awk", "latex",
-    "typst", "qmljs", "luadoc", "astro", "llvm", "vimdoc",
+    "typst", "qmljs", "luadoc", "astro", "llvm", "vimdoc", 'superhtml', 'ziggy', 'ziggy_schema'
   },
   callback = function() pcall(vim.treesitter.start) end,
 })

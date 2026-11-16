@@ -20,6 +20,7 @@ vim.pack.add {
   'https://github.com/julienvincent/hunk.nvim',
   'https://github.com/folke/snacks.nvim',
   'https://github.com/NicolasGB/jj.nvim',
+  'https://github.com/nvim-lualine/lualine.nvim',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
 }
 

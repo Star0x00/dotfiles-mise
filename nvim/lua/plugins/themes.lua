@@ -15,30 +15,40 @@ require('catppuccin').setup {
 vim.cmd.colorscheme 'catppuccin'
 
 require('mini.tabline').setup()
-require('mini.statusline').setup {
-  content = {
-    active = function()
-      local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
-      local git = MiniStatusline.section_git { trunc_width = 40 }
-      local diff = MiniStatusline.section_diff { trunc_width = 75 }
-      local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
-      local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
-      local filename = MiniStatusline.section_filename { trunc_width = 140 }
-      local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
-      local location = MiniStatusline.section_location { trunc_width = 75 }
-      local search = MiniStatusline.section_searchcount { trunc_width = 75 }
 
-      return MiniStatusline.combine_groups {
-        { hl = mode_hl, strings = { mode } },
-        { hl = 'MiniStatuslineDevinfo', strings = { git, diff } },
-        '%<', -- Mark general truncate point
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
-        '%=', -- End left alignment
-        { hl = 'MiniStatuslineDevinfo', strings = { diagnostics, lsp } },
-        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-        { hl = mode_hl, strings = { search, location } },
-      }
-    end,
-    inactive = nil,
+-- lualine, colored the way catppuccin's lualine integration colors it:
+-- a=blue/mantle, b=surface0/blue, c=transparent/text, and x/y/z reuse c/b/a.
+-- Section separators are the rounded half-circle glyphs (U+E0B4 / U+E0B2),
+-- written as escapes because private-use-area chars get stripped by tooling.
+-- lualine has no built-in LSP component.
+local function lsp_status()
+  local names = {}
+  for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
+    names[#names + 1] = client.name
+  end
+  if #names == 0 then
+    return ''
+  end
+  return 'Lsp ' .. names[1] .. (#names > 1 and (' +' .. (#names - 1)) or '')
+end
+
+require('lualine').setup {
+  options = {
+    theme = 'auto',
+    component_separators = ' ',
+    section_separators = { left = '\238\130\180', right = '\238\130\178' },
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'progress', 'location' },
+    lualine_c = {
+      {
+        'diagnostics',
+        symbols = { error = '● ', warn = '● ', info = '● ', hint = '● ' },
+      },
+    },
+    lualine_x = { lsp_status },
+    lualine_y = { 'filename' },
+    lualine_z = { 'filetype' },
   },
 }
