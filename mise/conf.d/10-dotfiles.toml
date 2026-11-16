@@ -33,9 +33,6 @@
 "~/.config/kitty/kitty.conf" = "~/dotfiles/kitty/kitty.conf"
 "~/.config/kitty/tokyonight_night.conf" = "~/dotfiles/kitty/tokyonight_night.conf"
 "~/.config/mimeapps.list" = "~/dotfiles/mimeapps.list"
-# mineral: only the color theme is tracked; the rest of ~/.config/mineral
-# (tui-default.lua, daemon.lua, dbs) is generated/runtime and stays unmanaged.
-"~/.config/mineral/tui.lua" = "~/dotfiles/mineral/tui.lua"
 
 # ---- mise self-management ----
 # config.toml lives in the dotfiles repo; a symlink keeps the repo in sync automatically.

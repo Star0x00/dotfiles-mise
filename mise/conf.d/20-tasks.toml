@@ -43,7 +43,7 @@ run = [
   --filesystem=xdg-music \
   --filesystem=xdg-pictures \
   --filesystem=xdg-videos''',
-  '''tok=$(pass show api/github 2>/dev/null | head -n1); [ -n "$tok" ] && flatpak override --user --env=GITHUB_TOKEN="$tok" || true''',
+  "flatpak override --user --env=QT_QPA_PLATFORMTHEME=gtk3",
   '''for d in ~/.var/app/*/config; do [ -d "$d" ] || continue; [ -e "$d/fontconfig" ] || ln -s ~/.config/fontconfig "$d/fontconfig"; done''',
   'flatpak override --user --env=GTK_THEME=Adwaita:dark io.typora.Typora',
 ]
