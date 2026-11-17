@@ -133,6 +133,10 @@ window-rule {
 window-rule {
     match app-id="steam" title="^notificationtoasts_\\d+_desktop$"
     match app-id="com.viber.Viber" title="^notificationtoasts_\\d+_desktop$"
+    // Steam/Viber 的 CEF toast 是普通 X11 窗口，不走 notification 守护进程；
+    // 必须显式 open-floating，否则会被顶部全局规则的 open-floating false 接管成平铺。
+    open-floating true
+    open-focused false
     default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
