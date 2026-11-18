@@ -10,11 +10,12 @@
 # fonts: nothing is managed here — the install-fonts task fetches every family
 # declared in fonts/installer/fonts.toml into ~/.local/share/fonts.
 # flow: ~/.config/flow/config is flow-written and regenerated on every
-# interactive settings change, so it holds only defaults + include_files.
-# Real settings live in include.conf, which flow never modifies; it is symlinked
-# because include_files requires an absolute path (flow 0.7.2 panics on ~ or $HOME).
+# interactive settings change, so it holds only defaults + include_files and is
+# NOT tracked here — a tracked copy would be stale defaults that apply overwrites
+# the live settings with. Real settings live in include.conf, which flow never
+# modifies; it is symlinked because include_files requires an absolute path
+# (flow 0.7.2 panics on ~ or $HOME).
 # file_type/, keys/, themes/ are runtime dirs flow fills in itself.
-"~/.config/flow/config" = "~/dotfiles/flow/config"
 "~/.config/flow/include.conf" = { source = "~/dotfiles/flow/include.conf", mode = "symlink" }
 "~/.config/fontconfig/fonts.conf" = "~/dotfiles/fontconfig/fonts.conf"
 "~/.config/ghostty/config" = "~/dotfiles/ghostty/config"
@@ -75,22 +76,24 @@
 
 # pi agent: global instructions (symlink so edits in ~/.pi write through to the repo)
 "~/.pi/agent/AGENTS.md" = { source = "~/dotfiles/pi/agent/AGENTS.md", mode = "symlink" }
-"~/.pi/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
+# pi extensions: pi writes this file itself (pi install/remove); symlink it so the
+# declared dependency list stays in the repo. No lockfile is tracked on purpose:
+# every run resolves the newest versions that satisfy the ranges. node_modules
+# stays a real dir under ~/.pi/agent/npm, ignored by pi's own .gitignore there.
+# Linked as a single file on purpose: the parent dir's .gitignore is `*`.
+"~/.pi/agent/npm/package.json" = { source = "~/dotfiles/pi/agent/npm/package.json", mode = "symlink" }
 "~/.pi/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
 "~/.pi/agent/settings.json" = { source = "~/dotfiles/pi/agent/settings.json", mode = "symlink" }
 "~/.pi/agent/themes" = "~/dotfiles/pi/agent/themes"
 "~/.pi/agent/skills" = { source = "~/dotfiles/pi/agent/skills", mode = "symlink" }
-"~/.pi/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
 
 # pig (pi in go): only pig-specific files live in dotfiles/pig/; the agent
 # resources below are shared with pi on purpose (same files, two config roots).
 # settings.json is left out because pig rewrites it (packages, lastChangelogVersion).
 "~/.pig/agent/AGENTS.md" = { source = "~/dotfiles/pi/agent/AGENTS.md", mode = "symlink" }
-"~/.pig/agent/extensions/tool-ui" = "~/dotfiles/pi/agent/extensions/tool-ui"
 "~/.pig/agent/mcp.json" = { source = "~/dotfiles/pi/agent/mcp.json", mode = "symlink" }
 "~/.pig/agent/themes" = "~/dotfiles/pi/agent/themes"
 "~/.pig/agent/skills" = { source = "~/dotfiles/pi/agent/skills", mode = "symlink" }
-"~/.pig/agent/tool-ui.json" = "~/dotfiles/pi/agent/tool-ui.json"
 # piglets: authored in the repo, symlinked file by file so `pig --piglet <name>`
 # reads them live while `~/.pig/piglets` stays a real directory (pig writes
 # origins, records and pulled piglets there)

@@ -4,7 +4,16 @@ status-dotfiles = "mise bootstrap dotfiles status"
 [tasks.apply-dotfiles]
 description = "Apply dotfiles, installing any missing font first"
 depends = ["install-fonts"]
-run = ["mise bootstrap dotfiles apply", "mise run enable-user-units", "mise run flatpak-overrides"]
+run = ["mise bootstrap dotfiles apply", "mise run install-pi-extensions", "mise run enable-user-units", "mise run flatpak-overrides"]
+
+[tasks.install-pi-extensions]
+description = "Install the newest pi extension packages declared in the dotfiles-tracked package.json"
+dir = "~/.pi/agent/npm"
+run = [
+  "[ -L package.json ] || exit 0", # agent dir not deployed (yet)
+  "rm -f package-lock.json node_modules/.package-lock.json", # both would pin old versions
+  "npm install --no-package-lock --omit=dev --omit=peer --legacy-peer-deps --no-audit --no-fund",
+]
 
 [tasks.enable-user-units]
 description = "Enable the systemd user units shipped by dotfiles (idempotent)"
