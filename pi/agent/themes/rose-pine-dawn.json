@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
-  "name": "tool-ui-rose-pine-dawn",
+  "name": "rose-pine-dawn",
   "colors": {
     "accent": "#907aa9",
     "border": "#f2e9e1",

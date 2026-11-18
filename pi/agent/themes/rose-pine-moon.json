@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
-  "name": "tool-ui-rose-pine-moon",
+  "name": "rose-pine-moon",
   "colors": {
     "accent": "#c4a7e7",
     "border": "#393552",

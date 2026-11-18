@@ -1,15 +1,53 @@
 {
-  "lastChangelogVersion": "1.5.0",
+  "lastChangelogVersion": "1.5.2",
   "defaultProvider": "deepseek",
   "defaultModel": "deepseek-flash",
   "defaultThinkingLevel": "low",
-  "packages": [],
+  "packages": [
+    "npm:pi-tidy",
+    "npm:@quandev104/pi-style"
+  ],
+  "piStyle": {
+    "preset": "default",
+    "placement": "below",
+    "startup": {
+      "mode": "compact",
+      "showResources": false
+    },
+    "statusLine": {
+      "layout": {
+        "left": ["path", "git", "context_bar", "cost"],
+        "right": ["model_effort"],
+        "secondary": ["extension_statuses"]
+      },
+      "contextBarWidth": 10,
+      "bottomMargin": 1
+    },
+    "editor": {
+      "style": "dock",
+      "frame": "rounded",
+      "showMetadata": false
+    },
+    "messages": {
+      "previewMaxWidth": 40,
+      "mergedTurnSummary": true,
+      "preserveCompactionTranscript": true
+    },
+    "tools": {
+      "style": "compact-box",
+      "maxCollapsedLines": 12,
+      "maxExpandedLines": 60
+    },
+    "theme": {
+      "autoApply": "catppuccin-mocha"
+    }
+  },
   "showHardwareCursor": true,
   "tuiMode": "fullscreen",
   "terminal": {
     "imageWidthCells": 100
   },
-  "theme": "tool-ui-catppuccin-mocha",
+  "theme": "catppuccin-mocha",
   "hideThinkingBlock": true,
   "treeFilterMode": "default",
   "quietStartup": false,
@@ -18,5 +56,9 @@
   "autocompleteMaxVisible": 5,
   "images": {
     "autoResize": true
+  },
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8",
+    "{\"source\":\"npm:@quandev104/pi-style\",\"scope\":\"user\"}": "0.5.17"
   }
 }

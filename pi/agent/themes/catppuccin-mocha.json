@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
-  "name": "tool-ui-catppuccin-mocha",
+  "name": "catppuccin-mocha",
   "colors": {
     "accent": "#89b4fa",
     "border": "#313244",
