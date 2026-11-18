@@ -1,6 +1,5 @@
 [tools]
 pi = "latest"
-"npm:@pi-in-go/pig" = "latest"
 "github:neovim/neovim" = "latest"
 
 # ---- CLI / editors ----

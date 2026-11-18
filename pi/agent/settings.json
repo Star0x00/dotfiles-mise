@@ -16,9 +16,18 @@
     },
     "statusLine": {
       "layout": {
-        "left": ["path", "git", "context_bar", "cost"],
-        "right": ["model_effort"],
-        "secondary": ["extension_statuses"]
+        "left": [
+          "path",
+          "git",
+          "context_bar",
+          "cost"
+        ],
+        "right": [
+          "model_effort"
+        ],
+        "secondary": [
+          "extension_statuses"
+        ]
       },
       "contextBarWidth": 10,
       "bottomMargin": 1
