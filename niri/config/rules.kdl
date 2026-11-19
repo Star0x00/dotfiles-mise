@@ -15,8 +15,6 @@ window-rule {
         blur true
         xray true
     }
-    // 用比例而不是固定像素：固定 1388 会在底部留下 19px 余白，
-    // 而左右只有 8px，比例 1.0 让窗口按可用高度填满，四边间距一致
     default-window-height { proportion 1.0; }
     default-column-width { proportion 1.0; }
 }
@@ -112,6 +110,7 @@ window-rule {
 // Floating with specific geometry
 window-rule {
     match app-id="^QQ$"
+    match app-id="^Throne$"
     match title="^图片查看器$"
     match title="^群聊的聊天记录$"
 
@@ -133,8 +132,6 @@ window-rule {
 window-rule {
     match app-id="steam" title="^notificationtoasts_\\d+_desktop$"
     match app-id="com.viber.Viber" title="^notificationtoasts_\\d+_desktop$"
-    // Steam/Viber 的 CEF toast 是普通 X11 窗口，不走 notification 守护进程；
-    // 必须显式 open-floating，否则会被顶部全局规则的 open-floating false 接管成平铺。
     open-floating true
     open-focused false
     default-floating-position x=10 y=10 relative-to="bottom-right"

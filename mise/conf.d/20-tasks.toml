@@ -26,7 +26,9 @@ run = [
 ]
 
 # Flatpak apps get their own HOME, so host fonts / GTK / Qt themes are invisible
-# unless explicitly shared. The global override is rebuilt from scratch each run
+# unless explicitly shared. Qt goes through qt6ct (not gtk3); no runtime ships the
+# qt6ct plugin, so the env var only takes effect for apps that bundle it.
+# The global override is rebuilt from scratch each run
 # (--reset) so stale or wrong entries (e.g. the old ~/.local/fonts) never linger.
 [tasks.flatpak-overrides]
 description = "Grant Flatpak apps access to host fonts, GTK/Qt themes and XDG user dirs"
@@ -52,7 +54,7 @@ run = [
   --filesystem=xdg-music \
   --filesystem=xdg-pictures \
   --filesystem=xdg-videos''',
-  "flatpak override --user --env=QT_QPA_PLATFORMTHEME=gtk3",
+  "flatpak override --user --env=QT_QPA_PLATFORMTHEME=qt6ct",
   '''for d in ~/.var/app/*/config; do [ -d "$d" ] || continue; [ -e "$d/fontconfig" ] || ln -s ~/.config/fontconfig "$d/fontconfig"; done''',
   'flatpak override --user --env=GTK_THEME=Adwaita:dark io.typora.Typora',
 ]

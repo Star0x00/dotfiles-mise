@@ -118,8 +118,8 @@
   "inlay_hints": {
     "enabled": true
   },
-  "ui_font_family": "WenYuan Sans SC Flex VF",
-  "buffer_font_family": "Iosevka Star",
+  "ui_font_family": "Maple Mono NF CN",
+  "buffer_font_family": "Maple Mono NF CN",
   "buffer_font_fallbacks": ["LXGW WenKai Mono GB Screen"],
   "project_panel": {
     "file_icons": true,
