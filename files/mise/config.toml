@@ -1,0 +1,17 @@
+# Global mise config is split into topic fragments in ./conf.d/:
+#   00-tools.toml      [tools]
+#   05-settings.toml   [settings]
+#   10-dotfiles.toml   [dotfiles] mappings
+#   20-tasks.toml      [tasks]
+# mise loads conf.d fragments alphabetically, before this file, so config.toml
+# overrides them.
+
+# Bootstrap root: every [dotfiles] entry below must live in config.toml, not in
+# a fragment — on a fresh machine the fragments don't exist yet, so only these
+# entries can deploy them.
+[dotfiles]
+"~/.config/mise/config.toml" = { source = "~/dotfiles/files/mise/config.toml", mode = "symlink" }
+"~/.config/mise/conf.d/00-tools.toml" = { source = "~/dotfiles/files/mise/conf.d/00-tools.toml", mode = "symlink" }
+"~/.config/mise/conf.d/05-settings.toml" = { source = "~/dotfiles/files/mise/conf.d/05-settings.toml", mode = "symlink" }
+"~/.config/mise/conf.d/10-dotfiles.toml" = { source = "~/dotfiles/files/mise/conf.d/10-dotfiles.toml", mode = "symlink" }
+"~/.config/mise/conf.d/20-tasks.toml" = { source = "~/dotfiles/files/mise/conf.d/20-tasks.toml", mode = "symlink" }

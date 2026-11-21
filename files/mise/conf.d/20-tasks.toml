@@ -1,0 +1,36 @@
+[tasks]
+status-dotfiles = "mise bootstrap dotfiles status"
+
+[tasks.apply-dotfiles]
+description = "Apply dotfiles, installing any missing font first"
+depends = ["install-fonts"]
+run = ["mise bootstrap dotfiles apply", "mise run install-pi-extensions", "mise run enable-user-units"]
+
+[tasks.install-pi-extensions]
+description = "Install the newest pi extension packages declared in the dotfiles-tracked package.json"
+dir = "~/.pi/agent/npm"
+run = [
+  "[ -L package.json ] || exit 0", # agent dir not deployed (yet)
+  "rm -f package-lock.json node_modules/.package-lock.json", # both would pin old versions
+  "npm install --no-package-lock --omit=dev --omit=peer --legacy-peer-deps --no-audit --no-fund",
+]
+
+[tasks.enable-user-units]
+description = "Enable the systemd user units shipped by dotfiles (idempotent)"
+run = [
+  # `systemctl --user` needs the user manager to be reachable; skip outside a session.
+  "[ -S ${XDG_RUNTIME_DIR}/bus ] || exit 0",
+  "systemctl --user daemon-reload",
+  "systemctl --user enable ssh-add-pass.service",
+  "systemctl --user enable github-token.service",
+]
+
+# Flatpak overrides are declarative now: ~/dotfiles/flatpak.nix. They are
+# written as $XDG_DATA_HOME/flatpak/overrides/{global,<app-id>} keyfiles and
+# applied by ~/dotfiles/apply.sh -- no flatpak CLI involved.
+
+[tasks.install-fonts]
+description = "Download the fonts declared in files/fonts/installer/fonts.toml into ~/.local/share/fonts"
+tools.python = "3.14"
+dir = "~/dotfiles/files/fonts/installer"
+run = "python install_fonts.py"

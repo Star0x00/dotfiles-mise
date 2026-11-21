@@ -1,0 +1,23 @@
+# Packages that still come from mise because nixpkgs does not have them yet.
+#
+# Everything else moved to ~/dotfiles/packages.nix (nix-maid bundle in
+# ~/.nix-profile). When one of these gets a derivation there, delete it from
+# here; when the list is empty, delete mise's [tools] section entirely.
+[tools]
+# pi: not in nixpkgs, and its extension dir (~/.pi/agent/npm) must stay a
+# writable npm install, which a nix store path cannot be.
+pi = "latest"
+
+# small upstream projects / rc builds, no nixpkgs entries:
+"github:tontinton/maki" = "latest"
+"github:Star0x00/wwm" = "latest"
+"npm:@deepseek-ai/dsh" = "0.1.7-rc.2"
+
+# fx: also no nixpkgs entry (pkgs.fx is the antonmedv JSON viewer), and it
+# rejects symlinked config, so it stays a mise copy under ~/.fx for now.
+"github:vercel-labs/fx" = "0.0.13"
+
+# flyline: a loadable bash builtin (.so), loaded by .bashrc via `enable -f`.
+[tools."github:HalFrgrd/flyline"]
+version = "latest"
+rename_exe = "libflyline.so"

@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.5.2",
+  "lastChangelogVersion": "1.6.0",
   "defaultProvider": "deepseek",
   "defaultModel": "deepseek-flash",
   "defaultThinkingLevel": "low",
@@ -7,6 +7,11 @@
     "npm:pi-tidy",
     "npm:@quandev104/pi-style"
   ],
+  "tidy": {
+    "collapseTurns": "off",
+    "style": "frame",
+    "bashResultLines": 3
+  },
   "piStyle": {
     "preset": "default",
     "placement": "below",
@@ -67,7 +72,7 @@
     "autoResize": true
   },
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8",
-    "{\"source\":\"npm:@quandev104/pi-style\",\"scope\":\"user\"}": "0.5.17"
+    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.11.1",
+    "{\"source\":\"npm:@quandev104/pi-style\",\"scope\":\"user\"}": "0.5.18"
   }
 }

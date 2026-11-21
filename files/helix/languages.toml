@@ -2,14 +2,7 @@
 name = "nix"
 auto-format = true
 formatter = { command = "nixfmt" }
-language-servers = [ "nil" ]
-
-[language-server.nil.config.formatting]
-command = ["nixfmt"]
-
-[language-server.nil.config.nix.flake]
-autoArchive = true
-autoEvalInputs = false
+language-servers = [ "nixd" ]
 
 [language-server.nixd]
 command = "nixd"
@@ -17,8 +10,14 @@ command = "nixd"
 [language-server.nixd.config.nixd.formatting]
 command = ["nixfmt"]
 
+# Packages and lib completion. The dotfiles flake pins nixpkgs, there is no channel.
 [language-server.nixd.config.nixd.nixpkgs]
-expr = "let flake = builtins.getFlake \"/var/home/cyrene/.config/home-manager\"; in import flake.inputs.nixpkgs { system = builtins.currentSystem; }"
+expr = "import (builtins.getFlake \"/var/home/qwerhyy/dotfiles\").inputs.nixpkgs { }"
+
+# Option completion (`file.home`, `flatpak.apps`, ...); `options` is exported by
+# flake.nix from the same module eval nix-maid builds, so it cannot drift.
+[language-server.nixd.config.nixd.options.maid]
+expr = "(builtins.getFlake \"/var/home/qwerhyy/dotfiles\").options"
 
 [[language]]
 name = "json"
