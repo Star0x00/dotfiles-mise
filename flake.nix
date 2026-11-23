@@ -7,23 +7,24 @@
       flake = false;
     };
     nix-maid.url = "git+https://codeberg.org/viperML/nix-maid";
+    flyline.url = "github:HalFrgrd/flyline";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nix-maid,
-    }:
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      # The eval nix-maid's functor does, spelled out so `options` can be exposed
-      # for nixd (completion for `file.*`, `flatpak.*`, ...).
-      maid = (import "${nix-maid}/src/maid" { inherit pkgs; }).eval [
+      maid = (import "${inputs.nix-maid}/src/maid" {
+        inherit pkgs inputs;
+      }).eval [
         ./nix/packages.nix
         ./nix/dotfiles.nix
         ./nix/units.nix
@@ -32,6 +33,12 @@
     in
     {
       packages.${system}.default = maid.config.build.bundle;
+
+      # Everything the module eval produced, for poking at in `nix repl`:
+      #   :lf .
+      #   :p debug.config.file.xdg_data
+      #   builtins.attrNames debug.options
+      debug = maid;
 
       # Option declarations, for the nixd language server:
       #   options.<name>.expr = "(builtins.getFlake \"/home/$USER/dotfiles\").options"
