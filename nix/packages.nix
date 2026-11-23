@@ -1,10 +1,6 @@
-# Global tools. This replaces `mise`'s ~/.config/mise/conf.d/00-tools.toml,
-# except for the handful of packages that are not in nixpkgs and still come
-# from mise (pi, maki, wwm, dsh, flyline, fx) -- see the bottom of this file.
-#
 # Everything lands in ~/.nix-profile/bin, which is first on the session PATH
 # (systemd/user/niri.service.d/10-path.conf).
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   packages = with pkgs; [
     # ---- CLI ----
@@ -29,21 +25,20 @@
     treefmt
     exercism
     just
+    inputs.flyline.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # ---- tui ----
     pi-coding-agent
 
     # ---- languages / compilers ----
     go
-    rustc
-    cargo
-    rustfmt
-    clippy
     zig
-    nodejs # also provides `npm` (built from source: cache lag for 24.22.2)
+    nodejs-slim
+    nodejs-slim.npm
     pnpm
     uv
     stylua
+    nixfmt
 
     # ---- documents / trees ----
     typst
@@ -65,8 +60,9 @@
 
     # ---- fonts ----
     maple-mono.NF-CN
+    iosevka
+    sarasa-gothic
     nerd-fonts.symbols-only
-    nerd-fonts.iosevka
   ];
 
 }
