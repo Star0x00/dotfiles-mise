@@ -1,8 +1,0 @@
-# Dotfiles are deployed by nix-maid now: ~/dotfiles/dotfiles.nix.
-# What stays here is whatever nix-maid cannot express:
-#   - fx config: fx rejects symlinked/hardlinked config, so it has to be a copy
-#     (mise's default_mode = "copy" in 05-settings.toml).
-# mise's own config bootstrap lives in ../config.toml, not here.
-[dotfiles]
-"~/.fx/settings.json" = "~/dotfiles/files/fx/settings.json"
-"~/.fx/mcp.json" = "~/dotfiles/files/fx/mcp.json"
