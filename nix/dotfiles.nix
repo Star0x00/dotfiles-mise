@@ -11,10 +11,6 @@ let
     "rose-pine-dawn.conf"
     "tokyonight_night.conf"
   ];
-  typoraThemes = [
-    "catppuccin-mocha.css"
-    "rose-pine-dawn.css"
-  ];
 in
 {
   file.home = {

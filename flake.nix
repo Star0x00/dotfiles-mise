@@ -24,10 +24,10 @@
       # The eval nix-maid's functor does, spelled out so `options` can be exposed
       # for nixd (completion for `file.*`, `flatpak.*`, ...).
       maid = (import "${nix-maid}/src/maid" { inherit pkgs; }).eval [
-        ./packages.nix
-        ./dotfiles.nix
-        ./units.nix
-        ./flatpak.nix
+        ./nix/packages.nix
+        ./nix/dotfiles.nix
+        ./nix/units.nix
+        ./nix/flatpak.nix
       ];
     in
     {
