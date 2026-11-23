@@ -60,11 +60,14 @@ if [[ $TERM != "dumb" ]] && command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash --print-full-init)"
 fi
 
-# flyline (bash builtin, loaded from mise install dir)
-__flyline_so="$(MISE_OFFLINE=1 mise where github:HalFrgrd/flyline 2>/dev/null)/libflyline.so"
-[[ -e $__flyline_so ]] && enable -f "$__flyline_so" flyline 2>/dev/null
+# flyline (bash builtin shipped by the nix profile). `enable -f` needs the shared
+# object, not the `flyline` command; the builtin itself refuses to load when the
+# shell is not interactive.
+__flyline_so="$HOME/.nix-profile/lib/libflyline.so"
+if [[ -e $__flyline_so ]] && enable -f "$__flyline_so" flyline 2>/dev/null; then
+  flyline mouse --mode disabled
+fi
 unset __flyline_so
-flyline mouse --mode disabled
 
 # eza replaces ls
 alias ls='eza --icons --group-directories-first'
