@@ -64,5 +64,4 @@
     sarasa-gothic
     nerd-fonts.symbols-only
   ];
-
 }
