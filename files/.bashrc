@@ -55,22 +55,19 @@ if [[ ! -v BASH_COMPLETION_VERSINFO ]] && [ -f /usr/share/bash-completion/bash_c
   . /usr/share/bash-completion/bash_completion
 fi
 
-# mise (PATH lookup — no hardcoded store paths)
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate bash)"
-  eval "$(mise completion bash)"
-fi
-
 # starship prompt
 if [[ $TERM != "dumb" ]] && command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash --print-full-init)"
 fi
 
-# flyline (bash builtin, loaded from mise install dir)
-__flyline_so="$(MISE_OFFLINE=1 mise where github:HalFrgrd/flyline 2>/dev/null)/libflyline.so"
-[[ -e $__flyline_so ]] && enable -f "$__flyline_so" flyline 2>/dev/null
+# flyline (bash builtin shipped by the nix profile). `enable -f` needs the shared
+# object, not the `flyline` command; the builtin itself refuses to load when the
+# shell is not interactive.
+__flyline_so="$HOME/.nix-profile/lib/libflyline.so"
+if [[ -e $__flyline_so ]] && enable -f "$__flyline_so" flyline 2>/dev/null; then
+  flyline mouse --mode disabled
+fi
 unset __flyline_so
-flyline mouse --mode disabled
 
 # eza replaces ls
 alias ls='eza --icons --group-directories-first'
@@ -79,10 +76,6 @@ alias la='eza -lah --icons --group-directories-first --git'
 alias lt='eza --tree --level=2 --icons'
 alias tree='eza --tree --icons --group-directories-first'
 alias ssh='ghostty +ssh --'
-
-# pig piglets
-alias pigreview='pig --piglet review'
-alias pigresearch='pig --piglet researcher'
 
 # zoxide
 if command -v zoxide >/dev/null 2>&1; then

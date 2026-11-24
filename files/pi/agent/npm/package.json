@@ -2,7 +2,7 @@
   "name": "pi-extensions",
   "private": true,
   "dependencies": {
-    "@quandev104/pi-style": "^0.5.17",
-    "pi-tidy": "^0.9.8"
+    "@quandev104/pi-style": "^0.5.18",
+    "pi-tidy": "^0.11.1"
   }
 }

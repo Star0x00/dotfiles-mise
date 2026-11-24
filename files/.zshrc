@@ -6,7 +6,6 @@
 typeset -U path
 path=(
   "$HOME/.bin"
-  "$HOME/.local/share/mise/shims"
   "$HOME/.local/share/npm/bin"
   "$HOME/.local/bin"
   $path
@@ -43,11 +42,6 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then eza -1 -
 zstyle ':fzf-tab:*' fzf-flags --preview-window=right:60%
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
-
-# ---- mise (puts its tools on PATH, so everything below can rely on them) ----
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
-fi
 
 # ---- fzf: Catppuccin Mocha theme + key bindings ----
 # Palette matches kitty/catppuccin_mocha.conf; fzf-tab inherits it through the

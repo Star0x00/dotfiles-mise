@@ -19,6 +19,18 @@ vim.lsp.enable 'nushell'
 vim.lsp.enable 'tinymist'
 vim.lsp.enable 'jsonls'
 vim.lsp.enable 'ts_ls'
+
+-- nixd: packages from the dotfiles flake's nixpkgs input (there is no channel),
+-- options from the flake's exported `options` (same eval nix-maid builds).
+vim.lsp.config('nixd', {
+  settings = {
+    nixd = {
+      formatting = { command = { 'nixfmt' } },
+      nixpkgs = { expr = 'import (builtins.getFlake "/var/home/qwerhyy/dotfiles").inputs.nixpkgs { }' },
+      options = { maid = { expr = '(builtins.getFlake "/var/home/qwerhyy/dotfiles").options' } },
+    },
+  },
+})
 vim.lsp.enable 'nixd'
 vim.lsp.enable 'superhtml'
 vim.lsp.enable 'ziggy'
